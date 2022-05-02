@@ -91,7 +91,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(2, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1353, 302);
+            this.groupBox1.Size = new System.Drawing.Size(1266, 302);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Öğrenci Bilgileri";
@@ -329,7 +329,7 @@
             this.groupBox3.Controls.Add(this.dgwOgrenciDetay);
             this.groupBox3.Location = new System.Drawing.Point(2, 305);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1353, 434);
+            this.groupBox3.Size = new System.Drawing.Size(1266, 434);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tablo";
@@ -343,7 +343,7 @@
             this.dgwOgrenciDetay.Name = "dgwOgrenciDetay";
             this.dgwOgrenciDetay.RowHeadersWidth = 51;
             this.dgwOgrenciDetay.RowTemplate.Height = 24;
-            this.dgwOgrenciDetay.Size = new System.Drawing.Size(1347, 409);
+            this.dgwOgrenciDetay.Size = new System.Drawing.Size(1260, 409);
             this.dgwOgrenciDetay.TabIndex = 0;
             // 
             // OgretmenOgrenciDetaycs
@@ -352,7 +352,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(1362, 751);
+            this.ClientSize = new System.Drawing.Size(1272, 742);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
