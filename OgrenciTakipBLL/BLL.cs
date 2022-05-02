@@ -272,13 +272,13 @@ namespace OgrenciTakipBLL
 
         #region Metotlar
 
-        public List<string> Giris(string sorgu, string ad, string sifre)
+        public List<string> Giris(string sorgu, string ad)
         {
             try
             {
                 using (DAL objDal = new DAL())
                 {
-                    return objDal.GirisDB(sorgu, ad, sifre);
+                    return objDal.GirisDB(sorgu, ad);
                 }
             }
             catch (Exception)

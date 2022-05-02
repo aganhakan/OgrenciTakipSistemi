@@ -27,7 +27,7 @@ namespace OgrenciTakipSistemi
             {
                 string sorgu = "Select Sinif + '/' + Sube from Siniflar s inner join Ogretmen o " +
                     "on o.SinifId = s.Id where o.TC = @p1";
-                lblSinif.Text = (nesne.Giris(sorgu, lblOgretmenTC.Text, "bos"))[0];
+                lblSinif.Text = (nesne.Giris(sorgu, lblOgretmenTC.Text))[0];
 
                 dgwOgrenciBilgiler.DataSource = nesne.Listeleme(lblOgretmenTC.Text, "OgretmenDetay");
                 dgwOgrenciBilgiler.Columns[0].Visible = false;

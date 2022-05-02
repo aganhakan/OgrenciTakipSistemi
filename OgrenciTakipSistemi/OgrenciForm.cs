@@ -31,7 +31,7 @@ namespace OgrenciTakipSistemi
 
                     string sorgu = "SELECT * FROM Ogrenciler o inner join Siniflar s on s.Id = o.SinifId Where TC = @p1";
 
-                    List<string> OgrenciBilgileri = nesne.Giris(sorgu, txtTcNo.Text, txtDogumTarihi.Text);
+                    List<string> OgrenciBilgileri = nesne.Giris(sorgu, txtTcNo.Text);
 
                     if (OgrenciBilgileri.Count != 0)
                     {

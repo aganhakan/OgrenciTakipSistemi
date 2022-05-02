@@ -31,9 +31,9 @@ namespace OgrenciTakipSistemi
                     nesne.email = txtEMail.Text;
                     nesne.tel = txtTel.Text;
 
-                    string sorgu = "SELECT * FROM Ogretmen Where AdSoyad = @p1";
+                    string sorgu = "SELECT * FROM Ogretmen Where TC = @p1";
 
-                    List<string> OgretmenBilgileri = nesne.Giris(sorgu, txtAdSoyad.Text, txtTCNo.Text);
+                    List<string> OgretmenBilgileri = nesne.Giris(sorgu, txtTCNo.Text);
 
                     if (OgretmenBilgileri.Count != 0)
                     {
@@ -55,7 +55,7 @@ namespace OgrenciTakipSistemi
                     else
                     {
                         MessageBox.Show("öğretmen bulunamadı!" +
-                        "\nLütfen adınızı kontrol ediniz.");
+                        "\nLütfen TC Numaranızı ediniz.");
                     }
                 }
             }

@@ -40,7 +40,7 @@ namespace OgrenciTakipSistemi
 
                     string sorgu = "SELECT * FROM Ogretmen Where AdSoyad = @p1";
 
-                    List<string> OgretmenBilgileri = nesne.Giris(sorgu, txtKullaniciAdi.Text, txtSifre.Text);
+                    List<string> OgretmenBilgileri = nesne.Giris(sorgu, txtKullaniciAdi.Text);
 
                     if (OgretmenBilgileri.Count != 0)
                     {

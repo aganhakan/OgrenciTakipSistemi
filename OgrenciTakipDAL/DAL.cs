@@ -12,7 +12,7 @@ namespace OgrenciTakipDAL
     public class DAL : IDisposable
     {
         string baglanticumlesi = "Data Source=.;Initial Catalog=OgrenciTakipSistemi;Integrated Security=True";
-        public List<string> GirisDB(string sorgu, string ad, string sifre)
+        public List<string> GirisDB(string sorgu, string ad)
         {
             using (SqlConnection baglanti = new SqlConnection(baglanticumlesi))
             {
