@@ -48,18 +48,15 @@ namespace OgrenciTakipSistemi
             lblAnneAdi.Text = bilgiler[4];
             lblBabaAdi.Text = bilgiler[5];
             lblVeliTel.Text = bilgiler[6];
+            cmbDers.DataSource = Enum.GetValues(typeof(Dersler.Dersler1));
             #endregion
 
             #region Fotoğraf
-
-
             using (Ogrenci nesne = new Ogrenci())
             {
                 string sorgu = "SELECT Fotograf FROM Ogrenciler WHERE Id = @No";
                 picOgrenci.Image = Image.FromStream(nesne.Fotograf(bilgiler[0], sorgu));
             }
-
-
             #endregion
 
         }
@@ -67,7 +64,7 @@ namespace OgrenciTakipSistemi
         private void dgwOgrenciDetay_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int secilen = dgwOgrenciDetay.SelectedCells[0].RowIndex;
-            lblDers.Text = dgwOgrenciDetay.Rows[secilen].Cells[2].Value.ToString();
+            cmbDers.Text = dgwOgrenciDetay.Rows[secilen].Cells[2].Value.ToString();
             txtSinav1.Text = dgwOgrenciDetay.Rows[secilen].Cells[3].Value.ToString();
             txtSinav2.Text = dgwOgrenciDetay.Rows[secilen].Cells[4].Value.ToString();
             txtKanaatNot.Text = dgwOgrenciDetay.Rows[secilen].Cells[5].Value.ToString();
@@ -161,12 +158,11 @@ namespace OgrenciTakipSistemi
         {
             this.Close();
         }
-
         private void btnOgrenciKaydet_Click(object sender, EventArgs e)
         {
             try
             {
-                if (string.IsNullOrEmpty(lblDers.Text))
+                if (string.IsNullOrEmpty(cmbDers.Text))
                     throw new ArgumentException("Lütfen sınav girişi yapacağınız derse tıklayınız.");
                 if (string.IsNullOrEmpty(txtSinav1.Text))
                     throw new ArgumentException("Lütfen ilk sınav notunu giriniz.");
@@ -176,7 +172,7 @@ namespace OgrenciTakipSistemi
                 string sorgu = $"Update Notlar set Sinav1 = {txtSinav1.Text}, Sinav2 = {txtSinav2.Text}, " +
                                $"KanaatNot = {txtKanaatNot.Text}, Ortalama = @p1, Durum = '{lblDurum.Text}' " +
                                $" where OgrenciId = {int.Parse(bilgiler[0])} and " +
-                               $"DersId = (Select Id from Dersler where DersAdi = '{lblDers.Text}')";
+                               $"DersId = (Select Id from Dersler where DersAdi = '{cmbDers.Text}')";
                 using (Notlar nesne = new Notlar())
                 {
                     double ort = double.Parse(lblOrtalama.Text);
@@ -188,6 +184,28 @@ namespace OgrenciTakipSistemi
             {
                 MessageBox.Show(exc.Message);
             }  
+        }
+        private void btnEkle_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string sorgu = $"insert into Notlar (DersId, OgrenciId) " +
+                    $"values ((select Id from Dersler where DersAdi = '{cmbDers.Text}'),{int.Parse(bilgiler[0])})";
+                using (Dersler nesne = new Dersler())
+                {
+                    MessageBox.Show(nesne.Ekle(sorgu));
+                }
+                listeleme();
+            }
+            catch (ArgumentException exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+
+        private void cmbDers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

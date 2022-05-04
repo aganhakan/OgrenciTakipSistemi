@@ -72,8 +72,8 @@ namespace OgrenciTakipSistemi
                 using (Siniflar nesne = new Siniflar())
                 {
                     cmbOgretmenSinif.DataSource = cmbOgrenciSinif.DataSource = nesne.sinif;
-                    cmbOgretmenSube.DataSource = cmbOgrenciSube.DataSource = Enum.GetValues(typeof(Siniflar.Subeler));
                 }
+                cmbOgretmenSube.DataSource = cmbOgrenciSube.DataSource = Enum.GetValues(typeof(Siniflar.Subeler));
             }
             catch (Exception exc)
             {
@@ -117,8 +117,8 @@ namespace OgrenciTakipSistemi
             {
                 using (Yonetici nesne = new Yonetici())
                 {
-                    string sorgu = "SELECT Fotograf FROM Yonetici WHERE Id = @No";
-                    picYonetici.Image = Image.FromStream(nesne.Fotograf(dgwYonetici.Rows[secilen].Cells[0].Value.ToString(), sorgu));
+                    string sorgu = "SELECT Fotograf FROM Yonetici WHERE TC = @No";
+                    picYonetici.Image = Image.FromStream(nesne.Fotograf(dgwYonetici.Rows[secilen].Cells[2].Value.ToString(), sorgu));
                 }
             }
             else
@@ -150,8 +150,8 @@ namespace OgrenciTakipSistemi
             {
                 using (Ogretmen nesne = new Ogretmen())
                 {
-                    string sorgu = "SELECT Fotograf FROM Ogretmen WHERE Id = @No";
-                    picOgretmen.Image = Image.FromStream(nesne.Fotograf(dgwOgretmen.Rows[secilen].Cells[0].Value.ToString(), sorgu));
+                    string sorgu = "SELECT Fotograf FROM Ogretmen WHERE TC = @No";
+                    picOgretmen.Image = Image.FromStream(nesne.Fotograf(dgwOgretmen.Rows[secilen].Cells[2].Value.ToString(), sorgu));
                 }
             }
             else
@@ -181,10 +181,10 @@ namespace OgrenciTakipSistemi
             #region Fotoğraf
             if (!string.IsNullOrEmpty(dgwOgrenci.Rows[secilen].Cells[10].Value.ToString()))
             {
-                using (Ogretmen nesne = new Ogretmen())
+                using (Ogrenci nesne = new Ogrenci())
                 {
-                    string sorgu = "SELECT Fotograf FROM Ogrenciler WHERE Id = @No";
-                    picOgrenci.Image = Image.FromStream(nesne.Fotograf(dgwOgrenci.Rows[secilen].Cells[0].Value.ToString(), sorgu));
+                    string sorgu = "SELECT Fotograf FROM Ogrenciler WHERE TC = @No";
+                    picOgrenci.Image = Image.FromStream(nesne.Fotograf(dgwOgrenci.Rows[secilen].Cells[3].Value.ToString(), sorgu));
                 }
             }
             else
@@ -207,7 +207,6 @@ namespace OgrenciTakipSistemi
             if (openFileDialog1.FileName != "openFileDialog1")
                 picOgretmen.ImageLocation = openFileDialog1.FileName;
         }
-
         private void btnOgrenciFotograf_Click(object sender, EventArgs e)
         {
             //picOgrenci.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -230,6 +229,7 @@ namespace OgrenciTakipSistemi
                 {
                     MessageBox.Show(nesne.FotoGuncelle("Update Yonetici set Fotograf = @p1 where TC = " + txtYoneticiTC.Text +
                         "", resim));
+                    Listeleme();
                 }
             }
             catch (Exception exc)
@@ -252,6 +252,7 @@ namespace OgrenciTakipSistemi
                 {
                     MessageBox.Show(nesne.FotoGuncelle("Update Ogretmen set Fotograf = @p1 where TC = " + txtOgretmenTC.Text +
                         "", resim));
+                    Listeleme();
                 }
             }
             catch (Exception exc)
@@ -274,6 +275,7 @@ namespace OgrenciTakipSistemi
                 {
                     MessageBox.Show(nesne.FotoGuncelle("Update Ogrenciler set Fotograf = @p1 where OgrenciNo = " + txtOgrenciNo.Text +
                         "", resim));
+                    Listeleme();
                 }
             }
             catch (Exception exc)
@@ -283,19 +285,17 @@ namespace OgrenciTakipSistemi
         }
         private void btnYonKaydet_Click(object sender, EventArgs e)
         {
-
-        }
-        private void btnOgretmenKaydet_Click(object sender, EventArgs e)
-        {
             try
             {
-                DateTime dt = Convert.ToDateTime(txtOgretmenDogumTarih.Text);
-                using (Ogretmen nesne = new Ogretmen())
+                DateTime dt = Convert.ToDateTime(txtYoneticiDogumTarih.Text);
+                DateTime ib = Convert.ToDateTime(txtYoneticiiseBaslama.Text);
+                using (Yonetici nesne = new Yonetici())
                 {
-                    string id = dgwOgretmen.Rows[dgwOgretmen.SelectedCells[0].RowIndex].Cells[0].Value.ToString();
+                    MessageBox.Show(nesne.Guncelle("YoneticiEkleme", txtYoneticiAd.Text, txtYoneticiTC.Text, txtYoneticiDogumYeri.Text,
+                    dt, ib, txtYoneticiSifre.Text, txtYoneticiGorev.Text,
+                    txtYoneticiEMail.Text, txtYoneticiTel.Text, txtYoneticiAdres.Text,"id"));
 
-                    //MessageBox.Show(nesne.Guncelle("OgreTMENGuncelleme2", txtOgretmenDogumyeri.Text, dt, txtSifre.Text,
-                    //    txtOgretmenEMail.Text, txtOgretmenTel.Text, txtOgretmenAdres.Text, lblOgretmenTC.Text));
+                    Listeleme();
                 }
             }
             catch (Exception exc)
@@ -303,10 +303,111 @@ namespace OgrenciTakipSistemi
                 MessageBox.Show(exc.Message);
             }
         }
+        private void btnOgretmenKaydet_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime dt = Convert.ToDateTime(txtOgretmenDogumTarih.Text);
+                DateTime ib = Convert.ToDateTime(txtOgretmeniseBaslama.Text);
+                using (Ogretmen nesne = new Ogretmen())
+                {
+                    MessageBox.Show(nesne.Guncelle("OgretmenEkleme", txtOgretmenAd.Text, txtOgretmenTC.Text, txtOgretmenDogumyeri.Text,
+                        dt, ib, txtOgretmenSifre.Text, cmbOgrenciSinif.Text, cmbOgrenciSube.Text,
+                        txtOgretmenEMail.Text, txtOgretmenTel.Text, txtOgretmenAdres.Text, "id"));
 
+                    Listeleme();
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
         private void btnOgrenciKaydet_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DateTime dt = Convert.ToDateTime(txtOgrenciDogumTarih.Text);
+                using (Ogrenci nesne = new Ogrenci())
+                {
+                    string id = dgwOgrenci.Rows[dgwOgrenci.SelectedCells[0].RowIndex].Cells[0].Value.ToString();
 
+                    MessageBox.Show(nesne.Guncelle2("OgrenciEkleme", txtOgrenciNo.Text, txtOgrenciAd.Text, txtOgrenciTC.Text,
+                        txtOgrenciDogumYer.Text, dt, cmbOgrenciSinif.Text, cmbOgrenciSube.Text,
+                        txtAnneAdi.Text, txtBabaAdi.Text, txtVeliTel.Text, txtAdres.Text, id));
+
+                    Listeleme();
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+        private void btnYoneticiGuncelle_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime dt = Convert.ToDateTime(txtYoneticiDogumTarih.Text);
+                DateTime ib = Convert.ToDateTime(txtYoneticiiseBaslama.Text);
+                using (Yonetici nesne = new Yonetici())
+                {
+                    string id = dgwYonetici.Rows[dgwYonetici.SelectedCells[0].RowIndex].Cells[0].Value.ToString();
+
+                    MessageBox.Show(nesne.Guncelle("YoneticiGuncelleme", txtYoneticiAd.Text, txtYoneticiTC.Text, txtYoneticiDogumYeri.Text,
+                    dt, ib, txtYoneticiSifre.Text, txtYoneticiGorev.Text,
+                    txtYoneticiEMail.Text, txtYoneticiTel.Text, txtYoneticiAdres.Text, id));
+
+                    Listeleme();
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+        private void btnOgretmenGuncelle_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime dt = Convert.ToDateTime(txtOgretmenDogumTarih.Text);
+                DateTime ib = Convert.ToDateTime(txtOgretmeniseBaslama.Text);
+                using (Ogretmen nesne = new Ogretmen())
+                {
+                    string id = dgwOgretmen.Rows[dgwOgretmen.SelectedCells[0].RowIndex].Cells[0].Value.ToString();
+
+                    MessageBox.Show(nesne.Guncelle("OgretmenGuncelleme2", txtOgretmenAd.Text, txtOgretmenTC.Text, txtOgretmenDogumyeri.Text,
+                        dt, ib, txtOgretmenSifre.Text, cmbOgrenciSinif.Text, cmbOgrenciSube.Text,
+                        txtOgretmenEMail.Text, txtOgretmenTel.Text, txtOgretmenAdres.Text, id));
+
+                    Listeleme();
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+        private void btnOgrenciGuncelle_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime dt = Convert.ToDateTime(txtOgrenciDogumTarih.Text);
+                using (Ogrenci nesne = new Ogrenci())
+                {
+                    string id = dgwOgrenci.Rows[dgwOgrenci.SelectedCells[0].RowIndex].Cells[0].Value.ToString();
+
+                    MessageBox.Show(nesne.Guncelle2("OgrenciGuncelleme2", txtOgrenciNo.Text, txtOgrenciAd.Text, txtOgrenciTC.Text,
+                        txtOgrenciDogumYer.Text, dt, cmbOgrenciSinif.Text, cmbOgrenciSube.Text,
+                        txtAnneAdi.Text, txtBabaAdi.Text, txtVeliTel.Text, txtAdres.Text, id));
+
+                    Listeleme();
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
     }
 }

@@ -3,45 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OgrenciTakipDAL;
 
 namespace OgrenciTakipBLL
 {
     public class Dersler : BLL
     {
-        private string _ders;
-
-        public string ders
+        public enum Dersler1
         {
-            get { return _ders; }
-            set
+            Türkçe,
+            Matematik,
+            HayatBilgisi,
+            GörselSanatlar,
+            Müzik,
+            Oyun,
+            İngilizce
+        }
+        public string Ekle(string sorgu)
+        {
+            try
             {
-                bool oldumu = false;
-                for (int i = 0; i < value.Length; i++)
+                using (DAL objdal = new DAL())
                 {
-                    if (char.IsLetter(value[i]) || value[i] == ' ')
-                    {
-                        oldumu = true;
-                    }
-                    else
-                    {
-                        oldumu = false;
-                        break;
-                    }
-                }
-                if (oldumu)
-                {
-                    _ders = value;
-                }
-                else if (value == string.Empty)
-                {
-                    throw new ArgumentException("İşaretli alanlar Boş Olamaz!");
-                }
-                else
-                {
-                    throw new ArgumentException("Dersler içerisinde yalnızca harf olmalıdır!");
+                    return objdal.EkleDB(sorgu);
                 }
             }
+            catch (Exception)
+            {
+                throw;
+            }
         }
-
     }
 }

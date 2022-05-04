@@ -143,7 +143,7 @@ namespace OgrenciTakipBLL
         }
 
         public string Guncelle(string procedure, string ogrencino, string TC, string dogumyeri, DateTime dogumtarihi,
-    string anneadi, string babaadi, string velitel, string adres)
+        string anneadi, string babaadi, string velitel, string adres)
         {
             try
             {
@@ -154,7 +154,22 @@ namespace OgrenciTakipBLL
             }
             catch (Exception)
             {
-
+                throw;
+            }
+        }
+        public string Guncelle2(string procedure, string ogrencino, string ad, string TC, string dogumyeri, DateTime dogumtarihi,
+        string sinif, string sube, string anneadi, string babaadi, string velitel, string adres,string id)
+        {
+            try
+            {
+                using (DAL objDal = new DAL())
+                {
+                    return objDal.EkleDB2(procedure, ogrencino, ad, TC, dogumyeri, dogumtarihi,
+                        sinif, sube, anneadi, babaadi, velitel, adres,id);
+                }
+            }
+            catch (Exception)
+            {
                 throw;
             }
         }

@@ -70,6 +70,9 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dgwOgretmen = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cmbOgretmenSube = new System.Windows.Forms.ComboBox();
+            this.cmbOgretmenSinif = new System.Windows.Forms.ComboBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.btnOgretmenFotografGuncelle = new System.Windows.Forms.Button();
             this.btnOgretmenSil = new System.Windows.Forms.Button();
             this.btnOgretmenGuncelle = new System.Windows.Forms.Button();
@@ -99,6 +102,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgwOgrenci = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbOgrenciSube = new System.Windows.Forms.ComboBox();
+            this.cmbOgrenciSinif = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
             this.btnOgrenciFotografGuncelle = new System.Windows.Forms.Button();
             this.btnOgrenciSil = new System.Windows.Forms.Button();
             this.btnOgrenciGuncelle = new System.Windows.Forms.Button();
@@ -125,13 +132,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label14 = new System.Windows.Forms.Label();
-            this.cmbOgretmenSinif = new System.Windows.Forms.ComboBox();
-            this.cmbOgretmenSube = new System.Windows.Forms.ComboBox();
-            this.cmbOgrenciSube = new System.Windows.Forms.ComboBox();
-            this.cmbOgrenciSinif = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
             this.btnYoneticiKaydet.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -333,6 +333,7 @@
             this.btnYoneticiGuncelle.TabIndex = 30;
             this.btnYoneticiGuncelle.Text = "Güncelle";
             this.btnYoneticiGuncelle.UseVisualStyleBackColor = true;
+            this.btnYoneticiGuncelle.Click += new System.EventHandler(this.btnYoneticiGuncelle_Click);
             // 
             // txtYoneticiSifre
             // 
@@ -612,6 +613,33 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Öğretmen Bilgileri";
             // 
+            // cmbOgretmenSube
+            // 
+            this.cmbOgretmenSube.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbOgretmenSube.FormattingEnabled = true;
+            this.cmbOgretmenSube.Location = new System.Drawing.Point(605, 86);
+            this.cmbOgretmenSube.Name = "cmbOgretmenSube";
+            this.cmbOgretmenSube.Size = new System.Drawing.Size(121, 28);
+            this.cmbOgretmenSube.TabIndex = 40;
+            // 
+            // cmbOgretmenSinif
+            // 
+            this.cmbOgretmenSinif.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbOgretmenSinif.FormattingEnabled = true;
+            this.cmbOgretmenSinif.Location = new System.Drawing.Point(605, 49);
+            this.cmbOgretmenSinif.Name = "cmbOgretmenSinif";
+            this.cmbOgretmenSinif.Size = new System.Drawing.Size(121, 28);
+            this.cmbOgretmenSinif.TabIndex = 39;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(466, 95);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(57, 20);
+            this.label14.TabIndex = 38;
+            this.label14.Text = "Şube:";
+            // 
             // btnOgretmenFotografGuncelle
             // 
             this.btnOgretmenFotografGuncelle.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -654,6 +682,7 @@
             this.btnOgretmenGuncelle.TabIndex = 32;
             this.btnOgretmenGuncelle.Text = "Güncelle";
             this.btnOgretmenGuncelle.UseVisualStyleBackColor = true;
+            this.btnOgretmenGuncelle.Click += new System.EventHandler(this.btnOgretmenGuncelle_Click);
             // 
             // txtOgretmenSifre
             // 
@@ -926,6 +955,42 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Öğrenci Bilgileri";
             // 
+            // cmbOgrenciSube
+            // 
+            this.cmbOgrenciSube.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbOgrenciSube.FormattingEnabled = true;
+            this.cmbOgrenciSube.Location = new System.Drawing.Point(604, 39);
+            this.cmbOgrenciSube.Name = "cmbOgrenciSube";
+            this.cmbOgrenciSube.Size = new System.Drawing.Size(121, 28);
+            this.cmbOgrenciSube.TabIndex = 44;
+            // 
+            // cmbOgrenciSinif
+            // 
+            this.cmbOgrenciSinif.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbOgrenciSinif.FormattingEnabled = true;
+            this.cmbOgrenciSinif.Location = new System.Drawing.Point(604, 5);
+            this.cmbOgrenciSinif.Name = "cmbOgrenciSinif";
+            this.cmbOgrenciSinif.Size = new System.Drawing.Size(121, 28);
+            this.cmbOgrenciSinif.TabIndex = 43;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(465, 47);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(57, 20);
+            this.label7.TabIndex = 42;
+            this.label7.Text = "Şube:";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.Location = new System.Drawing.Point(465, 13);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(53, 20);
+            this.label32.TabIndex = 41;
+            this.label32.Text = "Sınıf:";
+            // 
             // btnOgrenciFotografGuncelle
             // 
             this.btnOgrenciFotografGuncelle.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -968,6 +1033,7 @@
             this.btnOgrenciGuncelle.TabIndex = 34;
             this.btnOgrenciGuncelle.Text = "Güncelle";
             this.btnOgrenciGuncelle.UseVisualStyleBackColor = true;
+            this.btnOgrenciGuncelle.Click += new System.EventHandler(this.btnOgrenciGuncelle_Click);
             // 
             // txtVeliTel
             // 
@@ -1160,69 +1226,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(466, 95);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(57, 20);
-            this.label14.TabIndex = 38;
-            this.label14.Text = "Şube:";
-            // 
-            // cmbOgretmenSinif
-            // 
-            this.cmbOgretmenSinif.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbOgretmenSinif.FormattingEnabled = true;
-            this.cmbOgretmenSinif.Location = new System.Drawing.Point(605, 49);
-            this.cmbOgretmenSinif.Name = "cmbOgretmenSinif";
-            this.cmbOgretmenSinif.Size = new System.Drawing.Size(121, 28);
-            this.cmbOgretmenSinif.TabIndex = 39;
-            // 
-            // cmbOgretmenSube
-            // 
-            this.cmbOgretmenSube.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbOgretmenSube.FormattingEnabled = true;
-            this.cmbOgretmenSube.Location = new System.Drawing.Point(605, 86);
-            this.cmbOgretmenSube.Name = "cmbOgretmenSube";
-            this.cmbOgretmenSube.Size = new System.Drawing.Size(121, 28);
-            this.cmbOgretmenSube.TabIndex = 40;
-            // 
-            // cmbOgrenciSube
-            // 
-            this.cmbOgrenciSube.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbOgrenciSube.FormattingEnabled = true;
-            this.cmbOgrenciSube.Location = new System.Drawing.Point(604, 39);
-            this.cmbOgrenciSube.Name = "cmbOgrenciSube";
-            this.cmbOgrenciSube.Size = new System.Drawing.Size(121, 28);
-            this.cmbOgrenciSube.TabIndex = 44;
-            // 
-            // cmbOgrenciSinif
-            // 
-            this.cmbOgrenciSinif.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbOgrenciSinif.FormattingEnabled = true;
-            this.cmbOgrenciSinif.Location = new System.Drawing.Point(604, 5);
-            this.cmbOgrenciSinif.Name = "cmbOgrenciSinif";
-            this.cmbOgrenciSinif.Size = new System.Drawing.Size(121, 28);
-            this.cmbOgrenciSinif.TabIndex = 43;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(465, 47);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(57, 20);
-            this.label7.TabIndex = 42;
-            this.label7.Text = "Şube:";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.Location = new System.Drawing.Point(465, 13);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(53, 20);
-            this.label32.TabIndex = 41;
-            this.label32.Text = "Sınıf:";
             // 
             // YoneticiPaneli
             // 

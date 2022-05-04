@@ -196,6 +196,108 @@ namespace OgrenciTakipDAL
             }
             return mesaj;
         }
+        public string EkleDB2(string procedure, string adsoyad, string Tc, string dogumyeri, DateTime dogumtarihi,
+        DateTime isebaslama, string sifre, string sinif, string sube, string email, string tel, string adres, string id)
+        {
+            string mesaj = "";
+            using (SqlConnection baglanti = new SqlConnection(baglanticumlesi))
+            {
+                using (SqlCommand kayit = new SqlCommand(procedure, baglanti))
+                {
+                    kayit.CommandType = CommandType.StoredProcedure;
+
+                    kayit.Parameters.AddWithValue("@AdSoyad", adsoyad);
+                    kayit.Parameters.AddWithValue("@TC", Tc);
+                    kayit.Parameters.AddWithValue("@DogumYeri", dogumyeri);
+                    kayit.Parameters.AddWithValue("@DogumTarihi", dogumtarihi);
+                    kayit.Parameters.AddWithValue("@Isebaslama", isebaslama);
+                    kayit.Parameters.AddWithValue("@Sifre", sifre);
+                    kayit.Parameters.AddWithValue("@Sinif", sinif);
+                    kayit.Parameters.AddWithValue("@Sube", sube);
+                    kayit.Parameters.AddWithValue("@EMail", email);
+                    kayit.Parameters.AddWithValue("@Tel", tel);
+                    kayit.Parameters.AddWithValue("@Adres", adres);
+                    kayit.Parameters.AddWithValue("@Id", id);
+
+                    baglanti.Open();
+
+                    if (kayit.ExecuteNonQuery() > 0)
+                        mesaj = ("İşlem başarılı");
+                    else
+                        mesaj = ("İşlem başarısız");
+                }
+                baglanti.Close();
+            }
+            return mesaj;
+        }
+        public string EkleDB2(string procedure, string ogrencino, string ad, string TC, string dogumyeri, DateTime dogumtarihi,
+        string sinif, string sube, string anneadi, string babaadi, string velitel, string adres,string id)
+        {
+            string mesaj = "";
+            using (SqlConnection baglanti = new SqlConnection(baglanticumlesi))
+            {
+                using (SqlCommand kayit = new SqlCommand(procedure, baglanti))
+                {
+                    kayit.CommandType = CommandType.StoredProcedure;
+
+                    kayit.Parameters.AddWithValue("@OgrenciNo", ogrencino);
+                    kayit.Parameters.AddWithValue("@AdSoyad", ad);
+                    kayit.Parameters.AddWithValue("@TC", TC);
+                    kayit.Parameters.AddWithValue("@DogumYeri", dogumyeri);
+                    kayit.Parameters.AddWithValue("@DogumTarihi", dogumtarihi);
+                    kayit.Parameters.AddWithValue("@Sinif", sinif);
+                    kayit.Parameters.AddWithValue("@Sube", sube);
+                    kayit.Parameters.AddWithValue("@Annead", anneadi);
+                    kayit.Parameters.AddWithValue("@Babaad", babaadi);
+                    kayit.Parameters.AddWithValue("@Tel", velitel);
+                    kayit.Parameters.AddWithValue("@Adres", adres);
+                    kayit.Parameters.AddWithValue("@Id", id);
+
+                    baglanti.Open();
+
+                    if (kayit.ExecuteNonQuery() > 0)
+                        mesaj = ("İşlem başarılı");
+                    else
+                        mesaj = ("İşlem başarısız");
+                }
+                baglanti.Close();
+            }
+            return mesaj;
+        }
+        public string EkleDB2(string procedure, string adsoyad, string Tc, string dogumyeri, DateTime dogumtarihi,
+        DateTime isebaslama, string sifre, string gorev, string email, string tel, string adres, string id)
+        {
+            string mesaj = "";
+            using (SqlConnection baglanti = new SqlConnection(baglanticumlesi))
+            {
+                using (SqlCommand kayit = new SqlCommand(procedure, baglanti))
+                {
+                    kayit.CommandType = CommandType.StoredProcedure;
+
+                    kayit.Parameters.AddWithValue("@AdSoyad", adsoyad);
+                    kayit.Parameters.AddWithValue("@TC", Tc);
+                    kayit.Parameters.AddWithValue("@DogumYeri", dogumyeri);
+                    kayit.Parameters.AddWithValue("@DogumTarihi", dogumtarihi);
+                    kayit.Parameters.AddWithValue("@Isebaslama", isebaslama);
+                    kayit.Parameters.AddWithValue("@Sifre", sifre);
+                    kayit.Parameters.AddWithValue("@Gorev", gorev);
+                    kayit.Parameters.AddWithValue("@EMail", email);
+                    kayit.Parameters.AddWithValue("@Tel", tel);
+                    kayit.Parameters.AddWithValue("@Adres", adres);
+                    kayit.Parameters.AddWithValue("@Id", id);
+
+                    baglanti.Open();
+
+                    if (kayit.ExecuteNonQuery() > 0)
+                        mesaj = ("İşlem başarılı");
+                    else
+                        mesaj = ("İşlem başarısız");
+                }
+                baglanti.Close();
+            }
+            return mesaj;
+        }
+
         public string FotoGuncelle(string sorgu, byte[] resim)
 
         {

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
+using OgrenciTakipDAL;
 
 namespace OgrenciTakipBLL
 {
@@ -43,6 +44,22 @@ namespace OgrenciTakipBLL
                 }
             }
         }
+        public string Guncelle(string procedure, string adsoyad, string Tc, string dogumyeri, DateTime dogumtarihi,
+        DateTime isebaslama, string sifre, string gorev, string email, string tel, string adres, string id)
+        {
+            try
+            {
+                using (DAL objDal = new DAL())
+                {
+                    return objDal.EkleDB2(procedure, adsoyad, Tc, dogumyeri, dogumtarihi, isebaslama, sifre,
+                        gorev, email, tel, adres, id);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
 
+        }
     }
 }

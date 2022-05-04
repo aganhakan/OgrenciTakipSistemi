@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblDers = new System.Windows.Forms.Label();
             this.lblDurum = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.lblOrtalama = new System.Windows.Forms.Label();
@@ -58,6 +57,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgwOgrenciDetay = new System.Windows.Forms.DataGridView();
+            this.cmbDers = new System.Windows.Forms.ComboBox();
+            this.btnEkle = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picOgrenci)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -66,7 +67,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.lblDers);
+            this.groupBox1.Controls.Add(this.btnEkle);
+            this.groupBox1.Controls.Add(this.cmbDers);
             this.groupBox1.Controls.Add(this.lblDurum);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.lblOrtalama);
@@ -100,18 +102,10 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Öğrenci Bilgileri";
             // 
-            // lblDers
-            // 
-            this.lblDers.AutoSize = true;
-            this.lblDers.Location = new System.Drawing.Point(549, 40);
-            this.lblDers.Name = "lblDers";
-            this.lblDers.Size = new System.Drawing.Size(0, 20);
-            this.lblDers.TabIndex = 48;
-            // 
             // lblDurum
             // 
             this.lblDurum.AutoSize = true;
-            this.lblDurum.Location = new System.Drawing.Point(549, 205);
+            this.lblDurum.Location = new System.Drawing.Point(509, 205);
             this.lblDurum.Name = "lblDurum";
             this.lblDurum.Size = new System.Drawing.Size(177, 20);
             this.lblDurum.TabIndex = 47;
@@ -120,7 +114,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(414, 205);
+            this.label12.Location = new System.Drawing.Point(374, 205);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(71, 20);
             this.label12.TabIndex = 46;
@@ -129,7 +123,7 @@
             // lblOrtalama
             // 
             this.lblOrtalama.AutoSize = true;
-            this.lblOrtalama.Location = new System.Drawing.Point(549, 177);
+            this.lblOrtalama.Location = new System.Drawing.Point(509, 177);
             this.lblOrtalama.Name = "lblOrtalama";
             this.lblOrtalama.Size = new System.Drawing.Size(177, 20);
             this.lblOrtalama.TabIndex = 45;
@@ -200,7 +194,7 @@
             // 
             // txtKanaatNot
             // 
-            this.txtKanaatNot.Location = new System.Drawing.Point(553, 137);
+            this.txtKanaatNot.Location = new System.Drawing.Point(513, 137);
             this.txtKanaatNot.Name = "txtKanaatNot";
             this.txtKanaatNot.Size = new System.Drawing.Size(173, 26);
             this.txtKanaatNot.TabIndex = 35;
@@ -213,9 +207,9 @@
             this.btnGeri.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnGeri.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnGeri.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnGeri.Location = new System.Drawing.Point(475, 266);
+            this.btnGeri.Location = new System.Drawing.Point(513, 266);
             this.btnGeri.Name = "btnGeri";
-            this.btnGeri.Size = new System.Drawing.Size(114, 55);
+            this.btnGeri.Size = new System.Drawing.Size(110, 55);
             this.btnGeri.TabIndex = 34;
             this.btnGeri.Text = "Geri";
             this.btnGeri.UseVisualStyleBackColor = true;
@@ -236,9 +230,9 @@
             this.btnOgrenciKaydet.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnOgrenciKaydet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnOgrenciKaydet.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnOgrenciKaydet.Location = new System.Drawing.Point(612, 266);
+            this.btnOgrenciKaydet.Location = new System.Drawing.Point(637, 266);
             this.btnOgrenciKaydet.Name = "btnOgrenciKaydet";
-            this.btnOgrenciKaydet.Size = new System.Drawing.Size(114, 55);
+            this.btnOgrenciKaydet.Size = new System.Drawing.Size(109, 55);
             this.btnOgrenciKaydet.TabIndex = 22;
             this.btnOgrenciKaydet.Text = "Kaydet";
             this.btnOgrenciKaydet.UseVisualStyleBackColor = true;
@@ -247,7 +241,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(414, 177);
+            this.label11.Location = new System.Drawing.Point(374, 177);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(92, 20);
             this.label11.TabIndex = 21;
@@ -256,7 +250,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(414, 142);
+            this.label8.Location = new System.Drawing.Point(374, 142);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(118, 20);
             this.label8.TabIndex = 16;
@@ -264,7 +258,7 @@
             // 
             // txtSinav2
             // 
-            this.txtSinav2.Location = new System.Drawing.Point(553, 104);
+            this.txtSinav2.Location = new System.Drawing.Point(513, 104);
             this.txtSinav2.Name = "txtSinav2";
             this.txtSinav2.Size = new System.Drawing.Size(173, 26);
             this.txtSinav2.TabIndex = 15;
@@ -273,7 +267,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(414, 110);
+            this.label9.Location = new System.Drawing.Point(374, 110);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(76, 20);
             this.label9.TabIndex = 14;
@@ -281,7 +275,7 @@
             // 
             // txtSinav1
             // 
-            this.txtSinav1.Location = new System.Drawing.Point(553, 72);
+            this.txtSinav1.Location = new System.Drawing.Point(513, 72);
             this.txtSinav1.Name = "txtSinav1";
             this.txtSinav1.Size = new System.Drawing.Size(173, 26);
             this.txtSinav1.TabIndex = 13;
@@ -290,7 +284,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(414, 78);
+            this.label6.Location = new System.Drawing.Point(374, 78);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 20);
             this.label6.TabIndex = 12;
@@ -299,7 +293,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(414, 46);
+            this.label7.Location = new System.Drawing.Point(374, 46);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 20);
             this.label7.TabIndex = 10;
@@ -374,6 +368,31 @@
             this.dgwOgrenciDetay.TabIndex = 0;
             this.dgwOgrenciDetay.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwOgrenciDetay_CellClick);
             // 
+            // cmbDers
+            // 
+            this.cmbDers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbDers.FormattingEnabled = true;
+            this.cmbDers.Location = new System.Drawing.Point(513, 41);
+            this.cmbDers.Name = "cmbDers";
+            this.cmbDers.Size = new System.Drawing.Size(132, 28);
+            this.cmbDers.TabIndex = 48;
+            this.cmbDers.SelectedIndexChanged += new System.EventHandler(this.cmbDers_SelectedIndexChanged);
+            // 
+            // btnEkle
+            // 
+            this.btnEkle.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnEkle.FlatAppearance.BorderSize = 3;
+            this.btnEkle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnEkle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnEkle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEkle.Location = new System.Drawing.Point(661, 40);
+            this.btnEkle.Name = "btnEkle";
+            this.btnEkle.Size = new System.Drawing.Size(85, 29);
+            this.btnEkle.TabIndex = 49;
+            this.btnEkle.Text = "Ekle";
+            this.btnEkle.UseVisualStyleBackColor = true;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
+            // 
             // OgretmenOgrenciDetaycs
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
@@ -430,6 +449,7 @@
         private System.Windows.Forms.Label lblOrtalama;
         private System.Windows.Forms.Label lblDurum;
         private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label lblDers;
+        private System.Windows.Forms.ComboBox cmbDers;
+        private System.Windows.Forms.Button btnEkle;
     }
 }
