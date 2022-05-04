@@ -69,20 +69,13 @@ namespace OgrenciTakipSistemi
         private void btnOgrenciGuncelle_Click(object sender, EventArgs e)
         {
             try
-            {
-                if (picOgrenci.ImageLocation == null)
-                    throw new Exception("Lütfen resim ekleyiniz.");
-
-                FileStream fs = new FileStream(picOgrenci.ImageLocation, FileMode.Open, FileAccess.Read);
-                BinaryReader br = new BinaryReader(fs);
-                byte[] resim = br.ReadBytes((int)fs.Length);              
-
+            {     
                 DateTime dt = Convert.ToDateTime(txtOgrenciDogumTarih.Text);
 
                 using (Ogrenci nesne = new Ogrenci())
                 {
                     MessageBox.Show(nesne.Guncelle("OgrenciGuncelleme", lblOgrenciNo.Text, txtTC.Text, txtOgrenciDogumYer.Text,
-                        dt, txtAnneAdi.Text, txtBabaAdi.Text, txtVeliTel.Text, txtAdres.Text, resim));
+                        dt, txtAnneAdi.Text, txtBabaAdi.Text, txtVeliTel.Text, txtAdres.Text));
                 }
             }
             catch (Exception exc)
@@ -96,7 +89,31 @@ namespace OgrenciTakipSistemi
         {
             //picOgrenci.SizeMode = PictureBoxSizeMode.StretchImage;
             openFileDialog1.ShowDialog();
-            picOgrenci.ImageLocation = openFileDialog1.FileName;
+            if (openFileDialog1.FileName != "openFileDialog1")
+                picOgrenci.ImageLocation = openFileDialog1.FileName;
+        }
+
+        private void btnFotografGuncelle_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (picOgrenci.ImageLocation == null || picOgrenci.ImageLocation == "openFileDialog1" && picOgrenci.Image == null)
+                    throw new Exception("Lütfen resim ekleyiniz.");
+
+                FileStream fs = new FileStream(picOgrenci.ImageLocation, FileMode.Open, FileAccess.Read);
+                BinaryReader br = new BinaryReader(fs);
+                byte[] resim = br.ReadBytes((int)fs.Length); 
+
+                using (Ogrenci nesne = new Ogrenci())
+                {
+                    MessageBox.Show(nesne.FotoGuncelle("Update Ogrenciler set Fotograf = @p1 where OgrenciNo = " + lblOgrenciNo.Text +
+                        "", resim));
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
     }
 }

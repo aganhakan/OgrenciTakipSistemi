@@ -31,6 +31,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnFotografGuncelle = new System.Windows.Forms.Button();
             this.lblOgrenciAd = new System.Windows.Forms.Label();
             this.lblOgrenciSinif = new System.Windows.Forms.Label();
             this.btnCikis = new System.Windows.Forms.Button();
@@ -92,6 +93,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnFotografGuncelle);
             this.groupBox1.Controls.Add(this.lblOgrenciAd);
             this.groupBox1.Controls.Add(this.lblOgrenciSinif);
             this.groupBox1.Controls.Add(this.btnCikis);
@@ -122,6 +124,21 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Öğrenci Bilgileri";
+            // 
+            // btnFotografGuncelle
+            // 
+            this.btnFotografGuncelle.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnFotografGuncelle.FlatAppearance.BorderSize = 3;
+            this.btnFotografGuncelle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnFotografGuncelle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnFotografGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnFotografGuncelle.Location = new System.Drawing.Point(571, 339);
+            this.btnFotografGuncelle.Name = "btnFotografGuncelle";
+            this.btnFotografGuncelle.Size = new System.Drawing.Size(221, 27);
+            this.btnFotografGuncelle.TabIndex = 39;
+            this.btnFotografGuncelle.Text = "Fotoğraf Güncelle";
+            this.btnFotografGuncelle.UseVisualStyleBackColor = true;
+            this.btnFotografGuncelle.Click += new System.EventHandler(this.btnFotografGuncelle_Click);
             // 
             // lblOgrenciAd
             // 
@@ -172,11 +189,11 @@
             this.btnOgrenciGuncelle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnOgrenciGuncelle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnOgrenciGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnOgrenciGuncelle.Location = new System.Drawing.Point(550, 414);
+            this.btnOgrenciGuncelle.Location = new System.Drawing.Point(512, 414);
             this.btnOgrenciGuncelle.Name = "btnOgrenciGuncelle";
             this.btnOgrenciGuncelle.Size = new System.Drawing.Size(114, 55);
             this.btnOgrenciGuncelle.TabIndex = 34;
-            this.btnOgrenciGuncelle.Text = "Güncelle";
+            this.btnOgrenciGuncelle.Text = "Bilgileri Güncelle";
             this.btnOgrenciGuncelle.UseVisualStyleBackColor = true;
             this.btnOgrenciGuncelle.Click += new System.EventHandler(this.btnOgrenciGuncelle_Click);
             // 
@@ -195,11 +212,11 @@
             this.btnOgrenciFotograf.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnOgrenciFotograf.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnOgrenciFotograf.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnOgrenciFotograf.Location = new System.Drawing.Point(602, 306);
+            this.btnOgrenciFotograf.Location = new System.Drawing.Point(613, 292);
             this.btnOgrenciFotograf.Name = "btnOgrenciFotograf";
-            this.btnOgrenciFotograf.Size = new System.Drawing.Size(182, 27);
+            this.btnOgrenciFotograf.Size = new System.Drawing.Size(141, 27);
             this.btnOgrenciFotograf.TabIndex = 23;
-            this.btnOgrenciFotograf.Text = "Fotoğraf Ekle";
+            this.btnOgrenciFotograf.Text = "Fotoğraf Seç";
             this.btnOgrenciFotograf.UseVisualStyleBackColor = true;
             this.btnOgrenciFotograf.Click += new System.EventHandler(this.btnOgrenciFotograf_Click);
             // 
@@ -375,6 +392,7 @@
             this.dgwOgrenci.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgwOgrenci.Location = new System.Drawing.Point(3, 22);
             this.dgwOgrenci.Name = "dgwOgrenci";
+            this.dgwOgrenci.ReadOnly = true;
             this.dgwOgrenci.RowHeadersWidth = 51;
             this.dgwOgrenci.RowTemplate.Height = 24;
             this.dgwOgrenci.Size = new System.Drawing.Size(874, 469);
@@ -444,5 +462,6 @@
         private System.Windows.Forms.Label lblOgrenciSinif;
         private System.Windows.Forms.Label lblOgrenciAd;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button btnFotografGuncelle;
     }
 }

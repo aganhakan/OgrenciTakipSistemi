@@ -29,24 +29,26 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.btnEkle = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.CmbSube = new System.Windows.Forms.ComboBox();
+            this.CmbSinif = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dgwSiniflar = new System.Windows.Forms.DataGridView();
+            this.btnSil = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwSiniflar)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnSil);
+            this.groupBox1.Controls.Add(this.btnEkle);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.CmbSube);
+            this.groupBox1.Controls.Add(this.CmbSinif);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
@@ -55,42 +57,20 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sınıf Ekleme";
             // 
-            // groupBox2
+            // btnEkle
             // 
-            this.groupBox2.Controls.Add(this.dataGridView1);
-            this.groupBox2.Location = new System.Drawing.Point(12, 151);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(646, 308);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Sınıflar";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(112, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Sınıf:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(188, 38);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(149, 28);
-            this.comboBox1.TabIndex = 2;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(188, 72);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(149, 28);
-            this.comboBox2.TabIndex = 3;
+            this.btnEkle.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnEkle.FlatAppearance.BorderSize = 3;
+            this.btnEkle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btnEkle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnEkle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnEkle.Location = new System.Drawing.Point(377, 46);
+            this.btnEkle.Name = "btnEkle";
+            this.btnEkle.Size = new System.Drawing.Size(105, 49);
+            this.btnEkle.TabIndex = 5;
+            this.btnEkle.Text = "Ekle";
+            this.btnEkle.UseVisualStyleBackColor = true;
+            this.btnEkle.Click += new System.EventHandler(this.btnEkle_Click);
             // 
             // label2
             // 
@@ -101,31 +81,70 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Şube:";
             // 
-            // button1
+            // CmbSube
             // 
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.button1.FlatAppearance.BorderSize = 3;
-            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
-            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(405, 41);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 49);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Ekle";
-            this.button1.UseVisualStyleBackColor = true;
+            this.CmbSube.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbSube.FormattingEnabled = true;
+            this.CmbSube.Location = new System.Drawing.Point(188, 72);
+            this.CmbSube.Name = "CmbSube";
+            this.CmbSube.Size = new System.Drawing.Size(149, 28);
+            this.CmbSube.TabIndex = 3;
             // 
-            // dataGridView1
+            // CmbSinif
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 22);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(640, 283);
-            this.dataGridView1.TabIndex = 0;
+            this.CmbSinif.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CmbSinif.FormattingEnabled = true;
+            this.CmbSinif.Location = new System.Drawing.Point(188, 38);
+            this.CmbSinif.Name = "CmbSinif";
+            this.CmbSinif.Size = new System.Drawing.Size(149, 28);
+            this.CmbSinif.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(112, 41);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 20);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Sınıf:";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.dgwSiniflar);
+            this.groupBox2.Location = new System.Drawing.Point(12, 151);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(646, 308);
+            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Sınıflar";
+            // 
+            // dgwSiniflar
+            // 
+            this.dgwSiniflar.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.dgwSiniflar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgwSiniflar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgwSiniflar.Location = new System.Drawing.Point(3, 22);
+            this.dgwSiniflar.Name = "dgwSiniflar";
+            this.dgwSiniflar.ReadOnly = true;
+            this.dgwSiniflar.RowHeadersWidth = 51;
+            this.dgwSiniflar.RowTemplate.Height = 24;
+            this.dgwSiniflar.Size = new System.Drawing.Size(640, 283);
+            this.dgwSiniflar.TabIndex = 0;
+            // 
+            // btnSil
+            // 
+            this.btnSil.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnSil.FlatAppearance.BorderSize = 3;
+            this.btnSil.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Silver;
+            this.btnSil.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnSil.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSil.Location = new System.Drawing.Point(517, 46);
+            this.btnSil.Name = "btnSil";
+            this.btnSil.Size = new System.Drawing.Size(105, 49);
+            this.btnSil.TabIndex = 6;
+            this.btnSil.Text = "Sil";
+            this.btnSil.UseVisualStyleBackColor = true;
+            this.btnSil.Click += new System.EventHandler(this.btnSil_Click);
             // 
             // SinifEkleme
             // 
@@ -138,14 +157,15 @@
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "SinifEkleme";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sınıf Ekleme";
+            this.Load += new System.EventHandler(this.SinifEkleme_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgwSiniflar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -153,12 +173,13 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnEkle;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox CmbSube;
+        private System.Windows.Forms.ComboBox CmbSinif;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgwSiniflar;
+        private System.Windows.Forms.Button btnSil;
     }
 }

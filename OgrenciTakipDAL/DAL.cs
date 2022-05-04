@@ -98,7 +98,7 @@ namespace OgrenciTakipDAL
         }
 
         public string EkleDB(string procedure, string ogrencino, string TC, string dogumyeri, DateTime dogumtarihi,
-    string anneadi, string babaadi, string velitel, string adres, byte[] resim)
+        string anneadi, string babaadi, string velitel, string adres)
         {
             string mesaj = "";
             using (SqlConnection baglanti = new SqlConnection(baglanticumlesi))
@@ -115,7 +115,6 @@ namespace OgrenciTakipDAL
                     kayit.Parameters.AddWithValue("@Babaadi", babaadi);
                     kayit.Parameters.AddWithValue("@Velitel", velitel);
                     kayit.Parameters.AddWithValue("@Adres", adres);
-                    kayit.Parameters.AddWithValue("@Resim", resim);
 
                     baglanti.Open();
 
@@ -129,7 +128,7 @@ namespace OgrenciTakipDAL
             return mesaj;
         }
         public string EkleDB(string procedure, string dogumyeri, DateTime dogumtarihi, string sifre,
-        string email, string tel, string adres, byte[] resim, string tc)
+        string email, string tel, string adres, string tc)
 
         {
             string mesaj = "";
@@ -145,7 +144,6 @@ namespace OgrenciTakipDAL
                     kayit.Parameters.AddWithValue("@EMail", email);
                     kayit.Parameters.AddWithValue("@Tel", tel);
                     kayit.Parameters.AddWithValue("@Adres", adres);
-                    kayit.Parameters.AddWithValue("@Resim", resim);
                     kayit.Parameters.AddWithValue("@Tc", tc);
 
                     baglanti.Open();
@@ -169,6 +167,45 @@ namespace OgrenciTakipDAL
                 {
                     baglanti.Open();
                     kayit.Parameters.AddWithValue("@p1", ort);
+
+                    if (kayit.ExecuteNonQuery() > 0)
+                        mesaj = ("Kayıt başarılı");
+                    else
+                        mesaj = ("Kayıt başarısız");
+                }
+                baglanti.Close();
+            }
+            return mesaj;
+        }
+        public string EkleDB(string sorgu)
+
+        {
+            string mesaj = "";
+            using (SqlConnection baglanti = new SqlConnection(baglanticumlesi))
+            {
+                using (SqlCommand kayit = new SqlCommand(sorgu, baglanti))
+                {
+                    baglanti.Open();
+
+                    if (kayit.ExecuteNonQuery() > 0)
+                        mesaj = ("Kayıt başarılı");
+                    else
+                        mesaj = ("Kayıt başarısız");
+                }
+                baglanti.Close();
+            }
+            return mesaj;
+        }
+        public string FotoGuncelle(string sorgu, byte[] resim)
+
+        {
+            string mesaj = "";
+            using (SqlConnection baglanti = new SqlConnection(baglanticumlesi))
+            {
+                using (SqlCommand kayit = new SqlCommand(sorgu, baglanti))
+                {
+                    baglanti.Open();
+                    kayit.Parameters.AddWithValue("@p1", resim);
 
                     if (kayit.ExecuteNonQuery() > 0)
                         mesaj = ("Kayıt başarılı");

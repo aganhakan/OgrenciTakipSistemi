@@ -12,11 +12,16 @@ using OgrenciTakipBLL;
 
 namespace OgrenciTakipSistemi
 {
-    public partial class YoneticiBilgileri : Form
+    public partial class btnCikis : Form
     {
-        public YoneticiBilgileri()
+        public btnCikis()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

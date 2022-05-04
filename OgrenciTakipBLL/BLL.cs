@@ -334,6 +334,21 @@ namespace OgrenciTakipBLL
                 throw;
             }
         }
+        public string FotoGuncelle(string sorgu, byte[] resim)
+        {
+            try
+            {
+                using (DAL objDal = new DAL())
+                {
+                    return objDal.FotoGuncelle(sorgu,resim);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
 
         #endregion

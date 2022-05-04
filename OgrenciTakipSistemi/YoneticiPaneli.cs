@@ -18,17 +18,24 @@ namespace OgrenciTakipSistemi
         {
             InitializeComponent();
         }
-
-        private void öğretmenTablosuToolStripMenuItem_Click(object sender, EventArgs e)
+        public void Listeleme()
         {
+            using (Yonetici nesne = new Yonetici())
+            {
+                string sorgu = "Select * from Yonetici";
 
+                dgwYonetici.DataSource = nesne.Listeleme(sorgu);
+                dgwYonetici.Columns[0].Visible = false;
+                dgwYonetici.Columns[6].Visible = false;
+                dgwYonetici.Columns[10].Visible = false;
+                dgwYonetici.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                //dgwOgrenciBilgiler.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+            }
         }
-
-        private void öğrenciTablosuToolStripMenuItem_Click(object sender, EventArgs e)
+        private void YoneticiPaneli_Load(object sender, EventArgs e)
         {
-
+            Listeleme();
         }
-
         private void btnOgretmenKaydet_Click(object sender, EventArgs e)
         {
 
@@ -36,7 +43,7 @@ namespace OgrenciTakipSistemi
 
         private void yöneticiTablosuToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            YoneticiBilgileri yonbil = new YoneticiBilgileri();
+            btnCikis yonbil = new btnCikis();
             yonbil.ShowDialog();
         }
 

@@ -49,7 +49,9 @@ namespace OgrenciTakipSistemi
             txtOgretmenEMail.Text = OgretmenBilgileri[8];
             txtOgretmenTel.Text = OgretmenBilgileri[9];
             txtOgretmenAdres.Text = OgretmenBilgileri[11];
+            #endregion
 
+            #region Fotoğraf
             if (!string.IsNullOrEmpty(OgretmenBilgileri[10]))
             {
                 using (Ogretmen nesne = new Ogretmen())
@@ -70,28 +72,43 @@ namespace OgrenciTakipSistemi
 
         private void btnOgretmenFotograf_Click(object sender, EventArgs e)
         {
-            //picOgrenci.SizeMode = PictureBoxSizeMode.StretchImage;
-            openFileDialog1.ShowDialog();
-            picOgretmen.ImageLocation = openFileDialog1.FileName;
-        }
-
-        private void btnGuncelle_Click(object sender, EventArgs e)
-        {
             try
             {
-                if (picOgretmen.ImageLocation == null)
+                if (picOgretmen.ImageLocation == null || picOgretmen.ImageLocation == "openFileDialog1" && picOgretmen.Image == null)
                     throw new Exception("Lütfen resim ekleyiniz.");
 
                 FileStream fs = new FileStream(picOgretmen.ImageLocation, FileMode.Open, FileAccess.Read);
                 BinaryReader br = new BinaryReader(fs);
                 byte[] resim = br.ReadBytes((int)fs.Length);
 
-                DateTime dt = Convert.ToDateTime(txtOgretmenDogumTarih.Text);
+                using (Ogretmen nesne = new Ogretmen())
+                {
+                    MessageBox.Show(nesne.FotoGuncelle("Update Ogretmen set Fotograf = @p1 where TC = " + lblOgretmenTC.Text +
+                        "", resim));
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }     
+        }
+        private void btnFotografSec_Click(object sender, EventArgs e)
+        {
+            //picOgrenci.SizeMode = PictureBoxSizeMode.StretchImage;
+            openFileDialog1.ShowDialog();
+            if (openFileDialog1.FileName != "openFileDialog1")
+                picOgretmen.ImageLocation = openFileDialog1.FileName;
+        }
 
+        private void btnGuncelle_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DateTime dt = Convert.ToDateTime(txtOgretmenDogumTarih.Text);
                 using (Ogretmen nesne = new Ogretmen())
                 {
                     MessageBox.Show(nesne.Guncelle("OgreTMENGuncelleme", txtOgretmenDogumyeri.Text, dt, txtSifre.Text,
-                        txtOgretmenEMail.Text, txtOgretmenTel.Text, txtOgretmenAdres.Text, resim, lblOgretmenTC.Text));
+                        txtOgretmenEMail.Text, txtOgretmenTel.Text, txtOgretmenAdres.Text, lblOgretmenTC.Text));
                 }
             }
             catch (Exception exc)
@@ -168,6 +185,11 @@ namespace OgrenciTakipSistemi
             txtOgrenciNo.Clear();
         }
         private void btnCikis_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
         }

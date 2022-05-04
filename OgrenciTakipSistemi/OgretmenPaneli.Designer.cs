@@ -31,6 +31,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnFotografSec = new System.Windows.Forms.Button();
             this.lblOgretmenTC = new System.Windows.Forms.Label();
             this.lblAdiSoyadi = new System.Windows.Forms.Label();
             this.txtOgretmenDogumTarih = new System.Windows.Forms.MaskedTextBox();
@@ -68,6 +69,7 @@
             this.lblOgretmenAd = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -88,22 +90,25 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1178, 679);
+            this.tabControl1.Size = new System.Drawing.Size(1123, 676);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
-            this.tabPage1.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.tabPage1.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.tabPage1.Controls.Add(this.groupBox5);
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1170, 646);
+            this.tabPage1.Size = new System.Drawing.Size(1115, 643);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Bilgilerim";
             // 
             // groupBox5
             // 
+            this.groupBox5.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.groupBox5.Controls.Add(this.button1);
+            this.groupBox5.Controls.Add(this.btnFotografSec);
             this.groupBox5.Controls.Add(this.lblOgretmenTC);
             this.groupBox5.Controls.Add(this.lblAdiSoyadi);
             this.groupBox5.Controls.Add(this.txtOgretmenDogumTarih);
@@ -125,10 +130,25 @@
             this.groupBox5.Controls.Add(this.btnGuncelle);
             this.groupBox5.Location = new System.Drawing.Point(8, 6);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(1154, 632);
+            this.groupBox5.Size = new System.Drawing.Size(1099, 629);
             this.groupBox5.TabIndex = 0;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Bilgilerim";
+            // 
+            // btnFotografSec
+            // 
+            this.btnFotografSec.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnFotografSec.FlatAppearance.BorderSize = 3;
+            this.btnFotografSec.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnFotografSec.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnFotografSec.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnFotografSec.Location = new System.Drawing.Point(770, 336);
+            this.btnFotografSec.Name = "btnFotografSec";
+            this.btnFotografSec.Size = new System.Drawing.Size(169, 27);
+            this.btnFotografSec.TabIndex = 115;
+            this.btnFotografSec.Text = "Fotoğraf Seç";
+            this.btnFotografSec.UseVisualStyleBackColor = true;
+            this.btnFotografSec.Click += new System.EventHandler(this.btnFotografSec_Click);
             // 
             // lblOgretmenTC
             // 
@@ -273,7 +293,7 @@
             this.btnOgretmenFotograf.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnOgretmenFotograf.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnOgretmenFotograf.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnOgretmenFotograf.Location = new System.Drawing.Point(731, 348);
+            this.btnOgretmenFotograf.Location = new System.Drawing.Point(681, 382);
             this.btnOgretmenFotograf.Name = "btnOgretmenFotograf";
             this.btnOgretmenFotograf.Size = new System.Drawing.Size(334, 27);
             this.btnOgretmenFotograf.TabIndex = 96;
@@ -283,7 +303,7 @@
             // 
             // picOgretmen
             // 
-            this.picOgretmen.Location = new System.Drawing.Point(731, 75);
+            this.picOgretmen.Location = new System.Drawing.Point(681, 80);
             this.picOgretmen.Name = "picOgretmen";
             this.picOgretmen.Size = new System.Drawing.Size(334, 236);
             this.picOgretmen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -297,11 +317,11 @@
             this.btnGuncelle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnGuncelle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnGuncelle.Location = new System.Drawing.Point(731, 502);
+            this.btnGuncelle.Location = new System.Drawing.Point(681, 502);
             this.btnGuncelle.Name = "btnGuncelle";
-            this.btnGuncelle.Size = new System.Drawing.Size(140, 55);
+            this.btnGuncelle.Size = new System.Drawing.Size(114, 55);
             this.btnGuncelle.TabIndex = 95;
-            this.btnGuncelle.Text = "Güncelle";
+            this.btnGuncelle.Text = "Bilgileri Güncelle";
             this.btnGuncelle.UseVisualStyleBackColor = true;
             this.btnGuncelle.Click += new System.EventHandler(this.btnGuncelle_Click);
             // 
@@ -315,14 +335,14 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1170, 646);
+            this.tabPage2.Size = new System.Drawing.Size(1115, 643);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Sınıf Bilgileri";
             // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.btnCikis);
-            this.groupBox4.Location = new System.Drawing.Point(898, 6);
+            this.groupBox4.Location = new System.Drawing.Point(840, 6);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(270, 158);
             this.groupBox4.TabIndex = 7;
@@ -348,7 +368,7 @@
             this.groupBox3.Controls.Add(this.dgwOgrenciBilgiler);
             this.groupBox3.Location = new System.Drawing.Point(3, 167);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1165, 474);
+            this.groupBox3.Size = new System.Drawing.Size(1107, 474);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tablo";
@@ -360,9 +380,10 @@
             this.dgwOgrenciBilgiler.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgwOgrenciBilgiler.Location = new System.Drawing.Point(3, 22);
             this.dgwOgrenciBilgiler.Name = "dgwOgrenciBilgiler";
+            this.dgwOgrenciBilgiler.ReadOnly = true;
             this.dgwOgrenciBilgiler.RowHeadersWidth = 51;
             this.dgwOgrenciBilgiler.RowTemplate.Height = 24;
-            this.dgwOgrenciBilgiler.Size = new System.Drawing.Size(1159, 449);
+            this.dgwOgrenciBilgiler.Size = new System.Drawing.Size(1101, 449);
             this.dgwOgrenciBilgiler.TabIndex = 0;
             this.dgwOgrenciBilgiler.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwOgrenciBilgiler_CellClick);
             this.dgwOgrenciBilgiler.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwOgrenciBilgiler_CellDoubleClick);
@@ -376,7 +397,7 @@
             this.groupBox2.Controls.Add(this.txtOgrenciNo);
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Location = new System.Drawing.Point(412, 3);
+            this.groupBox2.Location = new System.Drawing.Point(354, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(480, 158);
             this.groupBox2.TabIndex = 5;
@@ -453,7 +474,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(403, 158);
+            this.groupBox1.Size = new System.Drawing.Size(345, 158);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Bilgiler";
@@ -498,12 +519,27 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // button1
+            // 
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.button1.FlatAppearance.BorderSize = 3;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(901, 502);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(114, 55);
+            this.button1.TabIndex = 116;
+            this.button1.Text = "Çıkış";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // OgretmenPaneli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.ClientSize = new System.Drawing.Size(1178, 679);
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.ClientSize = new System.Drawing.Size(1123, 676);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -571,5 +607,7 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Label lblOgretmenTC;
         private System.Windows.Forms.Button btnYenile;
+        private System.Windows.Forms.Button btnFotografSec;
+        private System.Windows.Forms.Button button1;
     }
 }

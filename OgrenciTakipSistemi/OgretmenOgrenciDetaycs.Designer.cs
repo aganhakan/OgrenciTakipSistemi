@@ -367,6 +367,7 @@
             this.dgwOgrenciDetay.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgwOgrenciDetay.Location = new System.Drawing.Point(3, 22);
             this.dgwOgrenciDetay.Name = "dgwOgrenciDetay";
+            this.dgwOgrenciDetay.ReadOnly = true;
             this.dgwOgrenciDetay.RowHeadersWidth = 51;
             this.dgwOgrenciDetay.RowTemplate.Height = 24;
             this.dgwOgrenciDetay.Size = new System.Drawing.Size(1086, 313);

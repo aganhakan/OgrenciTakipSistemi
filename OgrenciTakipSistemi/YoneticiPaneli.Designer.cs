@@ -34,6 +34,7 @@
             this.öğretmenlerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.çıkışToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.öğrencilerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sınıfEkleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.paylaşToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.görünümToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -127,7 +128,6 @@
             this.txtOgrenciNo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.sınıfEkleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnYoneticiKaydet.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -201,6 +201,13 @@
             this.öğrencilerToolStripMenuItem.Size = new System.Drawing.Size(50, 24);
             this.öğrencilerToolStripMenuItem.Text = "Ekle";
             // 
+            // sınıfEkleToolStripMenuItem
+            // 
+            this.sınıfEkleToolStripMenuItem.Name = "sınıfEkleToolStripMenuItem";
+            this.sınıfEkleToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.sınıfEkleToolStripMenuItem.Text = "Sınıf Ekle";
+            this.sınıfEkleToolStripMenuItem.Click += new System.EventHandler(this.sınıfEkleToolStripMenuItem_Click);
+            // 
             // paylaşToolStripMenuItem
             // 
             this.paylaşToolStripMenuItem.Name = "paylaşToolStripMenuItem";
@@ -249,10 +256,12 @@
             // 
             // dgwYonetici
             // 
+            this.dgwYonetici.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgwYonetici.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwYonetici.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgwYonetici.Location = new System.Drawing.Point(3, 22);
             this.dgwYonetici.Name = "dgwYonetici";
+            this.dgwYonetici.ReadOnly = true;
             this.dgwYonetici.RowHeadersWidth = 51;
             this.dgwYonetici.RowTemplate.Height = 24;
             this.dgwYonetici.Size = new System.Drawing.Size(1350, 396);
@@ -546,10 +555,12 @@
             // 
             // dgwOgretmen
             // 
+            this.dgwOgretmen.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
             this.dgwOgretmen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgwOgretmen.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgwOgretmen.Location = new System.Drawing.Point(3, 22);
             this.dgwOgretmen.Name = "dgwOgretmen";
+            this.dgwOgretmen.ReadOnly = true;
             this.dgwOgretmen.RowHeadersWidth = 51;
             this.dgwOgretmen.RowTemplate.Height = 24;
             this.dgwOgretmen.Size = new System.Drawing.Size(1350, 399);
@@ -867,6 +878,7 @@
             this.dgwOgrenci.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgwOgrenci.Location = new System.Drawing.Point(3, 22);
             this.dgwOgrenci.Name = "dgwOgrenci";
+            this.dgwOgrenci.ReadOnly = true;
             this.dgwOgrenci.RowHeadersWidth = 51;
             this.dgwOgrenci.RowTemplate.Height = 24;
             this.dgwOgrenci.Size = new System.Drawing.Size(1350, 393);
@@ -1134,13 +1146,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Öğrenci No:";
             // 
-            // sınıfEkleToolStripMenuItem
-            // 
-            this.sınıfEkleToolStripMenuItem.Name = "sınıfEkleToolStripMenuItem";
-            this.sınıfEkleToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.sınıfEkleToolStripMenuItem.Text = "Sınıf Ekle";
-            this.sınıfEkleToolStripMenuItem.Click += new System.EventHandler(this.sınıfEkleToolStripMenuItem_Click);
-            // 
             // YoneticiPaneli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
@@ -1157,6 +1162,7 @@
             this.Name = "YoneticiPaneli";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Yönetici Paneli";
+            this.Load += new System.EventHandler(this.YoneticiPaneli_Load);
             this.btnYoneticiKaydet.ResumeLayout(false);
             this.btnYoneticiKaydet.PerformLayout();
             this.tabControl1.ResumeLayout(false);
