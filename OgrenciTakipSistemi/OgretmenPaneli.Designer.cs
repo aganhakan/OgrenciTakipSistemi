@@ -364,6 +364,7 @@
             this.dgwOgrenciBilgiler.RowTemplate.Height = 24;
             this.dgwOgrenciBilgiler.Size = new System.Drawing.Size(1159, 449);
             this.dgwOgrenciBilgiler.TabIndex = 0;
+            this.dgwOgrenciBilgiler.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwOgrenciBilgiler_CellClick);
             this.dgwOgrenciBilgiler.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwOgrenciBilgiler_CellDoubleClick);
             // 
             // groupBox2

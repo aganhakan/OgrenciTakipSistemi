@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblDers = new System.Windows.Forms.Label();
+            this.lblDurum = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.lblOrtalama = new System.Windows.Forms.Label();
-            this.cmbDers = new System.Windows.Forms.ComboBox();
             this.lblVeliTel = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.lblBabaAdi = new System.Windows.Forms.Label();
@@ -39,7 +41,7 @@
             this.lblAdSoyad = new System.Windows.Forms.Label();
             this.lblOgrenciNo = new System.Windows.Forms.Label();
             this.txtKanaatNot = new System.Windows.Forms.TextBox();
-            this.btnOgrenciGuncelle = new System.Windows.Forms.Button();
+            this.btnGeri = new System.Windows.Forms.Button();
             this.picOgrenci = new System.Windows.Forms.PictureBox();
             this.btnOgrenciKaydet = new System.Windows.Forms.Button();
             this.label11 = new System.Windows.Forms.Label();
@@ -64,8 +66,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lblDers);
+            this.groupBox1.Controls.Add(this.lblDurum);
+            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.lblOrtalama);
-            this.groupBox1.Controls.Add(this.cmbDers);
             this.groupBox1.Controls.Add(this.lblVeliTel);
             this.groupBox1.Controls.Add(this.label17);
             this.groupBox1.Controls.Add(this.lblBabaAdi);
@@ -74,7 +78,7 @@
             this.groupBox1.Controls.Add(this.lblAdSoyad);
             this.groupBox1.Controls.Add(this.lblOgrenciNo);
             this.groupBox1.Controls.Add(this.txtKanaatNot);
-            this.groupBox1.Controls.Add(this.btnOgrenciGuncelle);
+            this.groupBox1.Controls.Add(this.btnGeri);
             this.groupBox1.Controls.Add(this.picOgrenci);
             this.groupBox1.Controls.Add(this.btnOgrenciKaydet);
             this.groupBox1.Controls.Add(this.label11);
@@ -91,33 +95,50 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(2, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1266, 302);
+            this.groupBox1.Size = new System.Drawing.Size(1092, 327);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Öğrenci Bilgileri";
             // 
+            // lblDers
+            // 
+            this.lblDers.AutoSize = true;
+            this.lblDers.Location = new System.Drawing.Point(549, 40);
+            this.lblDers.Name = "lblDers";
+            this.lblDers.Size = new System.Drawing.Size(0, 20);
+            this.lblDers.TabIndex = 48;
+            // 
+            // lblDurum
+            // 
+            this.lblDurum.AutoSize = true;
+            this.lblDurum.Location = new System.Drawing.Point(549, 205);
+            this.lblDurum.Name = "lblDurum";
+            this.lblDurum.Size = new System.Drawing.Size(177, 20);
+            this.lblDurum.TabIndex = 47;
+            this.lblDurum.Text = "------------------------";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(414, 205);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(71, 20);
+            this.label12.TabIndex = 46;
+            this.label12.Text = "Durum:";
+            // 
             // lblOrtalama
             // 
             this.lblOrtalama.AutoSize = true;
-            this.lblOrtalama.Location = new System.Drawing.Point(600, 177);
+            this.lblOrtalama.Location = new System.Drawing.Point(549, 177);
             this.lblOrtalama.Name = "lblOrtalama";
             this.lblOrtalama.Size = new System.Drawing.Size(177, 20);
             this.lblOrtalama.TabIndex = 45;
             this.lblOrtalama.Text = "------------------------";
             // 
-            // cmbDers
-            // 
-            this.cmbDers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbDers.FormattingEnabled = true;
-            this.cmbDers.Location = new System.Drawing.Point(604, 40);
-            this.cmbDers.Name = "cmbDers";
-            this.cmbDers.Size = new System.Drawing.Size(200, 28);
-            this.cmbDers.TabIndex = 44;
-            // 
             // lblVeliTel
             // 
             this.lblVeliTel.AutoSize = true;
-            this.lblVeliTel.Location = new System.Drawing.Point(196, 205);
+            this.lblVeliTel.Location = new System.Drawing.Point(174, 205);
             this.lblVeliTel.Name = "lblVeliTel";
             this.lblVeliTel.Size = new System.Drawing.Size(177, 20);
             this.lblVeliTel.TabIndex = 43;
@@ -135,7 +156,7 @@
             // lblBabaAdi
             // 
             this.lblBabaAdi.AutoSize = true;
-            this.lblBabaAdi.Location = new System.Drawing.Point(196, 174);
+            this.lblBabaAdi.Location = new System.Drawing.Point(174, 174);
             this.lblBabaAdi.Name = "lblBabaAdi";
             this.lblBabaAdi.Size = new System.Drawing.Size(177, 20);
             this.lblBabaAdi.TabIndex = 41;
@@ -144,7 +165,7 @@
             // lblAnneAdi
             // 
             this.lblAnneAdi.AutoSize = true;
-            this.lblAnneAdi.Location = new System.Drawing.Point(196, 143);
+            this.lblAnneAdi.Location = new System.Drawing.Point(174, 143);
             this.lblAnneAdi.Name = "lblAnneAdi";
             this.lblAnneAdi.Size = new System.Drawing.Size(177, 20);
             this.lblAnneAdi.TabIndex = 40;
@@ -153,7 +174,7 @@
             // lblTCNo
             // 
             this.lblTCNo.AutoSize = true;
-            this.lblTCNo.Location = new System.Drawing.Point(196, 110);
+            this.lblTCNo.Location = new System.Drawing.Point(174, 110);
             this.lblTCNo.Name = "lblTCNo";
             this.lblTCNo.Size = new System.Drawing.Size(177, 20);
             this.lblTCNo.TabIndex = 39;
@@ -162,7 +183,7 @@
             // lblAdSoyad
             // 
             this.lblAdSoyad.AutoSize = true;
-            this.lblAdSoyad.Location = new System.Drawing.Point(196, 78);
+            this.lblAdSoyad.Location = new System.Drawing.Point(174, 78);
             this.lblAdSoyad.Name = "lblAdSoyad";
             this.lblAdSoyad.Size = new System.Drawing.Size(177, 20);
             this.lblAdSoyad.TabIndex = 38;
@@ -171,7 +192,7 @@
             // lblOgrenciNo
             // 
             this.lblOgrenciNo.AutoSize = true;
-            this.lblOgrenciNo.Location = new System.Drawing.Point(196, 46);
+            this.lblOgrenciNo.Location = new System.Drawing.Point(174, 46);
             this.lblOgrenciNo.Name = "lblOgrenciNo";
             this.lblOgrenciNo.Size = new System.Drawing.Size(177, 20);
             this.lblOgrenciNo.TabIndex = 37;
@@ -179,28 +200,30 @@
             // 
             // txtKanaatNot
             // 
-            this.txtKanaatNot.Location = new System.Drawing.Point(604, 137);
+            this.txtKanaatNot.Location = new System.Drawing.Point(553, 137);
             this.txtKanaatNot.Name = "txtKanaatNot";
-            this.txtKanaatNot.Size = new System.Drawing.Size(200, 26);
+            this.txtKanaatNot.Size = new System.Drawing.Size(173, 26);
             this.txtKanaatNot.TabIndex = 35;
+            this.txtKanaatNot.TextChanged += new System.EventHandler(this.txtKanaatNot_TextChanged);
             // 
-            // btnOgrenciGuncelle
+            // btnGeri
             // 
-            this.btnOgrenciGuncelle.FlatAppearance.BorderColor = System.Drawing.Color.Black;
-            this.btnOgrenciGuncelle.FlatAppearance.BorderSize = 3;
-            this.btnOgrenciGuncelle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btnOgrenciGuncelle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
-            this.btnOgrenciGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnOgrenciGuncelle.Location = new System.Drawing.Point(553, 226);
-            this.btnOgrenciGuncelle.Name = "btnOgrenciGuncelle";
-            this.btnOgrenciGuncelle.Size = new System.Drawing.Size(114, 55);
-            this.btnOgrenciGuncelle.TabIndex = 34;
-            this.btnOgrenciGuncelle.Text = "Güncelle";
-            this.btnOgrenciGuncelle.UseVisualStyleBackColor = true;
+            this.btnGeri.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnGeri.FlatAppearance.BorderSize = 3;
+            this.btnGeri.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnGeri.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnGeri.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnGeri.Location = new System.Drawing.Point(475, 266);
+            this.btnGeri.Name = "btnGeri";
+            this.btnGeri.Size = new System.Drawing.Size(114, 55);
+            this.btnGeri.TabIndex = 34;
+            this.btnGeri.Text = "Geri";
+            this.btnGeri.UseVisualStyleBackColor = true;
+            this.btnGeri.Click += new System.EventHandler(this.btnGeri_Click);
             // 
             // picOgrenci
             // 
-            this.picOgrenci.Location = new System.Drawing.Point(910, 40);
+            this.picOgrenci.Location = new System.Drawing.Point(769, 40);
             this.picOgrenci.Name = "picOgrenci";
             this.picOgrenci.Size = new System.Drawing.Size(308, 194);
             this.picOgrenci.TabIndex = 2;
@@ -213,17 +236,18 @@
             this.btnOgrenciKaydet.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnOgrenciKaydet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnOgrenciKaydet.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnOgrenciKaydet.Location = new System.Drawing.Point(690, 226);
+            this.btnOgrenciKaydet.Location = new System.Drawing.Point(612, 266);
             this.btnOgrenciKaydet.Name = "btnOgrenciKaydet";
             this.btnOgrenciKaydet.Size = new System.Drawing.Size(114, 55);
             this.btnOgrenciKaydet.TabIndex = 22;
             this.btnOgrenciKaydet.Text = "Kaydet";
             this.btnOgrenciKaydet.UseVisualStyleBackColor = true;
+            this.btnOgrenciKaydet.Click += new System.EventHandler(this.btnOgrenciKaydet_Click);
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(465, 177);
+            this.label11.Location = new System.Drawing.Point(414, 177);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(92, 20);
             this.label11.TabIndex = 21;
@@ -232,7 +256,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(465, 142);
+            this.label8.Location = new System.Drawing.Point(414, 142);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(118, 20);
             this.label8.TabIndex = 16;
@@ -240,15 +264,16 @@
             // 
             // txtSinav2
             // 
-            this.txtSinav2.Location = new System.Drawing.Point(604, 104);
+            this.txtSinav2.Location = new System.Drawing.Point(553, 104);
             this.txtSinav2.Name = "txtSinav2";
-            this.txtSinav2.Size = new System.Drawing.Size(200, 26);
+            this.txtSinav2.Size = new System.Drawing.Size(173, 26);
             this.txtSinav2.TabIndex = 15;
+            this.txtSinav2.TextChanged += new System.EventHandler(this.txtSinav2_TextChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(465, 110);
+            this.label9.Location = new System.Drawing.Point(414, 110);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(76, 20);
             this.label9.TabIndex = 14;
@@ -256,15 +281,16 @@
             // 
             // txtSinav1
             // 
-            this.txtSinav1.Location = new System.Drawing.Point(604, 72);
+            this.txtSinav1.Location = new System.Drawing.Point(553, 72);
             this.txtSinav1.Name = "txtSinav1";
-            this.txtSinav1.Size = new System.Drawing.Size(200, 26);
+            this.txtSinav1.Size = new System.Drawing.Size(173, 26);
             this.txtSinav1.TabIndex = 13;
+            this.txtSinav1.TextChanged += new System.EventHandler(this.txtSinav1_TextChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(465, 78);
+            this.label6.Location = new System.Drawing.Point(414, 78);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 20);
             this.label6.TabIndex = 12;
@@ -273,7 +299,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(465, 46);
+            this.label7.Location = new System.Drawing.Point(414, 46);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(56, 20);
             this.label7.TabIndex = 10;
@@ -327,9 +353,9 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dgwOgrenciDetay);
-            this.groupBox3.Location = new System.Drawing.Point(2, 305);
+            this.groupBox3.Location = new System.Drawing.Point(2, 332);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1266, 434);
+            this.groupBox3.Size = new System.Drawing.Size(1092, 338);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Tablo";
@@ -343,8 +369,9 @@
             this.dgwOgrenciDetay.Name = "dgwOgrenciDetay";
             this.dgwOgrenciDetay.RowHeadersWidth = 51;
             this.dgwOgrenciDetay.RowTemplate.Height = 24;
-            this.dgwOgrenciDetay.Size = new System.Drawing.Size(1260, 409);
+            this.dgwOgrenciDetay.Size = new System.Drawing.Size(1086, 313);
             this.dgwOgrenciDetay.TabIndex = 0;
+            this.dgwOgrenciDetay.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwOgrenciDetay_CellClick);
             // 
             // OgretmenOgrenciDetaycs
             // 
@@ -352,7 +379,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(1272, 742);
+            this.ClientSize = new System.Drawing.Size(1101, 673);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -374,7 +401,6 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.ComboBox cmbDers;
         private System.Windows.Forms.Label lblVeliTel;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label lblBabaAdi;
@@ -383,7 +409,7 @@
         private System.Windows.Forms.Label lblAdSoyad;
         private System.Windows.Forms.Label lblOgrenciNo;
         private System.Windows.Forms.TextBox txtKanaatNot;
-        private System.Windows.Forms.Button btnOgrenciGuncelle;
+        private System.Windows.Forms.Button btnGeri;
         private System.Windows.Forms.PictureBox picOgrenci;
         private System.Windows.Forms.Button btnOgrenciKaydet;
         private System.Windows.Forms.Label label11;
@@ -401,5 +427,8 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dgwOgrenciDetay;
         private System.Windows.Forms.Label lblOrtalama;
+        private System.Windows.Forms.Label lblDurum;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label lblDers;
     }
 }

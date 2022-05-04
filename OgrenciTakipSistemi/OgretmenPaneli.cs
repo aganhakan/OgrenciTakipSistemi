@@ -63,9 +63,8 @@ namespace OgrenciTakipSistemi
             #region Sınıf Bilgileri
 
             lblOgretmenAd.Text = lblAdiSoyadi.Text;
-            lblSinif.Text = OgretmenBilgileri[7];
-
             listeleme();
+
             #endregion
         }
 
@@ -100,36 +99,56 @@ namespace OgrenciTakipSistemi
                 MessageBox.Show(exc.Message);
             }
         }
-
-        private void btnCikis_Click(object sender, EventArgs e)
-        {
-            Environment.Exit(0);
-        }
-
+        
         private void dgwOgrenciBilgiler_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            List<string> bilgiler = new List<string>();
+
             int secilen = dgwOgrenciBilgiler.SelectedCells[0].RowIndex;
+            bilgiler.Add(dgwOgrenciBilgiler.Rows[secilen].Cells[0].Value.ToString()); 
+            bilgiler.Add(dgwOgrenciBilgiler.Rows[secilen].Cells[1].Value.ToString()); 
+            bilgiler.Add(dgwOgrenciBilgiler.Rows[secilen].Cells[2].Value.ToString()); 
+            bilgiler.Add(dgwOgrenciBilgiler.Rows[secilen].Cells[3].Value.ToString()); 
+            bilgiler.Add(dgwOgrenciBilgiler.Rows[secilen].Cells[7].Value.ToString()); 
+            bilgiler.Add(dgwOgrenciBilgiler.Rows[secilen].Cells[8].Value.ToString()); 
+            bilgiler.Add(dgwOgrenciBilgiler.Rows[secilen].Cells[9].Value.ToString());
 
-            string no = dgwOgrenciBilgiler.Rows[secilen].Cells[0].Value.ToString();
+            if (string.IsNullOrEmpty(bilgiler[1]))
+            {
+                MessageBox.Show("Lütfen notlarını görmek istediğiniz öğrenciye tıklayınız");
+            }
+            else
+            {
+                OgretmenOgrenciDetaycs frm = new OgretmenOgrenciDetaycs(bilgiler);
+                frm.ShowDialog();
+            }
 
-            txtOgrenciNo.Text = dgwOgrenciBilgiler.Rows[secilen].Cells[1].Value.ToString();
-            txtOgrenciAd.Text = dgwOgrenciBilgiler.Rows[secilen].Cells[2].Value.ToString(); 
-
-            OgretmenOgrenciDetaycs frm = new OgretmenOgrenciDetaycs(no);
-            frm.ShowDialog();
         }
-
+        private void dgwOgrenciBilgiler_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int secilen = dgwOgrenciBilgiler.SelectedCells[0].RowIndex;
+            txtOgrenciNo.Text = dgwOgrenciBilgiler.Rows[secilen].Cells[1].Value.ToString();
+            txtOgrenciAd.Text = dgwOgrenciBilgiler.Rows[secilen].Cells[2].Value.ToString();
+        }
         private void btnAra_Click(object sender, EventArgs e)
         {
             try
             {
-                using (Ogretmen nesne = new Ogretmen())
+                using (Ogrenci nesne = new Ogrenci())
                 {
                     string sorgu = "";
                     if (!string.IsNullOrEmpty(txtOgrenciNo.Text))
-                        sorgu = $"Select o.* from Ogrenciler o inner join Siniflar s on s.Id = o.SinifId inner join Ogretmen og on og.SinifId = s.Id where o.OgrenciNo = '{txtOgrenciNo.Text}'";
+                    {
+                        nesne.ogrencino = txtOgrenciNo.Text;
+                        sorgu = $"Select o.* from Ogrenciler o inner join Siniflar s on s.Id = o.SinifId " +
+                            $"inner join Ogretmen og on og.SinifId = s.Id where o.OgrenciNo = '{txtOgrenciNo.Text}'";
+                    }
                     else if (!string.IsNullOrEmpty(txtOgrenciAd.Text))
-                        sorgu = $"Select o.* from Ogrenciler o inner join Siniflar s on s.Id = o.SinifId inner join Ogretmen og on og.SinifId = s.Id where o.AdSoyad = '{txtOgrenciAd.Text}'";
+                    {
+                        nesne.AdSoyad = txtOgrenciAd.Text;
+                        sorgu = $"Select o.* from Ogrenciler o inner join Siniflar s on s.Id = o.SinifId " +
+                            $"inner join Ogretmen og on og.SinifId = s.Id where o.AdSoyad = '{txtOgrenciAd.Text}'";
+                    }   
                     else
                         throw new Exception("Lütfen aranacak öğrenci bilgisini giriniz!");
 
@@ -147,6 +166,10 @@ namespace OgrenciTakipSistemi
             listeleme();
             txtOgrenciAd.Clear();
             txtOgrenciNo.Clear();
+        }
+        private void btnCikis_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

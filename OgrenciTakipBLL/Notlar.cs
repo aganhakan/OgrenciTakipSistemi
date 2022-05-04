@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using OgrenciTakipDAL;
 
 namespace OgrenciTakipBLL
 {
@@ -15,17 +16,20 @@ namespace OgrenciTakipBLL
             set
             {
                 bool oldumu = false;
-                byte digit = 0;
                 for (int i = 0; i < value.Length; i++)
                 {
                     if (char.IsDigit(value[i]))
                     {
                         oldumu = true;
-                        digit++;
+                    }
+                    else
+                    {
+                        oldumu = false;
+                        break;
                     }
                 }
 
-                if (oldumu == true && digit <=3)
+                if (oldumu == true && int.Parse(value) <= 100)
                 {
                     _sinav1 = value.Trim();
                 }
@@ -33,13 +37,13 @@ namespace OgrenciTakipBLL
                 {
                     throw new ArgumentException("İşaretli alanlar Boş Olamaz!");
                 }
-                else if (digit > 3)
+                else if (oldumu == true && int.Parse(value) > 100)
                 {
                     throw new ArgumentException("Sınav notu en fazla 100 olabilir!");
                 }
                 else
                 {
-                    throw new ArgumentException("Sınav notu içerisinde harf olamaz!");
+                    throw new ArgumentException("Sınav notu pozitif tam sayı olmalıdır.!");
                 }
             }
         }
@@ -51,17 +55,20 @@ namespace OgrenciTakipBLL
             set
             {
                 bool oldumu = false;
-                byte digit = 0;
                 for (int i = 0; i < value.Length; i++)
                 {
                     if (char.IsDigit(value[i]))
                     {
                         oldumu = true;
-                        digit++;
+                    }
+                    else
+                    {
+                        oldumu = false;
+                        break;
                     }
                 }
 
-                if (oldumu == true && digit <= 3)
+                if (oldumu == true && int.Parse(value) <= 100)
                 {
                     _sinav2 = value.Trim();
                 }
@@ -69,13 +76,13 @@ namespace OgrenciTakipBLL
                 {
                     throw new ArgumentException("İşaretli alanlar Boş Olamaz!");
                 }
-                else if (digit > 3)
+                else if (oldumu == true && int.Parse(value) > 100)
                 {
                     throw new ArgumentException("Sınav notu en fazla 100 olabilir!");
                 }
                 else
                 {
-                    throw new ArgumentException("Sınav notu içerisinde harf olamaz!");
+                    throw new ArgumentException("Sınav notu pozitif tam sayı olmalıdır.!");
                 }
             }
         }
@@ -87,17 +94,20 @@ namespace OgrenciTakipBLL
             set
             {
                 bool oldumu = false;
-                byte digit = 0;
                 for (int i = 0; i < value.Length; i++)
                 {
                     if (char.IsDigit(value[i]))
                     {
                         oldumu = true;
-                        digit++;
+                    }
+                    else
+                    {
+                        oldumu = false;
+                        break;
                     }
                 }
 
-                if (oldumu == true && digit <= 3)
+                if (oldumu == true && int.Parse(value) <= 100)
                 {
                     _kanaat = value.Trim();
                 }
@@ -105,19 +115,34 @@ namespace OgrenciTakipBLL
                 {
                     throw new ArgumentException("İşaretli alanlar Boş Olamaz!");
                 }
-                else if (digit > 3)
+                else if (oldumu == true && int.Parse(value) >100)
                 {
                     throw new ArgumentException("Kanaat notu en fazla 100 olabilir!");
                 }
                 else
                 {
-                    throw new ArgumentException("Kanaat notu içerisinde harf olamaz!");
+                    throw new ArgumentException("Kanaat notu pozitif tam sayı olmalıdır.");
                 }
             }
         }
         public string ortalama()
         {
-            return ((int.Parse(_sinav1) + int.Parse(_sinav2) + int.Parse(_kanaat)) / 3).ToString();
+            return Math.Round(((double.Parse(_sinav1) + double.Parse(_sinav2) + double.Parse(_kanaat)) / 3),2).ToString();
+        }
+
+        public string Ekle(string sorgu, double ort)
+        {
+            try
+            {
+                using (DAL objdal = new DAL())
+                {
+                    return objdal.EkleDB(sorgu,ort);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
     }

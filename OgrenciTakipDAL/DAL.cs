@@ -130,6 +130,7 @@ namespace OgrenciTakipDAL
         }
         public string EkleDB(string procedure, string dogumyeri, DateTime dogumtarihi, string sifre,
         string email, string tel, string adres, byte[] resim, string tc)
+
         {
             string mesaj = "";
             using (SqlConnection baglanti = new SqlConnection(baglanticumlesi))
@@ -148,6 +149,26 @@ namespace OgrenciTakipDAL
                     kayit.Parameters.AddWithValue("@Tc", tc);
 
                     baglanti.Open();
+
+                    if (kayit.ExecuteNonQuery() > 0)
+                        mesaj = ("Kayıt başarılı");
+                    else
+                        mesaj = ("Kayıt başarısız");
+                }
+                baglanti.Close();
+            }
+            return mesaj;
+        }
+        public string EkleDB(string sorgu, double ort)
+
+        {
+            string mesaj = "";
+            using (SqlConnection baglanti = new SqlConnection(baglanticumlesi))
+            {
+                using (SqlCommand kayit = new SqlCommand(sorgu, baglanti))
+                {
+                    baglanti.Open();
+                    kayit.Parameters.AddWithValue("@p1", ort);
 
                     if (kayit.ExecuteNonQuery() > 0)
                         mesaj = ("Kayıt başarılı");
