@@ -119,9 +119,9 @@ namespace OgrenciTakipDAL
                     baglanti.Open();
 
                     if (kayit.ExecuteNonQuery() > 0)
-                        mesaj = ("Kayıt başarılı");
+                        mesaj = ("İşlem başarılı");
                     else
-                        mesaj = ("Kayıt başarısız");
+                        mesaj = ("İşlem başarısız");
                 }
                 baglanti.Close();
             }
@@ -149,9 +149,9 @@ namespace OgrenciTakipDAL
                     baglanti.Open();
 
                     if (kayit.ExecuteNonQuery() > 0)
-                        mesaj = ("Kayıt başarılı");
+                        mesaj = ("İşlem başarılı");
                     else
-                        mesaj = ("Kayıt başarısız");
+                        mesaj = ("İşlem başarısız");
                 }
                 baglanti.Close();
             }
@@ -169,9 +169,9 @@ namespace OgrenciTakipDAL
                     kayit.Parameters.AddWithValue("@p1", ort);
 
                     if (kayit.ExecuteNonQuery() > 0)
-                        mesaj = ("Kayıt başarılı");
+                        mesaj = ("İşlem başarılı");
                     else
-                        mesaj = ("Kayıt başarısız");
+                        mesaj = ("İşlem başarısız");
                 }
                 baglanti.Close();
             }
@@ -188,9 +188,9 @@ namespace OgrenciTakipDAL
                     baglanti.Open();
 
                     if (kayit.ExecuteNonQuery() > 0)
-                        mesaj = ("Kayıt başarılı");
+                        mesaj = ("İşlem başarılı");
                     else
-                        mesaj = ("Kayıt başarısız");
+                        mesaj = ("İşlem başarısız");
                 }
                 baglanti.Close();
             }
@@ -208,9 +208,9 @@ namespace OgrenciTakipDAL
                     kayit.Parameters.AddWithValue("@p1", resim);
 
                     if (kayit.ExecuteNonQuery() > 0)
-                        mesaj = ("Kayıt başarılı");
+                        mesaj = ("İşlem başarılı");
                     else
-                        mesaj = ("Kayıt başarısız");
+                        mesaj = ("İşlem başarısız");
                 }
                 baglanti.Close();
             }

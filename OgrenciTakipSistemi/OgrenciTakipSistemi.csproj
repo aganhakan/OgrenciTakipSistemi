@@ -96,12 +96,6 @@
     <Compile Include="SinifEkleme.Designer.cs">
       <DependentUpon>SinifEkleme.cs</DependentUpon>
     </Compile>
-    <Compile Include="YoneticiBilgileri.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="YoneticiBilgileri.Designer.cs">
-      <DependentUpon>YoneticiBilgileri.cs</DependentUpon>
-    </Compile>
     <Compile Include="YoneticiGiris.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,9 +146,6 @@
     </Compile>
     <EmbeddedResource Include="SinifEkleme.resx">
       <DependentUpon>SinifEkleme.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="YoneticiBilgileri.resx">
-      <DependentUpon>YoneticiBilgileri.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="YoneticiGiris.resx">
       <DependentUpon>YoneticiGiris.cs</DependentUpon>

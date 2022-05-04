@@ -78,9 +78,10 @@ namespace OgrenciTakipSistemi
                 }
                 Listeleme();
             }
-            catch (Exception exc)
+            catch (Exception)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show("Bu sınıf silinemez." +
+                    "\nBu sınıfta öğrenci veya öğretmen bulunmaktadır.");
             }
         }
     }

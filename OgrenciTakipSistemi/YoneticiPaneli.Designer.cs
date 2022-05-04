@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             this.btnYoneticiKaydet = new System.Windows.Forms.MenuStrip();
-            this.kişiselBilgilerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.yöneticiTablosuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.öğretmenlerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.çıkışToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.öğrencilerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,7 +42,7 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnYoneticiSil = new System.Windows.Forms.Button();
             this.btnYoneticiGuncelle = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtYoneticiSifre = new System.Windows.Forms.TextBox();
             this.label26 = new System.Windows.Forms.Label();
             this.txtYoneticiiseBaslama = new System.Windows.Forms.MaskedTextBox();
             this.txtYoneticiTel = new System.Windows.Forms.MaskedTextBox();
@@ -73,7 +71,7 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnOgretmenSil = new System.Windows.Forms.Button();
             this.btnOgretmenGuncelle = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtOgretmenSifre = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
             this.txtOgretmeniseBaslama = new System.Windows.Forms.MaskedTextBox();
             this.txtOgretmenTel = new System.Windows.Forms.MaskedTextBox();
@@ -86,8 +84,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtOgretmenEMail = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.txtOgretmenBrans = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.txtOgretmenSinif = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.txtOgretmenDogumTarih = new System.Windows.Forms.MaskedTextBox();
@@ -121,13 +117,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtOgrenciDogumYer = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtTC = new System.Windows.Forms.TextBox();
+            this.txtOgrenciTC = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtOgrenciAd = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtOgrenciNo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.btnYoneticiFotografGuncelle = new System.Windows.Forms.Button();
+            this.btnOgrenciFotografGuncelle = new System.Windows.Forms.Button();
+            this.btnOgretmenFotografGuncelle = new System.Windows.Forms.Button();
             this.btnYoneticiKaydet.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -151,7 +150,6 @@
             // 
             this.btnYoneticiKaydet.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.btnYoneticiKaydet.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.kişiselBilgilerToolStripMenuItem,
             this.öğretmenlerToolStripMenuItem,
             this.öğrencilerToolStripMenuItem,
             this.paylaşToolStripMenuItem,
@@ -159,31 +157,16 @@
             this.btnYoneticiKaydet.Location = new System.Drawing.Point(0, 0);
             this.btnYoneticiKaydet.Name = "btnYoneticiKaydet";
             this.btnYoneticiKaydet.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.btnYoneticiKaydet.Size = new System.Drawing.Size(1367, 28);
+            this.btnYoneticiKaydet.Size = new System.Drawing.Size(1255, 30);
             this.btnYoneticiKaydet.TabIndex = 0;
             this.btnYoneticiKaydet.Text = "menuStrip1";
-            // 
-            // kişiselBilgilerToolStripMenuItem
-            // 
-            this.kişiselBilgilerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.yöneticiTablosuToolStripMenuItem});
-            this.kişiselBilgilerToolStripMenuItem.Name = "kişiselBilgilerToolStripMenuItem";
-            this.kişiselBilgilerToolStripMenuItem.Size = new System.Drawing.Size(130, 24);
-            this.kişiselBilgilerToolStripMenuItem.Text = "Yönetici Bilgileri";
-            // 
-            // yöneticiTablosuToolStripMenuItem
-            // 
-            this.yöneticiTablosuToolStripMenuItem.Name = "yöneticiTablosuToolStripMenuItem";
-            this.yöneticiTablosuToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.yöneticiTablosuToolStripMenuItem.Text = "Bilgilerim";
-            this.yöneticiTablosuToolStripMenuItem.Click += new System.EventHandler(this.yöneticiTablosuToolStripMenuItem_Click);
             // 
             // öğretmenlerToolStripMenuItem
             // 
             this.öğretmenlerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.çıkışToolStripMenuItem});
             this.öğretmenlerToolStripMenuItem.Name = "öğretmenlerToolStripMenuItem";
-            this.öğretmenlerToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
+            this.öğretmenlerToolStripMenuItem.Size = new System.Drawing.Size(64, 26);
             this.öğretmenlerToolStripMenuItem.Text = "Dosya";
             // 
             // çıkışToolStripMenuItem
@@ -198,26 +181,26 @@
             this.öğrencilerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sınıfEkleToolStripMenuItem});
             this.öğrencilerToolStripMenuItem.Name = "öğrencilerToolStripMenuItem";
-            this.öğrencilerToolStripMenuItem.Size = new System.Drawing.Size(50, 24);
+            this.öğrencilerToolStripMenuItem.Size = new System.Drawing.Size(50, 26);
             this.öğrencilerToolStripMenuItem.Text = "Ekle";
             // 
             // sınıfEkleToolStripMenuItem
             // 
             this.sınıfEkleToolStripMenuItem.Name = "sınıfEkleToolStripMenuItem";
-            this.sınıfEkleToolStripMenuItem.Size = new System.Drawing.Size(152, 26);
+            this.sınıfEkleToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.sınıfEkleToolStripMenuItem.Text = "Sınıf Ekle";
             this.sınıfEkleToolStripMenuItem.Click += new System.EventHandler(this.sınıfEkleToolStripMenuItem_Click);
             // 
             // paylaşToolStripMenuItem
             // 
             this.paylaşToolStripMenuItem.Name = "paylaşToolStripMenuItem";
-            this.paylaşToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
+            this.paylaşToolStripMenuItem.Size = new System.Drawing.Size(63, 26);
             this.paylaşToolStripMenuItem.Text = "Paylaş";
             // 
             // görünümToolStripMenuItem
             // 
             this.görünümToolStripMenuItem.Name = "görünümToolStripMenuItem";
-            this.görünümToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
+            this.görünümToolStripMenuItem.Size = new System.Drawing.Size(84, 26);
             this.görünümToolStripMenuItem.Text = "Görünüm";
             // 
             // tabControl1
@@ -226,10 +209,10 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 28);
+            this.tabControl1.Location = new System.Drawing.Point(0, 30);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1367, 765);
+            this.tabControl1.Size = new System.Drawing.Size(1255, 763);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -240,7 +223,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1359, 732);
+            this.tabPage1.Size = new System.Drawing.Size(1247, 732);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Yönetici Kayıt";
             // 
@@ -249,7 +232,7 @@
             this.groupBox6.Controls.Add(this.dgwYonetici);
             this.groupBox6.Location = new System.Drawing.Point(3, 308);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(1356, 421);
+            this.groupBox6.Size = new System.Drawing.Size(1237, 421);
             this.groupBox6.TabIndex = 3;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Tablo";
@@ -264,14 +247,16 @@
             this.dgwYonetici.ReadOnly = true;
             this.dgwYonetici.RowHeadersWidth = 51;
             this.dgwYonetici.RowTemplate.Height = 24;
-            this.dgwYonetici.Size = new System.Drawing.Size(1350, 396);
+            this.dgwYonetici.Size = new System.Drawing.Size(1231, 396);
             this.dgwYonetici.TabIndex = 0;
+            this.dgwYonetici.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwYonetici_CellClick);
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.btnYoneticiFotografGuncelle);
             this.groupBox5.Controls.Add(this.btnYoneticiSil);
             this.groupBox5.Controls.Add(this.btnYoneticiGuncelle);
-            this.groupBox5.Controls.Add(this.textBox1);
+            this.groupBox5.Controls.Add(this.txtYoneticiSifre);
             this.groupBox5.Controls.Add(this.label26);
             this.groupBox5.Controls.Add(this.txtYoneticiiseBaslama);
             this.groupBox5.Controls.Add(this.txtYoneticiTel);
@@ -296,7 +281,7 @@
             this.groupBox5.Controls.Add(this.label30);
             this.groupBox5.Location = new System.Drawing.Point(3, 3);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(1353, 307);
+            this.groupBox5.Size = new System.Drawing.Size(1237, 307);
             this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Yönetici Bilgileri";
@@ -329,12 +314,12 @@
             this.btnYoneticiGuncelle.Text = "Güncelle";
             this.btnYoneticiGuncelle.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // txtYoneticiSifre
             // 
-            this.textBox1.Location = new System.Drawing.Point(604, 40);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(236, 26);
-            this.textBox1.TabIndex = 29;
+            this.txtYoneticiSifre.Location = new System.Drawing.Point(604, 40);
+            this.txtYoneticiSifre.Name = "txtYoneticiSifre";
+            this.txtYoneticiSifre.Size = new System.Drawing.Size(236, 26);
+            this.txtYoneticiSifre.TabIndex = 29;
             // 
             // label26
             // 
@@ -378,18 +363,19 @@
             this.btnYoneticiFotograf.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnYoneticiFotograf.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnYoneticiFotograf.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnYoneticiFotograf.Location = new System.Drawing.Point(977, 257);
+            this.btnYoneticiFotograf.Location = new System.Drawing.Point(953, 229);
             this.btnYoneticiFotograf.Name = "btnYoneticiFotograf";
             this.btnYoneticiFotograf.Size = new System.Drawing.Size(182, 27);
             this.btnYoneticiFotograf.TabIndex = 23;
-            this.btnYoneticiFotograf.Text = "Fotoğraf Ekle";
+            this.btnYoneticiFotograf.Text = "Fotoğraf Seç";
             this.btnYoneticiFotograf.UseVisualStyleBackColor = true;
             // 
             // picYonetici
             // 
-            this.picYonetici.Location = new System.Drawing.Point(910, 40);
+            this.picYonetici.Location = new System.Drawing.Point(893, 25);
             this.picYonetici.Name = "picYonetici";
             this.picYonetici.Size = new System.Drawing.Size(308, 194);
+            this.picYonetici.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picYonetici.TabIndex = 2;
             this.picYonetici.TabStop = false;
             // 
@@ -539,7 +525,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1359, 732);
+            this.tabPage2.Size = new System.Drawing.Size(1247, 732);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Öğretmen Kayıt";
             // 
@@ -548,7 +534,7 @@
             this.groupBox4.Controls.Add(this.dgwOgretmen);
             this.groupBox4.Location = new System.Drawing.Point(3, 308);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1356, 424);
+            this.groupBox4.Size = new System.Drawing.Size(1238, 424);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Tablo";
@@ -563,14 +549,16 @@
             this.dgwOgretmen.ReadOnly = true;
             this.dgwOgretmen.RowHeadersWidth = 51;
             this.dgwOgretmen.RowTemplate.Height = 24;
-            this.dgwOgretmen.Size = new System.Drawing.Size(1350, 399);
+            this.dgwOgretmen.Size = new System.Drawing.Size(1232, 399);
             this.dgwOgretmen.TabIndex = 0;
+            this.dgwOgretmen.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwOgretmen_CellClick);
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnOgretmenFotografGuncelle);
             this.groupBox3.Controls.Add(this.btnOgretmenSil);
             this.groupBox3.Controls.Add(this.btnOgretmenGuncelle);
-            this.groupBox3.Controls.Add(this.textBox2);
+            this.groupBox3.Controls.Add(this.txtOgretmenSifre);
             this.groupBox3.Controls.Add(this.label31);
             this.groupBox3.Controls.Add(this.txtOgretmeniseBaslama);
             this.groupBox3.Controls.Add(this.txtOgretmenTel);
@@ -583,8 +571,6 @@
             this.groupBox3.Controls.Add(this.label12);
             this.groupBox3.Controls.Add(this.txtOgretmenEMail);
             this.groupBox3.Controls.Add(this.label13);
-            this.groupBox3.Controls.Add(this.txtOgretmenBrans);
-            this.groupBox3.Controls.Add(this.label14);
             this.groupBox3.Controls.Add(this.txtOgretmenSinif);
             this.groupBox3.Controls.Add(this.label15);
             this.groupBox3.Controls.Add(this.txtOgretmenDogumTarih);
@@ -597,7 +583,7 @@
             this.groupBox3.Controls.Add(this.label19);
             this.groupBox3.Location = new System.Drawing.Point(3, 3);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(1353, 307);
+            this.groupBox3.Size = new System.Drawing.Size(1238, 307);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Öğretmen Bilgileri";
@@ -630,17 +616,17 @@
             this.btnOgretmenGuncelle.Text = "Güncelle";
             this.btnOgretmenGuncelle.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // txtOgretmenSifre
             // 
-            this.textBox2.Location = new System.Drawing.Point(605, 25);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(236, 26);
-            this.textBox2.TabIndex = 29;
+            this.txtOgretmenSifre.Location = new System.Drawing.Point(605, 46);
+            this.txtOgretmenSifre.Name = "txtOgretmenSifre";
+            this.txtOgretmenSifre.Size = new System.Drawing.Size(236, 26);
+            this.txtOgretmenSifre.TabIndex = 29;
             // 
             // label31
             // 
             this.label31.AutoSize = true;
-            this.label31.Location = new System.Drawing.Point(466, 31);
+            this.label31.Location = new System.Drawing.Point(466, 52);
             this.label31.Name = "label31";
             this.label31.Size = new System.Drawing.Size(55, 20);
             this.label31.TabIndex = 28;
@@ -679,7 +665,7 @@
             this.btnOgretmenFotograf.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnOgretmenFotograf.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnOgretmenFotograf.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnOgretmenFotograf.Location = new System.Drawing.Point(977, 257);
+            this.btnOgretmenFotograf.Location = new System.Drawing.Point(959, 229);
             this.btnOgretmenFotograf.Name = "btnOgretmenFotograf";
             this.btnOgretmenFotograf.Size = new System.Drawing.Size(182, 27);
             this.btnOgretmenFotograf.TabIndex = 23;
@@ -688,9 +674,10 @@
             // 
             // picOgretmen
             // 
-            this.picOgretmen.Location = new System.Drawing.Point(910, 40);
+            this.picOgretmen.Location = new System.Drawing.Point(893, 25);
             this.picOgretmen.Name = "picOgretmen";
             this.picOgretmen.Size = new System.Drawing.Size(308, 194);
+            this.picOgretmen.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picOgretmen.TabIndex = 2;
             this.picOgretmen.TabStop = false;
             // 
@@ -751,25 +738,9 @@
             this.label13.TabIndex = 14;
             this.label13.Text = "E-Mail:";
             // 
-            // txtOgretmenBrans
-            // 
-            this.txtOgretmenBrans.Location = new System.Drawing.Point(605, 89);
-            this.txtOgretmenBrans.Name = "txtOgretmenBrans";
-            this.txtOgretmenBrans.Size = new System.Drawing.Size(236, 26);
-            this.txtOgretmenBrans.TabIndex = 13;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(466, 95);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(70, 20);
-            this.label14.TabIndex = 12;
-            this.label14.Text = "Branşı:";
-            // 
             // txtOgretmenSinif
             // 
-            this.txtOgretmenSinif.Location = new System.Drawing.Point(605, 57);
+            this.txtOgretmenSinif.Location = new System.Drawing.Point(605, 81);
             this.txtOgretmenSinif.Name = "txtOgretmenSinif";
             this.txtOgretmenSinif.Size = new System.Drawing.Size(236, 26);
             this.txtOgretmenSinif.TabIndex = 11;
@@ -777,7 +748,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(466, 63);
+            this.label15.Location = new System.Drawing.Point(466, 87);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(53, 20);
             this.label15.TabIndex = 10;
@@ -857,7 +828,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1359, 732);
+            this.tabPage3.Size = new System.Drawing.Size(1247, 730);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Öğrenci Kayıt";
             // 
@@ -866,7 +837,7 @@
             this.groupBox2.Controls.Add(this.dgwOgrenci);
             this.groupBox2.Location = new System.Drawing.Point(0, 311);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1356, 418);
+            this.groupBox2.Size = new System.Drawing.Size(1244, 418);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Tablo";
@@ -881,11 +852,13 @@
             this.dgwOgrenci.ReadOnly = true;
             this.dgwOgrenci.RowHeadersWidth = 51;
             this.dgwOgrenci.RowTemplate.Height = 24;
-            this.dgwOgrenci.Size = new System.Drawing.Size(1350, 393);
+            this.dgwOgrenci.Size = new System.Drawing.Size(1238, 393);
             this.dgwOgrenci.TabIndex = 0;
+            this.dgwOgrenci.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgwOgrenci_CellClick);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnOgrenciFotografGuncelle);
             this.groupBox1.Controls.Add(this.btnOgrenciSil);
             this.groupBox1.Controls.Add(this.btnOgrenciGuncelle);
             this.groupBox1.Controls.Add(this.txtVeliTel);
@@ -905,7 +878,7 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtOgrenciDogumYer);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtTC);
+            this.groupBox1.Controls.Add(this.txtOgrenciTC);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtOgrenciAd);
             this.groupBox1.Controls.Add(this.label2);
@@ -913,7 +886,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1353, 307);
+            this.groupBox1.Size = new System.Drawing.Size(1241, 307);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Öğrenci Bilgileri";
@@ -961,7 +934,7 @@
             this.btnOgrenciFotograf.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnOgrenciFotograf.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
             this.btnOgrenciFotograf.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnOgrenciFotograf.Location = new System.Drawing.Point(977, 257);
+            this.btnOgrenciFotograf.Location = new System.Drawing.Point(957, 229);
             this.btnOgrenciFotograf.Name = "btnOgrenciFotograf";
             this.btnOgrenciFotograf.Size = new System.Drawing.Size(182, 27);
             this.btnOgrenciFotograf.TabIndex = 23;
@@ -970,9 +943,10 @@
             // 
             // picOgrenci
             // 
-            this.picOgrenci.Location = new System.Drawing.Point(910, 40);
+            this.picOgrenci.Location = new System.Drawing.Point(893, 25);
             this.picOgrenci.Name = "picOgrenci";
             this.picOgrenci.Size = new System.Drawing.Size(308, 194);
+            this.picOgrenci.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picOgrenci.TabIndex = 2;
             this.picOgrenci.TabStop = false;
             // 
@@ -1098,12 +1072,13 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Doğum Yeri:";
             // 
-            // txtTC
+            // txtOgrenciTC
             // 
-            this.txtTC.Location = new System.Drawing.Point(170, 104);
-            this.txtTC.Name = "txtTC";
-            this.txtTC.Size = new System.Drawing.Size(196, 26);
-            this.txtTC.TabIndex = 5;
+            this.txtOgrenciTC.CausesValidation = false;
+            this.txtOgrenciTC.Location = new System.Drawing.Point(170, 104);
+            this.txtOgrenciTC.Name = "txtOgrenciTC";
+            this.txtOgrenciTC.Size = new System.Drawing.Size(196, 26);
+            this.txtOgrenciTC.TabIndex = 5;
             // 
             // label3
             // 
@@ -1146,13 +1121,55 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Öğrenci No:";
             // 
+            // btnYoneticiFotografGuncelle
+            // 
+            this.btnYoneticiFotografGuncelle.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnYoneticiFotografGuncelle.FlatAppearance.BorderSize = 3;
+            this.btnYoneticiFotografGuncelle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnYoneticiFotografGuncelle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnYoneticiFotografGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnYoneticiFotografGuncelle.Location = new System.Drawing.Point(893, 272);
+            this.btnYoneticiFotografGuncelle.Name = "btnYoneticiFotografGuncelle";
+            this.btnYoneticiFotografGuncelle.Size = new System.Drawing.Size(308, 27);
+            this.btnYoneticiFotografGuncelle.TabIndex = 32;
+            this.btnYoneticiFotografGuncelle.Text = "Fotoğraf Ekle/Güncelle";
+            this.btnYoneticiFotografGuncelle.UseVisualStyleBackColor = true;
+            // 
+            // btnOgrenciFotografGuncelle
+            // 
+            this.btnOgrenciFotografGuncelle.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnOgrenciFotografGuncelle.FlatAppearance.BorderSize = 3;
+            this.btnOgrenciFotografGuncelle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnOgrenciFotografGuncelle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnOgrenciFotografGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnOgrenciFotografGuncelle.Location = new System.Drawing.Point(893, 274);
+            this.btnOgrenciFotografGuncelle.Name = "btnOgrenciFotografGuncelle";
+            this.btnOgrenciFotografGuncelle.Size = new System.Drawing.Size(308, 27);
+            this.btnOgrenciFotografGuncelle.TabIndex = 36;
+            this.btnOgrenciFotografGuncelle.Text = "Fotoğraf Ekle/Güncelle";
+            this.btnOgrenciFotografGuncelle.UseVisualStyleBackColor = true;
+            // 
+            // btnOgretmenFotografGuncelle
+            // 
+            this.btnOgretmenFotografGuncelle.FlatAppearance.BorderColor = System.Drawing.Color.Black;
+            this.btnOgretmenFotografGuncelle.FlatAppearance.BorderSize = 3;
+            this.btnOgretmenFotografGuncelle.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnOgretmenFotografGuncelle.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Silver;
+            this.btnOgretmenFotografGuncelle.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnOgretmenFotografGuncelle.Location = new System.Drawing.Point(893, 272);
+            this.btnOgretmenFotografGuncelle.Name = "btnOgretmenFotografGuncelle";
+            this.btnOgretmenFotografGuncelle.Size = new System.Drawing.Size(308, 27);
+            this.btnOgretmenFotografGuncelle.TabIndex = 37;
+            this.btnOgretmenFotografGuncelle.Text = "Fotoğraf Ekle/Güncelle";
+            this.btnOgretmenFotografGuncelle.UseVisualStyleBackColor = true;
+            // 
             // YoneticiPaneli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.ClientSize = new System.Drawing.Size(1367, 793);
+            this.ClientSize = new System.Drawing.Size(1255, 793);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btnYoneticiKaydet);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
@@ -1192,21 +1209,19 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip btnYoneticiKaydet;
-        private System.Windows.Forms.ToolStripMenuItem kişiselBilgilerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem öğretmenlerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem öğrencilerToolStripMenuItem;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.ToolStripMenuItem yöneticiTablosuToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtOgrenciNo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtOgrenciDogumYer;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtTC;
+        private System.Windows.Forms.TextBox txtOgrenciTC;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtOgrenciAd;
         private System.Windows.Forms.Label label2;
@@ -1237,8 +1252,6 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtOgretmenEMail;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtOgretmenBrans;
-        private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox txtOgretmenSinif;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
@@ -1277,9 +1290,9 @@
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.DataGridView dgwYonetici;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtYoneticiSifre;
         private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtOgretmenSifre;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Button btnYoneticiSil;
         private System.Windows.Forms.Button btnYoneticiGuncelle;
@@ -1291,5 +1304,8 @@
         private System.Windows.Forms.ToolStripMenuItem görünümToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem çıkışToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sınıfEkleToolStripMenuItem;
+        private System.Windows.Forms.Button btnYoneticiFotografGuncelle;
+        private System.Windows.Forms.Button btnOgretmenFotografGuncelle;
+        private System.Windows.Forms.Button btnOgrenciFotografGuncelle;
     }
 }
