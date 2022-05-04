@@ -165,6 +165,7 @@
             this.btnYoneticiKaydet.Size = new System.Drawing.Size(1255, 28);
             this.btnYoneticiKaydet.TabIndex = 0;
             this.btnYoneticiKaydet.Text = "menuStrip1";
+            this.btnYoneticiKaydet.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.btnYoneticiKaydet_ItemClicked);
             // 
             // öğretmenlerToolStripMenuItem
             // 

@@ -136,9 +136,9 @@
             this.label1.Location = new System.Drawing.Point(48, 34);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 25);
+            this.label1.Size = new System.Drawing.Size(82, 25);
             this.label1.TabIndex = 15;
-            this.label1.Text = "Kullanıcı Adı:";
+            this.label1.Text = "TC No:";
             // 
             // YoneticiGiris
             // 
@@ -161,6 +161,7 @@
             this.Name = "YoneticiGiris";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "YoneticiGiris";
+            this.Load += new System.EventHandler(this.YoneticiGiris_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -409,5 +409,10 @@ namespace OgrenciTakipSistemi
                 MessageBox.Show(exc.Message);
             }
         }
+
+        private void btnYoneticiKaydet_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }

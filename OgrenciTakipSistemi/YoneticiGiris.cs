@@ -21,11 +21,43 @@ namespace OgrenciTakipSistemi
 
         private void btnGiris_Click(object sender, EventArgs e)
         {
-            using (YoneticiPaneli yon = new YoneticiPaneli())
+            try
             {
-                this.Hide();
-                yon.ShowDialog();
-            }     
+                using (Yonetici nesne = new Yonetici())
+                {
+                    nesne.TCNo = txtKullaniciAdi.Text;
+                    nesne.Sifre = txtSifre.Text;
+
+                    string sorgu = "SELECT * FROM Yonetici Where TC = @p1";
+
+                    List<string> YoneticiBilgieri = nesne.Giris(sorgu, txtKullaniciAdi.Text);
+
+                    if (YoneticiBilgieri.Count != 0)
+                    {
+                        if (YoneticiBilgieri[6] == txtSifre.Text)
+                        {
+                            YoneticiPaneli ogr = new YoneticiPaneli();
+                            this.Hide();
+                            ogr.ShowDialog();
+                            return;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Hatalışifre girdiniz. Lütfen tekrar deneyiniz.");
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("öğretmen bulunamadı!" +
+                        "\nLütfen adınızı kontrol ediniz.");
+                    }
+                }
+            }
+            catch (ArgumentException exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
 
         private void btnCikis_Click(object sender, EventArgs e)
@@ -45,6 +77,11 @@ namespace OgrenciTakipSistemi
             YoneticiSifreUnuttum yon = new YoneticiSifreUnuttum();
             this.Hide();
             yon.ShowDialog();
+        }
+
+        private void YoneticiGiris_Load(object sender, EventArgs e)
+        {
+           
         }
     }
 }
