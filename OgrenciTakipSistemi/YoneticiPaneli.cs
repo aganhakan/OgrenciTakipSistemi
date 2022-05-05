@@ -82,6 +82,7 @@ namespace OgrenciTakipSistemi
 
             #endregion
         }
+
         public void YoneticiBilgiKontrol()
         {
             using (Yonetici nesne = new Yonetici())
