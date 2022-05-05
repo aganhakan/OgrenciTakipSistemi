@@ -165,7 +165,6 @@
             this.btnYoneticiKaydet.Size = new System.Drawing.Size(1255, 28);
             this.btnYoneticiKaydet.TabIndex = 0;
             this.btnYoneticiKaydet.Text = "menuStrip1";
-            this.btnYoneticiKaydet.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.btnYoneticiKaydet_ItemClicked);
             // 
             // öğretmenlerToolStripMenuItem
             // 
@@ -320,6 +319,7 @@
             this.btnYoneticiSil.TabIndex = 31;
             this.btnYoneticiSil.Text = "Sil";
             this.btnYoneticiSil.UseVisualStyleBackColor = true;
+            this.btnYoneticiSil.Click += new System.EventHandler(this.btnYoneticiSil_Click);
             // 
             // btnYoneticiGuncelle
             // 
@@ -669,6 +669,7 @@
             this.btnOgretmenSil.TabIndex = 33;
             this.btnOgretmenSil.Text = "Sil";
             this.btnOgretmenSil.UseVisualStyleBackColor = true;
+            this.btnOgretmenSil.Click += new System.EventHandler(this.btnOgretmenSil_Click);
             // 
             // btnOgretmenGuncelle
             // 
@@ -1020,6 +1021,7 @@
             this.btnOgrenciSil.TabIndex = 35;
             this.btnOgrenciSil.Text = "Sil";
             this.btnOgrenciSil.UseVisualStyleBackColor = true;
+            this.btnOgrenciSil.Click += new System.EventHandler(this.btnOgrenciSil_Click);
             // 
             // btnOgrenciGuncelle
             // 

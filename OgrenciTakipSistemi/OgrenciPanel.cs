@@ -62,7 +62,6 @@ namespace OgrenciTakipSistemi
                 string sorgu = "SELECT Fotograf FROM Ogrenciler WHERE OgrenciNo = @No";
                 picOgrenci.Image = Image.FromStream(nesne.Fotograf(OgrenciBilgileri[1],sorgu));
             }
-
             Listeleme();
         }
 

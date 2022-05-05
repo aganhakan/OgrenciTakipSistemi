@@ -318,6 +318,25 @@ namespace OgrenciTakipDAL
             }
             return mesaj;
         }
+        public string SilDB(string sorgu)
+
+        {
+            string mesaj = "";
+            using (SqlConnection baglanti = new SqlConnection(baglanticumlesi))
+            {
+                using (SqlCommand kayit = new SqlCommand(sorgu, baglanti))
+                {
+                    baglanti.Open();
+
+                    if (kayit.ExecuteNonQuery() > 0)
+                        mesaj = ("İşlem başarılı");
+                    else
+                        mesaj = ("İşlem başarısız");
+                }
+                baglanti.Close();
+            }
+            return mesaj;
+        }
 
         public MemoryStream Fotograf(string no, string sorgu)
         {

@@ -349,6 +349,21 @@ namespace OgrenciTakipBLL
                 throw;
             }
         }
+        public string Sil(string sorgu)
+        {
+            try
+            {
+                using (DAL objDal = new DAL())
+                {
+                    return objDal.SilDB(sorgu);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
 
         #endregion

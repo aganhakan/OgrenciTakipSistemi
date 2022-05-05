@@ -462,9 +462,61 @@ namespace OgrenciTakipSistemi
                 MessageBox.Show(exc.Message);
             }
         }
-        private void btnYoneticiKaydet_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        private void btnYoneticiSil_Click(object sender, EventArgs e)
         {
+            try
+            {
+                using (Yonetici nesne = new Yonetici())
+                {
+                    nesne.TCNo = txtYoneticiTC.Text;
 
+                    string sorgu = "Delete from Yonetici where TC = " + nesne.TCNo;
+                    MessageBox.Show(nesne.Sil(sorgu));
+                }
+                Listeleme();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+
+        private void btnOgretmenSil_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (Ogretmen nesne = new Ogretmen())
+                {
+                    nesne.TCNo = txtOgretmenTC.Text;
+
+                    string sorgu = "Delete from Ogretmen where TC = " + nesne.TCNo;
+                    MessageBox.Show(nesne.Sil(sorgu));
+                }
+                Listeleme();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
+        }
+
+        private void btnOgrenciSil_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (Ogrenci nesne = new Ogrenci())
+                {
+                    nesne.TCNo = txtOgrenciTC.Text;
+
+                    string sorgu = "Delete from Ogrenciler where TC = " + nesne.TCNo;
+                    MessageBox.Show(nesne.Sil(sorgu));
+                }
+                Listeleme();
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show(exc.Message);
+            }
         }
     }
 }
