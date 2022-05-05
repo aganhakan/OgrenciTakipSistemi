@@ -82,6 +82,51 @@ namespace OgrenciTakipSistemi
 
             #endregion
         }
+        public void YoneticiBilgiKontrol()
+        {
+            using (Yonetici nesne = new Yonetici())
+            {
+                nesne.AdSoyad = txtYoneticiAd.Text;
+                nesne.TCNo = txtYoneticiTC.Text;
+                nesne.DogumYeri = txtYoneticiDogumYeri.Text;
+                nesne.DogumTarihi = txtYoneticiDogumTarih.Text;
+                nesne.DogumYeri = txtOgrenciDogumYer.Text;
+                nesne.Sifre = txtYoneticiSifre.Text;
+                nesne.gorev = txtYoneticiGorev.Text;
+                nesne.email = txtYoneticiEMail.Text;
+                nesne.tel = txtYoneticiTel.Text;
+                nesne.Adres = txtAdres.Text;
+            }
+        }
+        public void OgretmenBilgiKontrol()
+        {
+            using (Ogretmen nesne = new Ogretmen())
+            {
+                nesne.AdSoyad = txtOgretmenAd.Text;
+                nesne.TCNo = txtOgretmenTC.Text;
+                nesne.DogumYeri = txtOgretmenDogumyeri.Text;
+                nesne.DogumTarihi = txtOgretmenDogumTarih.Text;
+                nesne.isebaslama = txtOgretmeniseBaslama.Text;
+                nesne.Sifre = txtOgretmenSifre.Text;
+                nesne.email = txtOgretmenEMail.Text;
+                nesne.Adres = txtOgretmenAdres.Text;
+            }
+        }
+        public void OgrenciBilgiKontrol()
+        {
+            using (Ogrenci nesne = new Ogrenci())
+            {
+                nesne.ogrencino = txtOgrenciNo.Text;
+                nesne.AdSoyad = txtOgrenciAd.Text;
+                nesne.TCNo = txtOgrenciTC.Text;
+                nesne.DogumYeri = txtOgrenciDogumYer.Text;
+                nesne.DogumTarihi = txtOgrenciDogumTarih.Text;
+                nesne.annead = txtAnneAdi.Text;
+                nesne.babaad = txtBabaAdi.Text;
+                nesne.tel = txtVeliTel.Text;
+                nesne.Adres = txtAdres.Text;
+            }
+        }
         private void YoneticiPaneli_Load(object sender, EventArgs e)
         {
             Listeleme();
@@ -287,6 +332,8 @@ namespace OgrenciTakipSistemi
         {
             try
             {
+                YoneticiBilgiKontrol();
+
                 DateTime dt = Convert.ToDateTime(txtYoneticiDogumTarih.Text);
                 DateTime ib = Convert.ToDateTime(txtYoneticiiseBaslama.Text);
                 using (Yonetici nesne = new Yonetici())
@@ -307,13 +354,14 @@ namespace OgrenciTakipSistemi
         {
             try
             {
+                OgretmenBilgiKontrol();
                 DateTime dt = Convert.ToDateTime(txtOgretmenDogumTarih.Text);
                 DateTime ib = Convert.ToDateTime(txtOgretmeniseBaslama.Text);
                 using (Ogretmen nesne = new Ogretmen())
                 {
                     MessageBox.Show(nesne.Guncelle("OgretmenEkleme", txtOgretmenAd.Text, txtOgretmenTC.Text, txtOgretmenDogumyeri.Text,
-                        dt, ib, txtOgretmenSifre.Text, cmbOgrenciSinif.Text, cmbOgrenciSube.Text,
-                        txtOgretmenEMail.Text, txtOgretmenTel.Text, txtOgretmenAdres.Text, "id"));
+                    dt, ib, txtOgretmenSifre.Text, cmbOgrenciSinif.Text, cmbOgrenciSube.Text,
+                    txtOgretmenEMail.Text, txtOgretmenTel.Text, txtOgretmenAdres.Text, "id"));
 
                     Listeleme();
                 }
@@ -327,6 +375,7 @@ namespace OgrenciTakipSistemi
         {
             try
             {
+                OgrenciBilgiKontrol();
                 DateTime dt = Convert.ToDateTime(txtOgrenciDogumTarih.Text);
                 using (Ogrenci nesne = new Ogrenci())
                 {
@@ -348,6 +397,7 @@ namespace OgrenciTakipSistemi
         {
             try
             {
+                YoneticiBilgiKontrol();
                 DateTime dt = Convert.ToDateTime(txtYoneticiDogumTarih.Text);
                 DateTime ib = Convert.ToDateTime(txtYoneticiiseBaslama.Text);
                 using (Yonetici nesne = new Yonetici())
@@ -370,6 +420,7 @@ namespace OgrenciTakipSistemi
         {
             try
             {
+                OgretmenBilgiKontrol();
                 DateTime dt = Convert.ToDateTime(txtOgretmenDogumTarih.Text);
                 DateTime ib = Convert.ToDateTime(txtOgretmeniseBaslama.Text);
                 using (Ogretmen nesne = new Ogretmen())
@@ -392,6 +443,7 @@ namespace OgrenciTakipSistemi
         {
             try
             {
+                OgrenciBilgiKontrol();
                 DateTime dt = Convert.ToDateTime(txtOgrenciDogumTarih.Text);
                 using (Ogrenci nesne = new Ogrenci())
                 {
@@ -409,7 +461,6 @@ namespace OgrenciTakipSistemi
                 MessageBox.Show(exc.Message);
             }
         }
-
         private void btnYoneticiKaydet_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
