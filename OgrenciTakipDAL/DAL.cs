@@ -37,7 +37,6 @@ namespace OgrenciTakipDAL
                 return girislist;
             }
         }
-
         public DataTable ListelemeDB(string action, string procedure)
         {
             try
@@ -96,7 +95,6 @@ namespace OgrenciTakipDAL
                 throw;
             }
         }
-
         public string EkleDB(string procedure, string ogrencino, string TC, string dogumyeri, DateTime dogumtarihi,
         string anneadi, string babaadi, string velitel, string adres)
         {
@@ -297,7 +295,6 @@ namespace OgrenciTakipDAL
             }
             return mesaj;
         }
-
         public string FotoGuncelle(string sorgu, byte[] resim)
 
         {
@@ -337,7 +334,6 @@ namespace OgrenciTakipDAL
             }
             return mesaj;
         }
-
         public MemoryStream Fotograf(string no, string sorgu)
         {
             try
@@ -377,7 +373,6 @@ namespace OgrenciTakipDAL
             }
             
         }
-
 
         public void Dispose()
         {

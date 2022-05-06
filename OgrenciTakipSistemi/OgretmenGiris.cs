@@ -53,14 +53,14 @@ namespace OgrenciTakipSistemi
                         }
                         else
                         {
-                            MessageBox.Show("Hatalışifre girdiniz. Lütfen tekrar deneyiniz.");
+                            MessageBox.Show("Hatalı şifre girdiniz. Lütfen tekrar deneyiniz.");
                             return;
                         }
                     }
                     else
                     {
-                        MessageBox.Show("öğretmen bulunamadı!" +
-                        "\nLütfen adınızı kontrol ediniz.");
+                        MessageBox.Show("Öğretmen bulunamadı!" +
+                        "\nLütfen TC numaranızı kontrol ediniz.");
                     }
                 }
             }

@@ -70,6 +70,8 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.dgwOgretmen = new System.Windows.Forms.DataGridView();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtOgretmeniseBaslama = new System.Windows.Forms.MaskedTextBox();
+            this.txtOgretmenDogumTarih = new System.Windows.Forms.MaskedTextBox();
             this.cmbOgretmenSube = new System.Windows.Forms.ComboBox();
             this.cmbOgretmenSinif = new System.Windows.Forms.ComboBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -78,7 +80,6 @@
             this.btnOgretmenGuncelle = new System.Windows.Forms.Button();
             this.txtOgretmenSifre = new System.Windows.Forms.TextBox();
             this.label31 = new System.Windows.Forms.Label();
-            this.txtOgretmeniseBaslama = new System.Windows.Forms.MaskedTextBox();
             this.txtOgretmenTel = new System.Windows.Forms.MaskedTextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.btnOgretmenFotograf = new System.Windows.Forms.Button();
@@ -90,7 +91,6 @@
             this.txtOgretmenEMail = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
-            this.txtOgretmenDogumTarih = new System.Windows.Forms.MaskedTextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtOgretmenDogumyeri = new System.Windows.Forms.TextBox();
             this.label17 = new System.Windows.Forms.Label();
@@ -162,7 +162,7 @@
             this.btnYoneticiKaydet.Location = new System.Drawing.Point(0, 0);
             this.btnYoneticiKaydet.Name = "btnYoneticiKaydet";
             this.btnYoneticiKaydet.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.btnYoneticiKaydet.Size = new System.Drawing.Size(1255, 28);
+            this.btnYoneticiKaydet.Size = new System.Drawing.Size(1255, 30);
             this.btnYoneticiKaydet.TabIndex = 0;
             this.btnYoneticiKaydet.Text = "menuStrip1";
             // 
@@ -171,7 +171,7 @@
             this.öğretmenlerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.çıkışToolStripMenuItem});
             this.öğretmenlerToolStripMenuItem.Name = "öğretmenlerToolStripMenuItem";
-            this.öğretmenlerToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
+            this.öğretmenlerToolStripMenuItem.Size = new System.Drawing.Size(64, 26);
             this.öğretmenlerToolStripMenuItem.Text = "Dosya";
             // 
             // çıkışToolStripMenuItem
@@ -186,7 +186,7 @@
             this.öğrencilerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sınıfEkleToolStripMenuItem});
             this.öğrencilerToolStripMenuItem.Name = "öğrencilerToolStripMenuItem";
-            this.öğrencilerToolStripMenuItem.Size = new System.Drawing.Size(50, 24);
+            this.öğrencilerToolStripMenuItem.Size = new System.Drawing.Size(50, 26);
             this.öğrencilerToolStripMenuItem.Text = "Ekle";
             // 
             // sınıfEkleToolStripMenuItem
@@ -199,13 +199,13 @@
             // paylaşToolStripMenuItem
             // 
             this.paylaşToolStripMenuItem.Name = "paylaşToolStripMenuItem";
-            this.paylaşToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
+            this.paylaşToolStripMenuItem.Size = new System.Drawing.Size(63, 26);
             this.paylaşToolStripMenuItem.Text = "Paylaş";
             // 
             // görünümToolStripMenuItem
             // 
             this.görünümToolStripMenuItem.Name = "görünümToolStripMenuItem";
-            this.görünümToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
+            this.görünümToolStripMenuItem.Size = new System.Drawing.Size(84, 26);
             this.görünümToolStripMenuItem.Text = "Görünüm";
             // 
             // tabControl1
@@ -214,10 +214,10 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 28);
+            this.tabControl1.Location = new System.Drawing.Point(0, 30);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1255, 765);
+            this.tabControl1.Size = new System.Drawing.Size(1255, 763);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -228,7 +228,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1247, 732);
+            this.tabPage1.Size = new System.Drawing.Size(1247, 730);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Yönetici Kayıt";
             // 
@@ -579,6 +579,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtOgretmeniseBaslama);
+            this.groupBox3.Controls.Add(this.txtOgretmenDogumTarih);
             this.groupBox3.Controls.Add(this.cmbOgretmenSube);
             this.groupBox3.Controls.Add(this.cmbOgretmenSinif);
             this.groupBox3.Controls.Add(this.label14);
@@ -587,7 +589,6 @@
             this.groupBox3.Controls.Add(this.btnOgretmenGuncelle);
             this.groupBox3.Controls.Add(this.txtOgretmenSifre);
             this.groupBox3.Controls.Add(this.label31);
-            this.groupBox3.Controls.Add(this.txtOgretmeniseBaslama);
             this.groupBox3.Controls.Add(this.txtOgretmenTel);
             this.groupBox3.Controls.Add(this.label20);
             this.groupBox3.Controls.Add(this.btnOgretmenFotograf);
@@ -599,7 +600,6 @@
             this.groupBox3.Controls.Add(this.txtOgretmenEMail);
             this.groupBox3.Controls.Add(this.label13);
             this.groupBox3.Controls.Add(this.label15);
-            this.groupBox3.Controls.Add(this.txtOgretmenDogumTarih);
             this.groupBox3.Controls.Add(this.label16);
             this.groupBox3.Controls.Add(this.txtOgretmenDogumyeri);
             this.groupBox3.Controls.Add(this.label17);
@@ -613,6 +613,24 @@
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Öğretmen Bilgileri";
+            // 
+            // txtOgretmeniseBaslama
+            // 
+            this.txtOgretmeniseBaslama.Location = new System.Drawing.Point(170, 180);
+            this.txtOgretmeniseBaslama.Mask = "00/00/0000";
+            this.txtOgretmeniseBaslama.Name = "txtOgretmeniseBaslama";
+            this.txtOgretmeniseBaslama.Size = new System.Drawing.Size(196, 26);
+            this.txtOgretmeniseBaslama.TabIndex = 42;
+            this.txtOgretmeniseBaslama.ValidatingType = typeof(System.DateTime);
+            // 
+            // txtOgretmenDogumTarih
+            // 
+            this.txtOgretmenDogumTarih.Location = new System.Drawing.Point(170, 145);
+            this.txtOgretmenDogumTarih.Mask = "00/00/0000";
+            this.txtOgretmenDogumTarih.Name = "txtOgretmenDogumTarih";
+            this.txtOgretmenDogumTarih.Size = new System.Drawing.Size(196, 26);
+            this.txtOgretmenDogumTarih.TabIndex = 41;
+            this.txtOgretmenDogumTarih.ValidatingType = typeof(System.DateTime);
             // 
             // cmbOgretmenSube
             // 
@@ -701,15 +719,6 @@
             this.label31.Size = new System.Drawing.Size(55, 20);
             this.label31.TabIndex = 28;
             this.label31.Text = "Şifre:";
-            // 
-            // txtOgretmeniseBaslama
-            // 
-            this.txtOgretmeniseBaslama.Location = new System.Drawing.Point(170, 177);
-            this.txtOgretmeniseBaslama.Mask = "00/00/0000";
-            this.txtOgretmeniseBaslama.Name = "txtOgretmeniseBaslama";
-            this.txtOgretmeniseBaslama.Size = new System.Drawing.Size(196, 26);
-            this.txtOgretmeniseBaslama.TabIndex = 27;
-            this.txtOgretmeniseBaslama.ValidatingType = typeof(System.DateTime);
             // 
             // txtOgretmenTel
             // 
@@ -817,15 +826,6 @@
             this.label15.Size = new System.Drawing.Size(53, 20);
             this.label15.TabIndex = 10;
             this.label15.Text = "Sınıf:";
-            // 
-            // txtOgretmenDogumTarih
-            // 
-            this.txtOgretmenDogumTarih.Location = new System.Drawing.Point(170, 142);
-            this.txtOgretmenDogumTarih.Mask = "00/00/0000";
-            this.txtOgretmenDogumTarih.Name = "txtOgretmenDogumTarih";
-            this.txtOgretmenDogumTarih.Size = new System.Drawing.Size(196, 26);
-            this.txtOgretmenDogumTarih.TabIndex = 9;
-            this.txtOgretmenDogumTarih.ValidatingType = typeof(System.DateTime);
             // 
             // label16
             // 
@@ -1327,9 +1327,7 @@
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.MaskedTextBox txtVeliTel;
-        private System.Windows.Forms.MaskedTextBox txtOgretmeniseBaslama;
         private System.Windows.Forms.MaskedTextBox txtOgretmenTel;
-        private System.Windows.Forms.MaskedTextBox txtOgretmenDogumTarih;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.MaskedTextBox txtYoneticiiseBaslama;
         private System.Windows.Forms.MaskedTextBox txtYoneticiTel;
@@ -1379,5 +1377,7 @@
         private System.Windows.Forms.ComboBox cmbOgrenciSinif;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label32;
+        private System.Windows.Forms.MaskedTextBox txtOgretmeniseBaslama;
+        private System.Windows.Forms.MaskedTextBox txtOgretmenDogumTarih;
     }
 }

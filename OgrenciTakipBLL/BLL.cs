@@ -177,11 +177,6 @@ namespace OgrenciTakipBLL
                         oldumu = true;
                         digit++;
                     }
-                    else
-                    {
-                        oldumu = false;
-                        break;
-                    }
                 }
                 if (oldumu && digit == 8)
                 {
@@ -193,11 +188,11 @@ namespace OgrenciTakipBLL
                 }
                 else
                 {
-                    throw new ArgumentException("Lütfen doğum tarihini istenilen şekilde giriniz!");
+                    throw new ArgumentException("Lütfen işe başlama tarihini istenilen şekilde giriniz!");
                 }
             }
         }
-
+   
         private string _Sifre;
         public string Sifre
         {

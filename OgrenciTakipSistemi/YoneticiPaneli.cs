@@ -91,12 +91,12 @@ namespace OgrenciTakipSistemi
                 nesne.TCNo = txtYoneticiTC.Text;
                 nesne.DogumYeri = txtYoneticiDogumYeri.Text;
                 nesne.DogumTarihi = txtYoneticiDogumTarih.Text;
-                nesne.DogumYeri = txtOgrenciDogumYer.Text;
+                nesne.isebaslama = txtYoneticiiseBaslama.Text;
                 nesne.Sifre = txtYoneticiSifre.Text;
                 nesne.gorev = txtYoneticiGorev.Text;
                 nesne.email = txtYoneticiEMail.Text;
                 nesne.tel = txtYoneticiTel.Text;
-                nesne.Adres = txtAdres.Text;
+                nesne.Adres = txtYoneticiAdres.Text;
             }
         }
         public void OgretmenBilgiKontrol()
@@ -361,7 +361,7 @@ namespace OgrenciTakipSistemi
                 using (Ogretmen nesne = new Ogretmen())
                 {
                     MessageBox.Show(nesne.Guncelle("OgretmenEkleme", txtOgretmenAd.Text, txtOgretmenTC.Text, txtOgretmenDogumyeri.Text,
-                    dt, ib, txtOgretmenSifre.Text, cmbOgrenciSinif.Text, cmbOgrenciSube.Text,
+                    dt, ib, txtOgretmenSifre.Text, cmbOgretmenSinif.Text, cmbOgretmenSube.Text,
                     txtOgretmenEMail.Text, txtOgretmenTel.Text, txtOgretmenAdres.Text, "id"));
 
                     Listeleme();
@@ -429,7 +429,7 @@ namespace OgrenciTakipSistemi
                     string id = dgwOgretmen.Rows[dgwOgretmen.SelectedCells[0].RowIndex].Cells[0].Value.ToString();
 
                     MessageBox.Show(nesne.Guncelle("OgretmenGuncelleme2", txtOgretmenAd.Text, txtOgretmenTC.Text, txtOgretmenDogumyeri.Text,
-                        dt, ib, txtOgretmenSifre.Text, cmbOgrenciSinif.Text, cmbOgrenciSube.Text,
+                        dt, ib, txtOgretmenSifre.Text, cmbOgretmenSinif.Text, cmbOgretmenSube.Text,
                         txtOgretmenEMail.Text, txtOgretmenTel.Text, txtOgretmenAdres.Text, id));
 
                     Listeleme();
@@ -466,12 +466,20 @@ namespace OgrenciTakipSistemi
         {
             try
             {
-                using (Yonetici nesne = new Yonetici())
+                bool cevap = false;
+                if (MessageBox.Show("Kayıt silinecektir" + "\n" + "Devam etmek istiyor musunuz ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    nesne.TCNo = txtYoneticiTC.Text;
+                    cevap = true;
+                }
+                if (cevap)
+                {
+                    using (Yonetici nesne = new Yonetici())
+                    {
+                        nesne.TCNo = txtYoneticiTC.Text;
 
-                    string sorgu = "Delete from Yonetici where TC = " + nesne.TCNo;
-                    MessageBox.Show(nesne.Sil(sorgu));
+                        string sorgu = "Delete from Yonetici where TC = " + nesne.TCNo;
+                        MessageBox.Show(nesne.Sil(sorgu));
+                    }
                 }
                 Listeleme();
             }
@@ -485,12 +493,20 @@ namespace OgrenciTakipSistemi
         {
             try
             {
-                using (Ogretmen nesne = new Ogretmen())
+                bool cevap = false;
+                if (MessageBox.Show("Kayıt silinecektir" + "\n" + "Devam etmek istiyor musunuz ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    nesne.TCNo = txtOgretmenTC.Text;
+                    cevap = true;
+                }
+                if (cevap)
+                {
+                    using (Ogretmen nesne = new Ogretmen())
+                    {
+                        nesne.TCNo = txtOgretmenTC.Text;
 
-                    string sorgu = "Delete from Ogretmen where TC = " + nesne.TCNo;
-                    MessageBox.Show(nesne.Sil(sorgu));
+                        string sorgu = "Delete from Ogretmen where TC = " + nesne.TCNo;
+                        MessageBox.Show(nesne.Sil(sorgu));
+                    }
                 }
                 Listeleme();
             }
@@ -504,19 +520,27 @@ namespace OgrenciTakipSistemi
         {
             try
             {
-                using (Ogrenci nesne = new Ogrenci())
+                bool cevap = false;
+                if (MessageBox.Show("Kayıt silinecektir" + "\n" + "Devam etmek istiyor musunuz ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    nesne.TCNo = txtOgrenciTC.Text;
+                    cevap = true;
+                }
+                if (cevap)
+                {
+                    using (Ogrenci nesne = new Ogrenci())
+                    {
+                        nesne.TCNo = txtOgrenciTC.Text;
 
-                    string sorgu = "Delete from Ogrenciler where TC = " + nesne.TCNo;
-                    MessageBox.Show(nesne.Sil(sorgu));
+                        string sorgu = "Delete from Ogrenciler where TC = " + nesne.TCNo;
+                        MessageBox.Show(nesne.Sil(sorgu));
+                    }
                 }
                 Listeleme();
             }
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message);
-            }
+            }       
         }
     }
 }
