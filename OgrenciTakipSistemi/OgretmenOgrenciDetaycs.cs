@@ -77,13 +77,10 @@ namespace OgrenciTakipSistemi
             {
                 using (Notlar nesne = new Notlar())
                 {
-                    lblOrtalama.Text = "";
+                    lblOrtalama.Text = null;
                     if (!string.IsNullOrEmpty(txtSinav1.Text) && !string.IsNullOrEmpty(txtSinav2.Text) && !string.IsNullOrEmpty(txtKanaatNot.Text))
                     {
-                        nesne.sinav1 = txtSinav1.Text;
-                        nesne.sinav2 = txtSinav2.Text;
-                        nesne.kanaat = txtKanaatNot.Text;
-                        lblOrtalama.Text = nesne.ortalama();
+                        lblOrtalama.Text = nesne.ortalama(txtSinav1.Text, txtSinav2.Text, txtKanaatNot.Text);
                     }
                     else if (!string.IsNullOrEmpty(txtSinav1.Text) && !string.IsNullOrEmpty(txtSinav2.Text))
                     {
@@ -98,18 +95,8 @@ namespace OgrenciTakipSistemi
                     {
                         nesne.sinav1 = txtSinav2.Text;
                     }
-                }
 
-                if (!string.IsNullOrEmpty(lblOrtalama.Text))
-                {
-                    if (float.Parse(lblOrtalama.Text) >= 50)
-                        lblDurum.Text = "Geçti";
-                    else
-                        lblDurum.Text = "Kaldı";
-                }
-                else
-                {
-                    lblDurum.Text = "";
+                    lblDurum.Text = nesne.durum(lblOrtalama.Text);
                 }
             }
             catch (ArgumentException exc)
@@ -118,6 +105,17 @@ namespace OgrenciTakipSistemi
                 txtKanaatNot.Clear();
             }
             #endregion
+            //try
+            //{
+            //    using (Notlar nesne = new Notlar())
+            //    {
+            //        lblDurum.Text = nesne.Kanaat(txtSinav1.Text, txtSinav2.Text, txtKanaatNot.Text, lblOrtalama.Text);
+            //    }
+            //}
+            //catch (Exception)
+            //{
+            //    throw;
+            //}
         }
         private void txtSinav1_TextChanged(object sender, EventArgs e)
         {
@@ -168,15 +166,17 @@ namespace OgrenciTakipSistemi
                     throw new ArgumentException("Lütfen ilk sınav notunu giriniz.");
                 else if (string.IsNullOrEmpty(txtSinav2.Text) && !string.IsNullOrEmpty(txtKanaatNot.Text))
                     throw new ArgumentException("Lütfen kanaat notundan önce 2. sınav notunu giriniz.");
+                //else if(string.IsNullOrEmpty(txtKanaatNot.Text))
+                //    throw new ArgumentException("Lütfen kanaat notunu giriniz.");
 
-                string sorgu = $"Update Notlar set Sinav1 = {txtSinav1.Text}, Sinav2 = {txtSinav2.Text}, " +
-                               $"KanaatNot = {txtKanaatNot.Text}, Ortalama = @p1, Durum = '{lblDurum.Text}' " +
+                string sorgu = $"Update Notlar set Sinav1 = {txtSinav1.Text}, Sinav2 = '{txtSinav2.Text}', " +
+                               $"KanaatNot = '{txtKanaatNot.Text}', Ortalama = '{lblOrtalama.Text}', Durum = '{lblDurum.Text}' " +
                                $" where OgrenciId = {int.Parse(bilgiler[0])} and " +
                                $"DersId = (Select Id from Dersler where DersAdi = '{cmbDers.Text}')";
+
                 using (Notlar nesne = new Notlar())
                 {
-                    double ort = double.Parse(lblOrtalama.Text);
-                    MessageBox.Show(nesne.Ekle(sorgu,ort));
+                    MessageBox.Show(nesne.Ekle(sorgu));
                 }
                 listeleme();
             }

@@ -104,10 +104,9 @@ namespace OgrenciTakipSistemi
         {
             try
             {
-                DateTime dt = Convert.ToDateTime(txtOgretmenDogumTarih.Text);
                 using (Ogretmen nesne = new Ogretmen())
                 {
-                    MessageBox.Show(nesne.Guncelle("OgreTMENGuncelleme", txtOgretmenDogumyeri.Text, dt, txtSifre.Text,
+                    MessageBox.Show(nesne.Guncelle("OgreTMENGuncelleme", txtOgretmenDogumyeri.Text, txtOgretmenDogumTarih.Text, txtSifre.Text,
                         txtOgretmenEMail.Text, txtOgretmenTel.Text, txtOgretmenAdres.Text, lblOgretmenTC.Text));
                 }
             }

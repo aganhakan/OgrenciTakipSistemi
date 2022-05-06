@@ -125,18 +125,75 @@ namespace OgrenciTakipBLL
                 }
             }
         }
-        public string ortalama()
+        public string ortalama(string sinav1, string sinav2, string sinav3)
         {
+            this.sinav1 = sinav1;
+            this.sinav2 = sinav2;
+            this.kanaat = sinav3;
+
             return Math.Round(((double.Parse(_sinav1) + double.Parse(_sinav2) + double.Parse(_kanaat)) / 3),2).ToString();
         }
-
-        public string Ekle(string sorgu, double ort)
+        public string durum(string ort)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(ort))
+                {
+                    if (float.Parse(ort) >= 50)
+                        return "Geçti";
+                    else
+                        return "Kaldı";
+                }
+                else
+                {
+                    return "";
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public string Ekle(string sorgu)
         {
             try
             {
                 using (DAL objdal = new DAL())
                 {
-                    return objdal.EkleDB(sorgu,ort);
+                    return objdal.EkleDB(sorgu);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public string Kanaat(string sinav1, string sinav2, string kanaat, string ortalama)
+        {
+            try
+            {
+                using (Notlar nesne = new Notlar())
+                {
+                    ortalama = null;
+                    if (!string.IsNullOrEmpty(sinav1) && !string.IsNullOrEmpty(sinav2) && !string.IsNullOrEmpty(kanaat))
+                    {
+                        ortalama = nesne.ortalama(sinav1, sinav2, kanaat);
+                    }
+                    else if (!string.IsNullOrEmpty(sinav1) && !string.IsNullOrEmpty(sinav2))
+                    {
+                        nesne.sinav1 = sinav1;
+                        nesne.sinav2 = sinav2;
+                    }
+                    else if (!string.IsNullOrEmpty(sinav1))
+                    {
+                        nesne.sinav1 = sinav1;
+                    }
+                    else if (!string.IsNullOrEmpty(sinav2))
+                    {
+                        nesne.sinav1 = sinav2;
+                    }
+
+                    return nesne.durum(ortalama);
                 }
             }
             catch (Exception)

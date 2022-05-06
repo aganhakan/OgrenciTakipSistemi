@@ -69,20 +69,10 @@ namespace OgrenciTakipSistemi
         {
             try
             {     
-                DateTime dt = Convert.ToDateTime(txtOgrenciDogumTarih.Text);
-
                 using (Ogrenci nesne = new Ogrenci())
                 {
-                    nesne.TCNo = txtTC.Text;
-                    nesne.DogumYeri = txtOgrenciDogumYer.Text;
-                    nesne.DogumTarihi = txtOgrenciDogumTarih.Text;
-                    nesne.annead = txtAnneAdi.Text;
-                    nesne.babaad = txtBabaAdi.Text;
-                    nesne.velitel = txtVeliTel.Text;
-                    nesne.Adres = txtAdres.Text;
-
                     MessageBox.Show(nesne.Guncelle("OgrenciGuncelleme", lblOgrenciNo.Text, txtTC.Text, txtOgrenciDogumYer.Text,
-                        dt, txtAnneAdi.Text, txtBabaAdi.Text, txtVeliTel.Text, txtAdres.Text));
+                        txtOgrenciDogumTarih.Text, txtAnneAdi.Text, txtBabaAdi.Text, txtVeliTel.Text, txtAdres.Text));
                 }
             }
             catch (Exception exc)

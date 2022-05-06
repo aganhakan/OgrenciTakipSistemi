@@ -162,7 +162,7 @@
             this.btnYoneticiKaydet.Location = new System.Drawing.Point(0, 0);
             this.btnYoneticiKaydet.Name = "btnYoneticiKaydet";
             this.btnYoneticiKaydet.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.btnYoneticiKaydet.Size = new System.Drawing.Size(1255, 30);
+            this.btnYoneticiKaydet.Size = new System.Drawing.Size(1255, 28);
             this.btnYoneticiKaydet.TabIndex = 0;
             this.btnYoneticiKaydet.Text = "menuStrip1";
             // 
@@ -171,7 +171,7 @@
             this.öğretmenlerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.çıkışToolStripMenuItem});
             this.öğretmenlerToolStripMenuItem.Name = "öğretmenlerToolStripMenuItem";
-            this.öğretmenlerToolStripMenuItem.Size = new System.Drawing.Size(64, 26);
+            this.öğretmenlerToolStripMenuItem.Size = new System.Drawing.Size(64, 24);
             this.öğretmenlerToolStripMenuItem.Text = "Dosya";
             // 
             // çıkışToolStripMenuItem
@@ -186,7 +186,7 @@
             this.öğrencilerToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sınıfEkleToolStripMenuItem});
             this.öğrencilerToolStripMenuItem.Name = "öğrencilerToolStripMenuItem";
-            this.öğrencilerToolStripMenuItem.Size = new System.Drawing.Size(50, 26);
+            this.öğrencilerToolStripMenuItem.Size = new System.Drawing.Size(50, 24);
             this.öğrencilerToolStripMenuItem.Text = "Ekle";
             // 
             // sınıfEkleToolStripMenuItem
@@ -199,13 +199,13 @@
             // paylaşToolStripMenuItem
             // 
             this.paylaşToolStripMenuItem.Name = "paylaşToolStripMenuItem";
-            this.paylaşToolStripMenuItem.Size = new System.Drawing.Size(63, 26);
+            this.paylaşToolStripMenuItem.Size = new System.Drawing.Size(63, 24);
             this.paylaşToolStripMenuItem.Text = "Paylaş";
             // 
             // görünümToolStripMenuItem
             // 
             this.görünümToolStripMenuItem.Name = "görünümToolStripMenuItem";
-            this.görünümToolStripMenuItem.Size = new System.Drawing.Size(84, 26);
+            this.görünümToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
             this.görünümToolStripMenuItem.Text = "Görünüm";
             // 
             // tabControl1
@@ -214,10 +214,10 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 30);
+            this.tabControl1.Location = new System.Drawing.Point(0, 28);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1255, 763);
+            this.tabControl1.Size = new System.Drawing.Size(1255, 765);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -228,7 +228,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 29);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1247, 730);
+            this.tabPage1.Size = new System.Drawing.Size(1247, 732);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Yönetici Kayıt";
             // 
@@ -549,7 +549,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1247, 732);
+            this.tabPage2.Size = new System.Drawing.Size(1247, 730);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Öğretmen Kayıt";
             // 
@@ -892,7 +892,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 29);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1247, 732);
+            this.tabPage3.Size = new System.Drawing.Size(1247, 730);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Öğrenci Kayıt";
             // 

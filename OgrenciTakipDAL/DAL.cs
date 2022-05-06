@@ -155,26 +155,6 @@ namespace OgrenciTakipDAL
             }
             return mesaj;
         }
-        public string EkleDB(string sorgu, double ort)
-
-        {
-            string mesaj = "";
-            using (SqlConnection baglanti = new SqlConnection(baglanticumlesi))
-            {
-                using (SqlCommand kayit = new SqlCommand(sorgu, baglanti))
-                {
-                    baglanti.Open();
-                    kayit.Parameters.AddWithValue("@p1", ort);
-
-                    if (kayit.ExecuteNonQuery() > 0)
-                        mesaj = ("İşlem başarılı");
-                    else
-                        mesaj = ("İşlem başarısız");
-                }
-                baglanti.Close();
-            }
-            return mesaj;
-        }
         public string EkleDB(string sorgu)
 
         {

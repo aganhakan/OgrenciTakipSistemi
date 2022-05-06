@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OgrenciPanel));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -222,6 +223,7 @@
             // 
             // picOgrenci
             // 
+            this.picOgrenci.Image = ((System.Drawing.Image)(resources.GetObject("picOgrenci.Image")));
             this.picOgrenci.Location = new System.Drawing.Point(512, 37);
             this.picOgrenci.Name = "picOgrenci";
             this.picOgrenci.Size = new System.Drawing.Size(346, 246);

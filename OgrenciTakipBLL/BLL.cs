@@ -282,7 +282,6 @@ namespace OgrenciTakipBLL
                 throw;
             }
         }
-
         public DataTable Listeleme(string action,string procedure)
         {
             try
@@ -313,7 +312,6 @@ namespace OgrenciTakipBLL
                 throw;
             }
         }
-
         public MemoryStream Fotograf(string no,string sorgu)
         {
             try
@@ -360,14 +358,11 @@ namespace OgrenciTakipBLL
             }
         }
 
-
         #endregion
-
-
 
         public void Dispose()
         {
-            //throw new NotImplementedException();
+
         }
     }
 }

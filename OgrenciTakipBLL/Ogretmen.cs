@@ -9,14 +9,23 @@ namespace OgrenciTakipBLL
 {
     public class Ogretmen : BLL
     {
-        public string Guncelle(string procedure, string dogumyeri, DateTime dogumtarihi, string sifre,
+        public string Guncelle(string procedure, string dogumyeri, string dogumtarihi, string sifre,
         string email, string tel, string adres, string tc)
         {
             try
             {
+                DogumYeri = dogumyeri;
+                DogumTarihi = dogumtarihi;
+                DateTime dt = Convert.ToDateTime(dogumtarihi);
+                Sifre = sifre;
+                this.email = email;
+                this.tel = tel;
+                this.Adres = adres;
+                this.TCNo = tc;
+
                 using (DAL objDal = new DAL())
                 {
-                    return objDal.EkleDB(procedure, dogumyeri, dogumtarihi, sifre, email, tel, adres, tc);
+                    return objDal.EkleDB(procedure, dogumyeri, dt, sifre, email, tel, adres, tc);
                 }
             }
             catch (Exception)

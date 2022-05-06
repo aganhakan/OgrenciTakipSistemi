@@ -130,6 +130,12 @@ namespace OgrenciTakipSistemi
         }
         private void YoneticiPaneli_Load(object sender, EventArgs e)
         {
+            using (Yonetici nesne = new Yonetici())
+            {
+                string sorgu = "SELECT Fotograf FROM Yonetici WHERE Id = @No";
+                picYonetici.Image = picOgretmen.Image = picOgrenci.Image = Image.FromStream(nesne.Fotograf("1", sorgu));
+            }
+
             Listeleme();
         }
         private void çıkışToolStripMenuItem_Click(object sender, EventArgs e)
@@ -159,16 +165,21 @@ namespace OgrenciTakipSistemi
             txtYoneticiAdres.Text = (dgwYonetici.Rows[secilen].Cells[11].Value.ToString());
 
             #region Fotoğraf
-            if (!string.IsNullOrEmpty(dgwYonetici.Rows[secilen].Cells[10].Value.ToString()))
+            using (Yonetici nesne = new Yonetici())
             {
-                using (Yonetici nesne = new Yonetici())
+                if (!string.IsNullOrEmpty(dgwYonetici.Rows[secilen].Cells[10].Value.ToString()))
                 {
                     string sorgu = "SELECT Fotograf FROM Yonetici WHERE TC = @No";
                     picYonetici.Image = Image.FromStream(nesne.Fotograf(dgwYonetici.Rows[secilen].Cells[2].Value.ToString(), sorgu));
                 }
+                else
+                {
+                    string sorgu = "SELECT Fotograf FROM Yonetici WHERE Id = @No";
+                    picYonetici.Image = Image.FromStream(nesne.Fotograf("1", sorgu));
+                }        
             }
-            else
-                picYonetici.Image = null;
+
+            
             #endregion
         }
 
@@ -192,16 +203,20 @@ namespace OgrenciTakipSistemi
             txtOgretmenAdres.Text = (dgwOgretmen.Rows[secilen].Cells[11].Value.ToString());
 
             #region Fotoğraf
-            if (!string.IsNullOrEmpty(dgwOgretmen.Rows[secilen].Cells[10].Value.ToString()))
+            using (Ogretmen nesne = new Ogretmen())
             {
-                using (Ogretmen nesne = new Ogretmen())
+                if (!string.IsNullOrEmpty(dgwOgretmen.Rows[secilen].Cells[10].Value.ToString()))
                 {
                     string sorgu = "SELECT Fotograf FROM Ogretmen WHERE TC = @No";
                     picOgretmen.Image = Image.FromStream(nesne.Fotograf(dgwOgretmen.Rows[secilen].Cells[2].Value.ToString(), sorgu));
                 }
+                else
+                {
+                    string sorgu = "SELECT Fotograf FROM Yonetici WHERE Id = @No";
+                    picOgretmen.Image = Image.FromStream(nesne.Fotograf("1", sorgu));
+                } 
             }
-            else
-                picOgretmen.Image = null;
+            
             #endregion
         }
 
@@ -225,16 +240,20 @@ namespace OgrenciTakipSistemi
             txtAdres.Text = (dgwOgrenci.Rows[secilen].Cells[11].Value.ToString());
 
             #region Fotoğraf
-            if (!string.IsNullOrEmpty(dgwOgrenci.Rows[secilen].Cells[10].Value.ToString()))
+            using (Ogrenci nesne = new Ogrenci())
             {
-                using (Ogrenci nesne = new Ogrenci())
+                if (!string.IsNullOrEmpty(dgwOgrenci.Rows[secilen].Cells[10].Value.ToString()))
                 {
                     string sorgu = "SELECT Fotograf FROM Ogrenciler WHERE TC = @No";
                     picOgrenci.Image = Image.FromStream(nesne.Fotograf(dgwOgrenci.Rows[secilen].Cells[3].Value.ToString(), sorgu));
                 }
+                else
+                {
+                    string sorgu = "SELECT Fotograf FROM Yonetici WHERE Id = @No";
+                    picOgrenci.Image = Image.FromStream(nesne.Fotograf("1", sorgu));
+                }
             }
-            else
-                picOgrenci.Image = null;
+          
             #endregion
         }
 
