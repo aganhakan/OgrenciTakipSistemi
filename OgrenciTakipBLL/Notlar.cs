@@ -125,7 +125,7 @@ namespace OgrenciTakipBLL
                 }
             }
         }
-        public string ortalama(string sinav1, string sinav2, string sinav3)
+        public string Ortalama(string sinav1, string sinav2, string sinav3)
         {
             this.sinav1 = sinav1;
             this.sinav2 = sinav2;
@@ -133,7 +133,7 @@ namespace OgrenciTakipBLL
 
             return Math.Round(((double.Parse(_sinav1) + double.Parse(_sinav2) + double.Parse(_kanaat)) / 3),2).ToString();
         }
-        public string durum(string ort)
+        public string Durum(string ort)
         {
             try
             {
@@ -154,10 +154,15 @@ namespace OgrenciTakipBLL
                 throw;
             }
         }
-        public string Ekle(string sorgu)
+        public string Ekle(string sinav1, string sinav2, string kanaat, string ortalama, string durum, string id, string ders)
         {
             try
             {
+                string sorgu = $"Update Notlar set Sinav1 = {sinav1}, Sinav2 = '{sinav2}', " +
+                          $"KanaatNot = '{kanaat}', Ortalama = '{ortalama}', Durum = '{durum}' " +
+                          $" where OgrenciId = {id} and " +
+                          $"DersId = (Select Id from Dersler where DersAdi = '{ders}')";
+
                 using (DAL objdal = new DAL())
                 {
                     return objdal.EkleDB(sorgu);
@@ -168,33 +173,32 @@ namespace OgrenciTakipBLL
                 throw;
             }
         }
-        public string Kanaat(string sinav1, string sinav2, string kanaat, string ortalama)
+        public string Kanaat(string sinav1, string sinav2, string kanaat)
         {
             try
             {
-                using (Notlar nesne = new Notlar())
-                {
-                    ortalama = null;
-                    if (!string.IsNullOrEmpty(sinav1) && !string.IsNullOrEmpty(sinav2) && !string.IsNullOrEmpty(kanaat))
-                    {
-                        ortalama = nesne.ortalama(sinav1, sinav2, kanaat);
-                    }
-                    else if (!string.IsNullOrEmpty(sinav1) && !string.IsNullOrEmpty(sinav2))
-                    {
-                        nesne.sinav1 = sinav1;
-                        nesne.sinav2 = sinav2;
-                    }
-                    else if (!string.IsNullOrEmpty(sinav1))
-                    {
-                        nesne.sinav1 = sinav1;
-                    }
-                    else if (!string.IsNullOrEmpty(sinav2))
-                    {
-                        nesne.sinav1 = sinav2;
-                    }
 
-                    return nesne.durum(ortalama);
+                string ortalama = null;
+                if (!string.IsNullOrEmpty(sinav1) && !string.IsNullOrEmpty(sinav2) && !string.IsNullOrEmpty(kanaat))
+                {
+                    ortalama = this.Ortalama(sinav1, sinav2, kanaat);
                 }
+                else if (!string.IsNullOrEmpty(sinav1) && !string.IsNullOrEmpty(sinav2))
+                {
+                    this.sinav1 = sinav1;
+                    this.sinav2 = sinav2;
+                }
+                else if (!string.IsNullOrEmpty(sinav1))
+                {
+                    this.sinav1 = sinav1;
+                }
+                else if (!string.IsNullOrEmpty(sinav2))
+                {
+                    this.sinav2 = sinav2;
+                }
+
+                return Durum(ortalama);
+
             }
             catch (Exception)
             {

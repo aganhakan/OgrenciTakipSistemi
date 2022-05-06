@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OgrenciTakipDAL;
+using System.Data;
 
 namespace OgrenciTakipBLL
 {
@@ -21,10 +22,11 @@ namespace OgrenciTakipBLL
             H
         }
         public int[] sinif = { 1, 2, 3, 4 };
-        public string Ekle(string sorgu)
+        public string Ekle(string sinif, string sube)
         {
             try
             {
+                string sorgu = $"Insert Into Siniflar(Sinif,Sube) Values ('{sinif}','{sube}')";
                 using (DAL objdal = new DAL())
                 {
                     return objdal.EkleDB(sorgu);
@@ -32,6 +34,37 @@ namespace OgrenciTakipBLL
             }
             catch (Exception)
             {
+                throw;
+            }
+        }
+        public string Delete(string sinif, string sube)
+        {
+            try
+            {
+                string sorgu = $"Delete from Siniflar Where Sinif = '{sinif}' and Sube = '{sube}'";
+                using (DAL objdal = new DAL())
+                {
+                    return objdal.EkleDB(sorgu);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public DataTable Listeleme()
+        {
+            try
+            {
+                string sorgu = "Select Sinif + ' / ' + Sube as 'Mevcut Sınıflar' from Siniflar order by Sinif asc";
+                using (DAL objDal = new DAL())
+                {
+                    return objDal.ListelemeDB(sorgu);
+                }
+            }
+            catch (Exception)
+            {
+
                 throw;
             }
         }

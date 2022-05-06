@@ -25,11 +25,10 @@ namespace OgrenciTakipSistemi
         {
             using (Ogretmen nesne = new Ogretmen())
             {
-                string sorgu = "Select Sinif + '/' + Sube from Siniflar s inner join Ogretmen o " +
-                    "on o.SinifId = s.Id where o.TC = @p1";
-                lblSinif.Text = (nesne.Giris(sorgu, lblOgretmenTC.Text))[0];
 
-                dgwOgrenciBilgiler.DataSource = nesne.Listeleme(lblOgretmenTC.Text, "OgretmenDetay");
+                lblSinif.Text = (nesne.Sinif(lblOgretmenTC.Text))[0];
+
+                dgwOgrenciBilgiler.DataSource = nesne.Listeleme(lblOgretmenTC.Text);
                 dgwOgrenciBilgiler.Columns[0].Visible = false;
                 dgwOgrenciBilgiler.Columns[6].Visible = false;
                 dgwOgrenciBilgiler.Columns[10].Visible = false;
@@ -56,8 +55,7 @@ namespace OgrenciTakipSistemi
             {
                 using (Ogretmen nesne = new Ogretmen())
                 {
-                    string sorgu = "SELECT Fotograf FROM Ogretmen WHERE TC = @No";
-                    picOgretmen.Image = Image.FromStream(nesne.Fotograf(OgretmenBilgileri[2], sorgu));
+                    picOgretmen.Image = Image.FromStream(nesne.Fotograf(OgretmenBilgileri[2]));
                 }
             }
             #endregion
@@ -83,8 +81,7 @@ namespace OgrenciTakipSistemi
 
                 using (Ogretmen nesne = new Ogretmen())
                 {
-                    MessageBox.Show(nesne.FotoGuncelle("Update Ogretmen set Fotograf = @p1 where TC = " + lblOgretmenTC.Text +
-                        "", resim));
+                    MessageBox.Show(nesne.FotoGuncelle(lblOgretmenTC.Text, resim));
                 }
             }
             catch (Exception exc)
@@ -106,7 +103,7 @@ namespace OgrenciTakipSistemi
             {
                 using (Ogretmen nesne = new Ogretmen())
                 {
-                    MessageBox.Show(nesne.Guncelle("OgreTMENGuncelleme", txtOgretmenDogumyeri.Text, txtOgretmenDogumTarih.Text, txtSifre.Text,
+                    MessageBox.Show(nesne.Guncelle(txtOgretmenDogumyeri.Text, txtOgretmenDogumTarih.Text, txtSifre.Text,
                         txtOgretmenEMail.Text, txtOgretmenTel.Text, txtOgretmenAdres.Text, lblOgretmenTC.Text));
                 }
             }
@@ -150,25 +147,9 @@ namespace OgrenciTakipSistemi
         {
             try
             {
-                using (Ogrenci nesne = new Ogrenci())
+                using (Ogretmen nesne = new Ogretmen())
                 {
-                    string sorgu = "";
-                    if (!string.IsNullOrEmpty(txtOgrenciNo.Text))
-                    {
-                        nesne.ogrencino = txtOgrenciNo.Text;
-                        sorgu = $"Select o.* from Ogrenciler o inner join Siniflar s on s.Id = o.SinifId " +
-                            $"inner join Ogretmen og on og.SinifId = s.Id where o.OgrenciNo = '{txtOgrenciNo.Text}'";
-                    }
-                    else if (!string.IsNullOrEmpty(txtOgrenciAd.Text))
-                    {
-                        nesne.AdSoyad = txtOgrenciAd.Text;
-                        sorgu = $"Select o.* from Ogrenciler o inner join Siniflar s on s.Id = o.SinifId " +
-                            $"inner join Ogretmen og on og.SinifId = s.Id where o.AdSoyad = '{txtOgrenciAd.Text}'";
-                    }   
-                    else
-                        throw new Exception("Lütfen aranacak öğrenci bilgisini giriniz!");
-
-                    dgwOgrenciBilgiler.DataSource = nesne.Listeleme(sorgu);
+                    dgwOgrenciBilgiler.DataSource = nesne.Listeleme(txtOgrenciNo.Text, txtOgrenciAd.Text);
                 }
             }
             catch (Exception exc)

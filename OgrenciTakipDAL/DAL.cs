@@ -12,31 +12,6 @@ namespace OgrenciTakipDAL
     public class DAL : IDisposable
     {
         string baglanticumlesi = "Data Source=.;Initial Catalog=OgrenciTakipSistemi;Integrated Security=True";
-        public List<string> GirisDB(string sorgu, string ad)
-        {
-            using (SqlConnection baglanti = new SqlConnection(baglanticumlesi))
-            {
-                List<string> girislist = new List<string>();
-
-                baglanti.Open();
-                using (SqlCommand komut = new SqlCommand(sorgu, baglanti))
-                {
-                    komut.Parameters.AddWithValue("@p1", ad);
-                    using (SqlDataReader dr = komut.ExecuteReader())
-                    {
-                        while (dr.Read())
-                        {
-                            for (int i = 0; i < dr.FieldCount; i++)
-                            {
-                                girislist.Add(dr[i].ToString());
-                            }
-                        }
-                        baglanti.Close();
-                    }
-                }
-                return girislist;
-            }
-        }
         public DataTable ListelemeDB(string action, string procedure)
         {
             try
@@ -51,33 +26,6 @@ namespace OgrenciTakipDAL
 
                         cmd.Parameters.AddWithValue("@Action", action);
 
-                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                        {
-                            using (DataTable ds = new DataTable())
-                            {
-                                da.Fill(ds);
-                                baglanti.Close();
-                                return ds;
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        public DataTable ListelemeDB(string sorgu)
-        {
-            try
-            {
-                using (SqlConnection baglanti = new SqlConnection(baglanticumlesi))
-                {
-                    baglanti.Open();
-
-                    using (SqlCommand cmd = new SqlCommand(sorgu, baglanti))
-                    {
                         using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                         {
                             using (DataTable ds = new DataTable())
@@ -144,25 +92,6 @@ namespace OgrenciTakipDAL
                     kayit.Parameters.AddWithValue("@Adres", adres);
                     kayit.Parameters.AddWithValue("@Tc", tc);
 
-                    baglanti.Open();
-
-                    if (kayit.ExecuteNonQuery() > 0)
-                        mesaj = ("İşlem başarılı");
-                    else
-                        mesaj = ("İşlem başarısız");
-                }
-                baglanti.Close();
-            }
-            return mesaj;
-        }
-        public string EkleDB(string sorgu)
-
-        {
-            string mesaj = "";
-            using (SqlConnection baglanti = new SqlConnection(baglanticumlesi))
-            {
-                using (SqlCommand kayit = new SqlCommand(sorgu, baglanti))
-                {
                     baglanti.Open();
 
                     if (kayit.ExecuteNonQuery() > 0)
@@ -264,6 +193,78 @@ namespace OgrenciTakipDAL
                     kayit.Parameters.AddWithValue("@Adres", adres);
                     kayit.Parameters.AddWithValue("@Id", id);
 
+                    baglanti.Open();
+
+                    if (kayit.ExecuteNonQuery() > 0)
+                        mesaj = ("İşlem başarılı");
+                    else
+                        mesaj = ("İşlem başarısız");
+                }
+                baglanti.Close();
+            }
+            return mesaj;
+        }
+
+        public List<string> GirisDB(string sorgu, string tc)
+        {
+            using (SqlConnection baglanti = new SqlConnection(baglanticumlesi))
+            {
+                List<string> girislist = new List<string>();
+
+                baglanti.Open();
+                using (SqlCommand komut = new SqlCommand(sorgu, baglanti))
+                {
+                    komut.Parameters.AddWithValue("@p1", tc);
+                    using (SqlDataReader dr = komut.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            for (int i = 0; i < dr.FieldCount; i++)
+                            {
+                                girislist.Add(dr[i].ToString());
+                            }
+                        }
+                        baglanti.Close();
+                    }
+                }
+                return girislist;
+            }
+        }
+        public DataTable ListelemeDB(string sorgu)
+        {
+            try
+            {
+                using (SqlConnection baglanti = new SqlConnection(baglanticumlesi))
+                {
+                    baglanti.Open();
+
+                    using (SqlCommand cmd = new SqlCommand(sorgu, baglanti))
+                    {
+                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
+                        {
+                            using (DataTable ds = new DataTable())
+                            {
+                                da.Fill(ds);
+                                baglanti.Close();
+                                return ds;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        public string EkleDB(string sorgu)
+
+        {
+            string mesaj = "";
+            using (SqlConnection baglanti = new SqlConnection(baglanticumlesi))
+            {
+                using (SqlCommand kayit = new SqlCommand(sorgu, baglanti))
+                {
                     baglanti.Open();
 
                     if (kayit.ExecuteNonQuery() > 0)

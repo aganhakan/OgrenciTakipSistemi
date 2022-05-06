@@ -24,9 +24,7 @@ namespace OgrenciTakipSistemi
             #region Yönetici Tablosu
             using (Yonetici nesne = new Yonetici())
             {
-                string sorgu = "Select * from Yonetici";
-
-                dgwYonetici.DataSource = nesne.Listeleme(sorgu);
+                dgwYonetici.DataSource = nesne.Listeleme();
                 dgwYonetici.Columns[0].Visible = false;
                 dgwYonetici.Columns[6].Visible = false;
                 dgwYonetici.Columns[10].Visible = false;
@@ -38,10 +36,7 @@ namespace OgrenciTakipSistemi
             #region Öğretmen Tablosu
             using (Ogretmen nesne = new Ogretmen())
             {
-                string sorgu = "Select o.*,Sinif + '/' + Sube as 'Sınıf' from Ogretmen o " +
-                    "inner join Siniflar s on s.Id = o.SinifId";
-
-                dgwOgretmen.DataSource = nesne.Listeleme(sorgu);
+                dgwOgretmen.DataSource = nesne.ListelemeYon();
                 dgwOgretmen.Columns[0].Visible = false;
                 dgwOgretmen.Columns[6].Visible = false;
                 dgwOgretmen.Columns[7].Visible = false;
@@ -54,10 +49,7 @@ namespace OgrenciTakipSistemi
             #region Öğrenci Tablosu
             using (Ogrenci nesne = new Ogrenci())
             {
-                string sorgu = "Select o.*,Sinif + '/' + Sube as 'Sınıf' from Ogrenciler o " +
-                    "inner join Siniflar s on s.Id = o.SinifId";
-
-                dgwOgrenci.DataSource = nesne.Listeleme(sorgu);
+                dgwOgrenci.DataSource = nesne.ListelemeYon();
                 dgwOgrenci.Columns[0].Visible = false;
                 dgwOgrenci.Columns[6].Visible = false;
                 dgwOgrenci.Columns[10].Visible = false;
@@ -132,8 +124,7 @@ namespace OgrenciTakipSistemi
         {
             using (Yonetici nesne = new Yonetici())
             {
-                string sorgu = "SELECT Fotograf FROM Yonetici WHERE Id = @No";
-                picYonetici.Image = picOgretmen.Image = picOgrenci.Image = Image.FromStream(nesne.Fotograf("1", sorgu));
+                picYonetici.Image = picOgretmen.Image = picOgrenci.Image = Image.FromStream(nesne.Fotograf("1"));
             }
 
             Listeleme();
@@ -168,18 +159,10 @@ namespace OgrenciTakipSistemi
             using (Yonetici nesne = new Yonetici())
             {
                 if (!string.IsNullOrEmpty(dgwYonetici.Rows[secilen].Cells[10].Value.ToString()))
-                {
-                    string sorgu = "SELECT Fotograf FROM Yonetici WHERE TC = @No";
-                    picYonetici.Image = Image.FromStream(nesne.Fotograf(dgwYonetici.Rows[secilen].Cells[2].Value.ToString(), sorgu));
-                }
+                    picYonetici.Image = Image.FromStream(nesne.Fotograf(dgwYonetici.Rows[secilen].Cells[0].Value.ToString()));
                 else
-                {
-                    string sorgu = "SELECT Fotograf FROM Yonetici WHERE Id = @No";
-                    picYonetici.Image = Image.FromStream(nesne.Fotograf("1", sorgu));
-                }        
-            }
-
-            
+                    YoneticiPaneli_Load(this, null);     
+            }           
             #endregion
         }
 
@@ -206,17 +189,10 @@ namespace OgrenciTakipSistemi
             using (Ogretmen nesne = new Ogretmen())
             {
                 if (!string.IsNullOrEmpty(dgwOgretmen.Rows[secilen].Cells[10].Value.ToString()))
-                {
-                    string sorgu = "SELECT Fotograf FROM Ogretmen WHERE TC = @No";
-                    picOgretmen.Image = Image.FromStream(nesne.Fotograf(dgwOgretmen.Rows[secilen].Cells[2].Value.ToString(), sorgu));
-                }
+                    picOgretmen.Image = Image.FromStream(nesne.Fotograf(dgwOgretmen.Rows[secilen].Cells[2].Value.ToString()));
                 else
-                {
-                    string sorgu = "SELECT Fotograf FROM Yonetici WHERE Id = @No";
-                    picOgretmen.Image = Image.FromStream(nesne.Fotograf("1", sorgu));
-                } 
-            }
-            
+                    YoneticiPaneli_Load(this, null);
+            }         
             #endregion
         }
 
@@ -243,17 +219,10 @@ namespace OgrenciTakipSistemi
             using (Ogrenci nesne = new Ogrenci())
             {
                 if (!string.IsNullOrEmpty(dgwOgrenci.Rows[secilen].Cells[10].Value.ToString()))
-                {
-                    string sorgu = "SELECT Fotograf FROM Ogrenciler WHERE TC = @No";
-                    picOgrenci.Image = Image.FromStream(nesne.Fotograf(dgwOgrenci.Rows[secilen].Cells[3].Value.ToString(), sorgu));
-                }
+                    picOgrenci.Image = Image.FromStream(nesne.Fotograf(dgwOgrenci.Rows[secilen].Cells[1].Value.ToString()));
                 else
-                {
-                    string sorgu = "SELECT Fotograf FROM Yonetici WHERE Id = @No";
-                    picOgrenci.Image = Image.FromStream(nesne.Fotograf("1", sorgu));
-                }
-            }
-          
+                    YoneticiPaneli_Load(this, null);
+            }      
             #endregion
         }
 
@@ -290,10 +259,9 @@ namespace OgrenciTakipSistemi
                 BinaryReader br = new BinaryReader(fs);
                 byte[] resim = br.ReadBytes((int)fs.Length);
 
-                using (Ogretmen nesne = new Ogretmen())
+                using (Yonetici nesne = new Yonetici())
                 {
-                    MessageBox.Show(nesne.FotoGuncelle("Update Yonetici set Fotograf = @p1 where TC = " + txtYoneticiTC.Text +
-                        "", resim));
+                    MessageBox.Show(nesne.FotoGuncelle(txtYoneticiTC.Text, resim));
                     Listeleme();
                 }
             }
@@ -315,8 +283,7 @@ namespace OgrenciTakipSistemi
 
                 using (Ogretmen nesne = new Ogretmen())
                 {
-                    MessageBox.Show(nesne.FotoGuncelle("Update Ogretmen set Fotograf = @p1 where TC = " + txtOgretmenTC.Text +
-                        "", resim));
+                    MessageBox.Show(nesne.FotoGuncelle(txtOgretmenTC.Text, resim));
                     Listeleme();
                 }
             }
@@ -338,8 +305,7 @@ namespace OgrenciTakipSistemi
 
                 using (Ogrenci nesne = new Ogrenci())
                 {
-                    MessageBox.Show(nesne.FotoGuncelle("Update Ogrenciler set Fotograf = @p1 where OgrenciNo = " + txtOgrenciNo.Text +
-                        "", resim));
+                    MessageBox.Show(nesne.FotoGuncelle(txtOgrenciNo.Text, resim));
                     Listeleme();
                 }
             }
@@ -494,10 +460,7 @@ namespace OgrenciTakipSistemi
                 {
                     using (Yonetici nesne = new Yonetici())
                     {
-                        nesne.TCNo = txtYoneticiTC.Text;
-
-                        string sorgu = "Delete from Yonetici where TC = " + nesne.TCNo;
-                        MessageBox.Show(nesne.Sil(sorgu));
+                        MessageBox.Show(nesne.Sil(txtYoneticiTC.Text));
                     }
                 }
                 Listeleme();
@@ -521,10 +484,7 @@ namespace OgrenciTakipSistemi
                 {
                     using (Ogretmen nesne = new Ogretmen())
                     {
-                        nesne.TCNo = txtOgretmenTC.Text;
-
-                        string sorgu = "Delete from Ogretmen where TC = " + nesne.TCNo;
-                        MessageBox.Show(nesne.Sil(sorgu));
+                        MessageBox.Show(nesne.Sil(txtOgretmenTC.Text));
                     }
                 }
                 Listeleme();
@@ -548,10 +508,7 @@ namespace OgrenciTakipSistemi
                 {
                     using (Ogrenci nesne = new Ogrenci())
                     {
-                        nesne.TCNo = txtOgrenciTC.Text;
-
-                        string sorgu = "Delete from Ogrenciler where TC = " + nesne.TCNo;
-                        MessageBox.Show(nesne.Sil(sorgu));
+                        MessageBox.Show(nesne.Sil(txtOgrenciTC.Text));
                     }
                 }
                 Listeleme();

@@ -23,9 +23,7 @@ namespace OgrenciTakipSistemi
             {
                 using (Siniflar nesne = new Siniflar())
                 {
-                    string sorgu = "Select Sinif + ' / ' + Sube as 'Mevcut Sınıflar' from Siniflar order by Sinif asc";
-
-                    dgwSiniflar.DataSource = nesne.Listeleme(sorgu);
+                    dgwSiniflar.DataSource = nesne.Listeleme();
                     dgwSiniflar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     //dgwOgrenci.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
                 }
@@ -45,16 +43,13 @@ namespace OgrenciTakipSistemi
             }
             Listeleme();
         }
-
         private void btnEkle_Click(object sender, EventArgs e)
         {
             try
             {
                 using (Siniflar nesne = new Siniflar())
                 {
-                    string sorgu = $"Insert Into Siniflar(Sinif,Sube) Values ('{CmbSinif.Text}','{CmbSube.Text}')";
-
-                    MessageBox.Show(nesne.Ekle(sorgu));
+                    MessageBox.Show(nesne.Ekle(CmbSinif.Text, CmbSube.Text));
 
                 }
                 Listeleme();
@@ -71,10 +66,7 @@ namespace OgrenciTakipSistemi
             {
                 using (Siniflar nesne = new Siniflar())
                 {
-                    string sorgu = $"Delete from Siniflar Where Sinif = '{CmbSinif.Text}' and Sube = '{CmbSube.Text}'";
-
-                    MessageBox.Show(nesne.Ekle(sorgu));
-
+                    MessageBox.Show(nesne.Delete(CmbSinif.Text, CmbSube.Text));
                 }
                 Listeleme();
             }

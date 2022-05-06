@@ -19,10 +19,13 @@ namespace OgrenciTakipBLL
             Oyun,
             İngilizce
         }
-        public string Ekle(string sorgu)
+        public string Ekle(string dersler, string id)
         {
             try
             {
+                string sorgu = $"insert into Notlar (DersId, OgrenciId) " +
+                    $"values ((select Id from Dersler where DersAdi = '{dersler}'),{id})";
+
                 using (DAL objdal = new DAL())
                 {
                     return objdal.EkleDB(sorgu);

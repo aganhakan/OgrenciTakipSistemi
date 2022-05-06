@@ -35,12 +35,7 @@ namespace OgrenciTakipSistemi
             {
                 using (Ogretmen nesne = new Ogretmen())
                 {
-                    nesne.TCNo = txtKullaniciAdi.Text;
-                    nesne.Sifre = txtSifre.Text;
-
-                    string sorgu = "SELECT * FROM Ogretmen Where TC = @p1";
-
-                    List<string> OgretmenBilgileri = nesne.Giris(sorgu, txtKullaniciAdi.Text);
+                    List<string> OgretmenBilgileri = nesne.Giris(txtKullaniciAdi.Text, txtSifre.Text);
 
                     if (OgretmenBilgileri.Count != 0)
                     {

@@ -32,9 +32,7 @@ namespace OgrenciTakipSistemi
             {
                 using (Ogrenci nesne = new Ogrenci())
                 {
-                    string procedure = "OgrenciNotlar";
-                    dgwOgrenci.DataSource = nesne.Listeleme(lblOgrenciNo.Text, procedure);
-
+                    dgwOgrenci.DataSource = nesne.Listeleme(lblOgrenciNo.Text);
                     dgwOgrenci.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                     //dgwOgrenci.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCellsExceptHeader);
                 }
@@ -59,8 +57,7 @@ namespace OgrenciTakipSistemi
 
             using (Ogrenci nesne = new Ogrenci())
             {
-                string sorgu = "SELECT Fotograf FROM Ogrenciler WHERE OgrenciNo = @No";
-                picOgrenci.Image = Image.FromStream(nesne.Fotograf(OgrenciBilgileri[1],sorgu));
+                picOgrenci.Image = Image.FromStream(nesne.Fotograf(OgrenciBilgileri[1]));
             }
             Listeleme();
         }
@@ -71,7 +68,7 @@ namespace OgrenciTakipSistemi
             {     
                 using (Ogrenci nesne = new Ogrenci())
                 {
-                    MessageBox.Show(nesne.Guncelle("OgrenciGuncelleme", lblOgrenciNo.Text, txtTC.Text, txtOgrenciDogumYer.Text,
+                    MessageBox.Show(nesne.Guncelle(lblOgrenciNo.Text, txtTC.Text, txtOgrenciDogumYer.Text,
                         txtOgrenciDogumTarih.Text, txtAnneAdi.Text, txtBabaAdi.Text, txtVeliTel.Text, txtAdres.Text));
                 }
             }
@@ -103,8 +100,7 @@ namespace OgrenciTakipSistemi
 
                 using (Ogrenci nesne = new Ogrenci())
                 {
-                    MessageBox.Show(nesne.FotoGuncelle("Update Ogrenciler set Fotograf = @p1 where OgrenciNo = " + lblOgrenciNo.Text +
-                        "", resim));
+                    MessageBox.Show(nesne.FotoGuncelle(lblOgrenciNo.Text, resim));
                 }
             }
             catch (Exception exc)

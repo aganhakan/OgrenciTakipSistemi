@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtTel = new System.Windows.Forms.MaskedTextBox();
             this.btnGeri = new System.Windows.Forms.Button();
             this.btnCikis = new System.Windows.Forms.Button();
             this.btnSifreyiGoster = new System.Windows.Forms.Button();
@@ -41,7 +42,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtAdSoyad = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtTel = new System.Windows.Forms.MaskedTextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,6 +66,15 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Şifrenizi tekrar almak için bilgileri giriniz.";
+            // 
+            // txtTel
+            // 
+            this.txtTel.Location = new System.Drawing.Point(188, 264);
+            this.txtTel.Margin = new System.Windows.Forms.Padding(4);
+            this.txtTel.Mask = "(999) 000-0000";
+            this.txtTel.Name = "txtTel";
+            this.txtTel.Size = new System.Drawing.Size(180, 30);
+            this.txtTel.TabIndex = 26;
             // 
             // btnGeri
             // 
@@ -192,15 +201,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Ad Soyad:";
             // 
-            // txtTel
-            // 
-            this.txtTel.Location = new System.Drawing.Point(188, 264);
-            this.txtTel.Margin = new System.Windows.Forms.Padding(4);
-            this.txtTel.Mask = "(999) 000-0000";
-            this.txtTel.Name = "txtTel";
-            this.txtTel.Size = new System.Drawing.Size(180, 30);
-            this.txtTel.TabIndex = 26;
-            // 
             // YoneticiSifreUnuttum
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 25F);
@@ -215,6 +215,7 @@
             this.Name = "YoneticiSifreUnuttum";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Şifre Ekranı";
+            this.Load += new System.EventHandler(this.YoneticiSifreUnuttum_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);

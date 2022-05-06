@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Configuration;
 using OgrenciTakipDAL;
+using System.Data;
+using System.IO;
 
 namespace OgrenciTakipBLL
 {
@@ -44,6 +46,117 @@ namespace OgrenciTakipBLL
                 }
             }
         }
+        public List<string> Giris(string tc, string sifre)
+        {
+            try
+            {
+                TCNo = tc;
+                Sifre = sifre;
+                string sorgu = "SELECT * FROM Yonetici Where TC = @p1";
+                using (DAL objDal = new DAL())
+                {
+                    return objDal.GirisDB(sorgu, tc);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public DataTable Listeleme()
+        {
+            try
+            {
+                string sorgu = "Select * from Yonetici";
+                using (DAL objDal = new DAL())
+                {
+                    return objDal.ListelemeDB(sorgu);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public MemoryStream Fotograf(string no)
+        {
+            try
+            {
+                string sorgu = "SELECT Fotograf FROM Yonetici WHERE Id = @No";
+                using (DAL objDal = new DAL())
+                {
+                    return objDal.Fotograf(no, sorgu);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public string FotoGuncelle(string tc, byte[] resim)
+        {
+            try
+            {
+                string sorgu = "Update Yonetici set Fotograf = @p1 where TC = " + tc;
+
+                using (DAL objDal = new DAL())
+                {
+                    return objDal.FotoGuncelle(sorgu, resim);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public string Giris2(string tc, string ad, string dogumtarihi, string email, string tel)
+        {
+            try
+            {
+                TCNo = tc;
+                AdSoyad = ad;
+                DogumTarihi = dogumtarihi;
+                this.email = email;
+                this.tel = tel;
+                string sorgu = "SELECT * FROM Yonetici Where TC = @p1";
+                using (DAL objDal = new DAL())
+                {
+                    List<string> YoneticiBilgileri = Giris(sorgu, tc);
+
+                    if (YoneticiBilgileri.Count != 0)
+                    {
+                        if (YoneticiBilgileri[1] == AdSoyad &&
+                            YoneticiBilgileri[2] == TCNo &&
+                            YoneticiBilgileri[4] == DogumTarihi + " 00:00:00" &&
+                            YoneticiBilgileri[8] == this.email &&
+                            YoneticiBilgileri[9] == this.tel
+                            )
+                        {
+                            return ("Şifreniz: " + YoneticiBilgileri[6]);
+                        }
+                        else
+                        {
+                            return ("Bilgiler hatalıdır. Lütfen tekrar deneyiniz.");
+                        }
+                    }
+                    else
+                    {
+                        return ("Yönetici bulunamadı!" +
+                        "\nLütfen TC numaranızı kontrol ediniz.");
+                    }
+                }
+            
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
         public string Guncelle(string procedure, string adsoyad, string Tc, string dogumyeri, DateTime dogumtarihi,
         DateTime isebaslama, string sifre, string gorev, string email, string tel, string adres, string id)
         {
@@ -60,6 +173,23 @@ namespace OgrenciTakipBLL
                 throw;
             }
 
+        }
+        public string Sil(string tc)
+        {
+            try
+            {
+                TCNo = tc;
+                string sorgu = "Delete from Yonetici where TC = " + TCNo;
+                using (DAL objDal = new DAL())
+                {
+                    return objDal.SilDB(sorgu);
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

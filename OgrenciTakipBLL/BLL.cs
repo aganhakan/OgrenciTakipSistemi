@@ -13,8 +13,6 @@ namespace OgrenciTakipBLL
 {
     public abstract class BLL : IDisposable
     {
-        #region Değişkenler
-
         private string _AdSoyad;
         public string AdSoyad
         {
@@ -263,102 +261,45 @@ namespace OgrenciTakipBLL
 
         public object image;
 
-        #endregion
-
-        #region Metotlar
-
-        public List<string> Giris(string sorgu, string ad)
+        private string _ogrencino;
+        public string ogrencino
         {
-            try
+            get { return _ogrencino; }
+            set
             {
-                using (DAL objDal = new DAL())
+                byte digit = 0;
+                bool oldumu = false;
+                for (int i = 0; i < value.Length; i++)
                 {
-                    return objDal.GirisDB(sorgu, ad);
+                    if (char.IsDigit(value[i]))
+                    {
+                        oldumu = true;
+                        digit++;
+                    }
+                    else
+                    {
+                        oldumu = false;
+                        break;
+                    }
+                }
+                if (oldumu && digit == 5)
+                {
+                    _ogrencino = value.Trim();
+                }
+                else if (value == string.Empty)
+                {
+                    throw new ArgumentException("İşaretli alanlar Boş Olamaz!");
+                }
+                else if (digit != 5)
+                {
+                    throw new ArgumentException("Öğrenci no 5 haneli olmalıdır!");
+                }
+                else
+                {
+                    throw new ArgumentException("Öğrenci numarası içerisinde harf olmamalıdır!");
                 }
             }
-            catch (Exception)
-            {
-
-                throw;
-            }
         }
-        public DataTable Listeleme(string action,string procedure)
-        {
-            try
-            {
-                using (DAL objDal = new DAL())
-                {
-                    return objDal.ListelemeDB(action,procedure);
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-        public DataTable Listeleme(string sorgu)
-        {
-            try
-            {
-                using (DAL objDal = new DAL())
-                {
-                    return objDal.ListelemeDB(sorgu);
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-        public MemoryStream Fotograf(string no,string sorgu)
-        {
-            try
-            {
-                using (DAL objDal = new DAL())
-                {
-                   return objDal.Fotograf(no, sorgu);
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-        public string FotoGuncelle(string sorgu, byte[] resim)
-        {
-            try
-            {
-                using (DAL objDal = new DAL())
-                {
-                    return objDal.FotoGuncelle(sorgu,resim);
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-        public string Sil(string sorgu)
-        {
-            try
-            {
-                using (DAL objDal = new DAL())
-                {
-                    return objDal.SilDB(sorgu);
-                }
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-        }
-
-        #endregion
 
         public void Dispose()
         {

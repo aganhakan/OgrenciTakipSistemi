@@ -25,12 +25,7 @@ namespace OgrenciTakipSistemi
             {
                 using (Yonetici nesne = new Yonetici())
                 {
-                    nesne.TCNo = txtKullaniciAdi.Text;
-                    nesne.Sifre = txtSifre.Text;
-
-                    string sorgu = "SELECT * FROM Yonetici Where TC = @p1";
-
-                    List<string> YoneticiBilgieri = nesne.Giris(sorgu, txtKullaniciAdi.Text);
+                    List<string> YoneticiBilgieri = nesne.Giris( txtKullaniciAdi.Text, txtSifre.Text);
 
                     if (YoneticiBilgieri.Count != 0)
                     {

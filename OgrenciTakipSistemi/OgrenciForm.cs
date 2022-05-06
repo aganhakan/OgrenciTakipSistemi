@@ -26,12 +26,7 @@ namespace OgrenciTakipSistemi
             {
                 using (Ogrenci nesne = new Ogrenci())
                 {
-                    nesne.TCNo = txtTcNo.Text;
-                    nesne.DogumTarihi = txtDogumTarihi.Text;
-
-                    string sorgu = "SELECT * FROM Ogrenciler o inner join Siniflar s on s.Id = o.SinifId Where TC = @p1";
-
-                    List<string> OgrenciBilgileri = nesne.Giris(sorgu, txtTcNo.Text);
+                    List<string> OgrenciBilgileri = nesne.Giris(txtTcNo.Text,txtDogumTarihi.Text);
 
                     if (OgrenciBilgileri.Count != 0)
                     {
