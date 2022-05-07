@@ -42,6 +42,15 @@ namespace OgrenciTakipSistemi
                 MessageBox.Show(exc.Message);
             }    
         }
+        public bool EminMisiniz()
+        {
+            bool cevap = false;
+            if (MessageBox.Show("Bu işlemi yapmak istediğinize emin misiniz ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                cevap = true;
+            }
+            return cevap;
+        }
         private void OgrenciPanel_Load(object sender, EventArgs e)
         {
             lblOgrenciNo.Text = OgrenciBilgileri[1];
@@ -65,11 +74,14 @@ namespace OgrenciTakipSistemi
         private void btnOgrenciGuncelle_Click(object sender, EventArgs e)
         {
             try
-            {     
-                using (Ogrenci nesne = new Ogrenci())
+            {
+                if (EminMisiniz())
                 {
-                    MessageBox.Show(nesne.Guncelle(lblOgrenciNo.Text, txtTC.Text, txtOgrenciDogumYer.Text,
-                        txtOgrenciDogumTarih.Text, txtAnneAdi.Text, txtBabaAdi.Text, txtVeliTel.Text, txtAdres.Text));
+                    using (Ogrenci nesne = new Ogrenci())
+                    {
+                        MessageBox.Show(nesne.Guncelle(lblOgrenciNo.Text, txtTC.Text, txtOgrenciDogumYer.Text,
+                            txtOgrenciDogumTarih.Text, txtAnneAdi.Text, txtBabaAdi.Text, txtVeliTel.Text, txtAdres.Text));
+                    }
                 }
             }
             catch (Exception exc)
@@ -91,16 +103,19 @@ namespace OgrenciTakipSistemi
         {
             try
             {
-                if (picOgrenci.ImageLocation == null || picOgrenci.ImageLocation == "openFileDialog1" && picOgrenci.Image == null)
-                    throw new Exception("Lütfen resim ekleyiniz.");
-
-                FileStream fs = new FileStream(picOgrenci.ImageLocation, FileMode.Open, FileAccess.Read);
-                BinaryReader br = new BinaryReader(fs);
-                byte[] resim = br.ReadBytes((int)fs.Length); 
-
-                using (Ogrenci nesne = new Ogrenci())
+                if (EminMisiniz())
                 {
-                    MessageBox.Show(nesne.FotoGuncelle(lblOgrenciNo.Text, resim));
+                    if (picOgrenci.ImageLocation == null || picOgrenci.ImageLocation == "openFileDialog1" && picOgrenci.Image == null)
+                        throw new Exception("Lütfen resim ekleyiniz.");
+
+                    FileStream fs = new FileStream(picOgrenci.ImageLocation, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fs);
+                    byte[] resim = br.ReadBytes((int)fs.Length);
+
+                    using (Ogrenci nesne = new Ogrenci())
+                    {
+                        MessageBox.Show(nesne.FotoGuncelle(lblOgrenciNo.Text, resim));
+                    }
                 }
             }
             catch (Exception exc)

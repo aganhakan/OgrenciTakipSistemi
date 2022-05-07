@@ -74,7 +74,15 @@ namespace OgrenciTakipSistemi
 
             #endregion
         }
-
+        public bool EminMisiniz()
+        {
+            bool cevap = false;
+            if (MessageBox.Show("Bu işlemi yapmak istediğinize emin misiniz ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                cevap = true;
+            }
+            return cevap;
+        }
         public void YoneticiBilgiKontrol()
         {
             using (Yonetici nesne = new Yonetici())
@@ -133,13 +141,11 @@ namespace OgrenciTakipSistemi
         {
             Environment.Exit(0);
         }
-
         private void sınıfEkleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SinifEkleme snf = new SinifEkleme();
             snf.ShowDialog();
         }
-
         private void dgwYonetici_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int secilen = dgwYonetici.SelectedCells[0].RowIndex;
@@ -165,7 +171,6 @@ namespace OgrenciTakipSistemi
             }           
             #endregion
         }
-
         private void dgwOgretmen_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int secilen = dgwOgretmen.SelectedCells[0].RowIndex;
@@ -195,7 +200,6 @@ namespace OgrenciTakipSistemi
             }         
             #endregion
         }
-
         private void dgwOgrenci_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int secilen = dgwOgrenci.SelectedCells[0].RowIndex;
@@ -225,7 +229,6 @@ namespace OgrenciTakipSistemi
             }      
             #endregion
         }
-
         private void btnYoneticiFotograf_Click(object sender, EventArgs e)
         {
             //picOgrenci.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -233,7 +236,6 @@ namespace OgrenciTakipSistemi
             if (openFileDialog1.FileName != "openFileDialog1")
                 picYonetici.ImageLocation = openFileDialog1.FileName;
         }
-
         private void btnOgretmenFotograf_Click(object sender, EventArgs e)
         {
             //picOgrenci.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -252,18 +254,21 @@ namespace OgrenciTakipSistemi
         {
             try
             {
-                if (picYonetici.ImageLocation == null || picYonetici.ImageLocation == "openFileDialog1")
-                    throw new Exception("Lütfen resim ekleyiniz.");
-
-                FileStream fs = new FileStream(picYonetici.ImageLocation, FileMode.Open, FileAccess.Read);
-                BinaryReader br = new BinaryReader(fs);
-                byte[] resim = br.ReadBytes((int)fs.Length);
-
-                using (Yonetici nesne = new Yonetici())
+                if (EminMisiniz())
                 {
-                    MessageBox.Show(nesne.FotoGuncelle(txtYoneticiTC.Text, resim));
-                    Listeleme();
-                }
+                    if (picYonetici.ImageLocation == null || picYonetici.ImageLocation == "openFileDialog1")
+                        throw new Exception("Lütfen resim ekleyiniz.");
+
+                    FileStream fs = new FileStream(picYonetici.ImageLocation, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fs);
+                    byte[] resim = br.ReadBytes((int)fs.Length);
+
+                    using (Yonetici nesne = new Yonetici())
+                    {
+                        MessageBox.Show(nesne.FotoGuncelle(txtYoneticiTC.Text, resim));
+                        Listeleme();
+                    }
+                }              
             }
             catch (Exception exc)
             {
@@ -274,18 +279,21 @@ namespace OgrenciTakipSistemi
         {
             try
             {
-                if (picOgretmen.ImageLocation == null || picOgretmen.ImageLocation == "openFileDialog1")
-                    throw new Exception("Lütfen resim ekleyiniz.");
-
-                FileStream fs = new FileStream(picOgretmen.ImageLocation, FileMode.Open, FileAccess.Read);
-                BinaryReader br = new BinaryReader(fs);
-                byte[] resim = br.ReadBytes((int)fs.Length);
-
-                using (Ogretmen nesne = new Ogretmen())
+                if (EminMisiniz())
                 {
-                    MessageBox.Show(nesne.FotoGuncelle(txtOgretmenTC.Text, resim));
-                    Listeleme();
-                }
+                    if (picOgretmen.ImageLocation == null || picOgretmen.ImageLocation == "openFileDialog1")
+                        throw new Exception("Lütfen resim ekleyiniz.");
+
+                    FileStream fs = new FileStream(picOgretmen.ImageLocation, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fs);
+                    byte[] resim = br.ReadBytes((int)fs.Length);
+
+                    using (Ogretmen nesne = new Ogretmen())
+                    {
+                        MessageBox.Show(nesne.FotoGuncelle(txtOgretmenTC.Text, resim));
+                        Listeleme();
+                    }
+                }              
             }
             catch (Exception exc)
             {
@@ -296,18 +304,21 @@ namespace OgrenciTakipSistemi
         {
             try
             {
-                if (picOgrenci.ImageLocation == null || picOgrenci.ImageLocation == "openFileDialog1")
-                    throw new Exception("Lütfen resim ekleyiniz.");
-
-                FileStream fs = new FileStream(picOgrenci.ImageLocation, FileMode.Open, FileAccess.Read);
-                BinaryReader br = new BinaryReader(fs);
-                byte[] resim = br.ReadBytes((int)fs.Length);
-
-                using (Ogrenci nesne = new Ogrenci())
+                if (EminMisiniz())
                 {
-                    MessageBox.Show(nesne.FotoGuncelle(txtOgrenciNo.Text, resim));
-                    Listeleme();
-                }
+                    if (picOgrenci.ImageLocation == null || picOgrenci.ImageLocation == "openFileDialog1")
+                        throw new Exception("Lütfen resim ekleyiniz.");
+
+                    FileStream fs = new FileStream(picOgrenci.ImageLocation, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fs);
+                    byte[] resim = br.ReadBytes((int)fs.Length);
+
+                    using (Ogrenci nesne = new Ogrenci())
+                    {
+                        MessageBox.Show(nesne.FotoGuncelle(txtOgrenciNo.Text, resim));
+                        Listeleme();
+                    }
+                }          
             }
             catch (Exception exc)
             {
@@ -318,18 +329,20 @@ namespace OgrenciTakipSistemi
         {
             try
             {
-                YoneticiBilgiKontrol();
-
-                DateTime dt = Convert.ToDateTime(txtYoneticiDogumTarih.Text);
-                DateTime ib = Convert.ToDateTime(txtYoneticiiseBaslama.Text);
-                using (Yonetici nesne = new Yonetici())
+                if (EminMisiniz())
                 {
-                    MessageBox.Show(nesne.Guncelle("YoneticiEkleme", txtYoneticiAd.Text, txtYoneticiTC.Text, txtYoneticiDogumYeri.Text,
-                    dt, ib, txtYoneticiSifre.Text, txtYoneticiGorev.Text,
-                    txtYoneticiEMail.Text, txtYoneticiTel.Text, txtYoneticiAdres.Text,"id"));
+                    YoneticiBilgiKontrol();
 
-                    Listeleme();
-                }
+                    DateTime dt = Convert.ToDateTime(txtYoneticiDogumTarih.Text);
+                    DateTime ib = Convert.ToDateTime(txtYoneticiiseBaslama.Text);
+                    using (Yonetici nesne = new Yonetici())
+                    {
+                        MessageBox.Show(nesne.Guncelle("YoneticiEkleme", txtYoneticiAd.Text, txtYoneticiTC.Text, txtYoneticiDogumYeri.Text,
+                        dt, ib, txtYoneticiSifre.Text, txtYoneticiGorev.Text,
+                        txtYoneticiEMail.Text, txtYoneticiTel.Text, txtYoneticiAdres.Text, "id"));
+                        Listeleme();
+                    }
+                }            
             }
             catch (Exception exc)
             {
@@ -340,17 +353,20 @@ namespace OgrenciTakipSistemi
         {
             try
             {
-                OgretmenBilgiKontrol();
-                DateTime dt = Convert.ToDateTime(txtOgretmenDogumTarih.Text);
-                DateTime ib = Convert.ToDateTime(txtOgretmeniseBaslama.Text);
-                using (Ogretmen nesne = new Ogretmen())
+                if (EminMisiniz())
                 {
-                    MessageBox.Show(nesne.Guncelle("OgretmenEkleme", txtOgretmenAd.Text, txtOgretmenTC.Text, txtOgretmenDogumyeri.Text,
-                    dt, ib, txtOgretmenSifre.Text, cmbOgretmenSinif.Text, cmbOgretmenSube.Text,
-                    txtOgretmenEMail.Text, txtOgretmenTel.Text, txtOgretmenAdres.Text, "id"));
+                    OgretmenBilgiKontrol();
+                    DateTime dt = Convert.ToDateTime(txtOgretmenDogumTarih.Text);
+                    DateTime ib = Convert.ToDateTime(txtOgretmeniseBaslama.Text);
+                    using (Ogretmen nesne = new Ogretmen())
+                    {
+                        MessageBox.Show(nesne.Guncelle("OgretmenEkleme", txtOgretmenAd.Text, txtOgretmenTC.Text, txtOgretmenDogumyeri.Text,
+                        dt, ib, txtOgretmenSifre.Text, cmbOgretmenSinif.Text, cmbOgretmenSube.Text,
+                        txtOgretmenEMail.Text, txtOgretmenTel.Text, txtOgretmenAdres.Text, "id"));
 
-                    Listeleme();
-                }
+                        Listeleme();
+                    }
+                }               
             }
             catch (Exception exc)
             {
@@ -361,18 +377,21 @@ namespace OgrenciTakipSistemi
         {
             try
             {
-                OgrenciBilgiKontrol();
-                DateTime dt = Convert.ToDateTime(txtOgrenciDogumTarih.Text);
-                using (Ogrenci nesne = new Ogrenci())
+                if (EminMisiniz())
                 {
-                    string id = dgwOgrenci.Rows[dgwOgrenci.SelectedCells[0].RowIndex].Cells[0].Value.ToString();
+                    OgrenciBilgiKontrol();
+                    DateTime dt = Convert.ToDateTime(txtOgrenciDogumTarih.Text);
+                    using (Ogrenci nesne = new Ogrenci())
+                    {
+                        string id = dgwOgrenci.Rows[dgwOgrenci.SelectedCells[0].RowIndex].Cells[0].Value.ToString();
 
-                    MessageBox.Show(nesne.Guncelle2("OgrenciEkleme", txtOgrenciNo.Text, txtOgrenciAd.Text, txtOgrenciTC.Text,
-                        txtOgrenciDogumYer.Text, dt, cmbOgrenciSinif.Text, cmbOgrenciSube.Text,
-                        txtAnneAdi.Text, txtBabaAdi.Text, txtVeliTel.Text, txtAdres.Text, id));
+                        MessageBox.Show(nesne.Guncelle2("OgrenciEkleme", txtOgrenciNo.Text, txtOgrenciAd.Text, txtOgrenciTC.Text,
+                            txtOgrenciDogumYer.Text, dt, cmbOgrenciSinif.Text, cmbOgrenciSube.Text,
+                            txtAnneAdi.Text, txtBabaAdi.Text, txtVeliTel.Text, txtAdres.Text, id));
 
-                    Listeleme();
-                }
+                        Listeleme();
+                    }
+                }             
             }
             catch (Exception exc)
             {
@@ -383,19 +402,22 @@ namespace OgrenciTakipSistemi
         {
             try
             {
-                YoneticiBilgiKontrol();
-                DateTime dt = Convert.ToDateTime(txtYoneticiDogumTarih.Text);
-                DateTime ib = Convert.ToDateTime(txtYoneticiiseBaslama.Text);
-                using (Yonetici nesne = new Yonetici())
+                if (EminMisiniz())
                 {
-                    string id = dgwYonetici.Rows[dgwYonetici.SelectedCells[0].RowIndex].Cells[0].Value.ToString();
+                    YoneticiBilgiKontrol();
+                    DateTime dt = Convert.ToDateTime(txtYoneticiDogumTarih.Text);
+                    DateTime ib = Convert.ToDateTime(txtYoneticiiseBaslama.Text);
+                    using (Yonetici nesne = new Yonetici())
+                    {
+                        string id = dgwYonetici.Rows[dgwYonetici.SelectedCells[0].RowIndex].Cells[0].Value.ToString();
 
-                    MessageBox.Show(nesne.Guncelle("YoneticiGuncelleme", txtYoneticiAd.Text, txtYoneticiTC.Text, txtYoneticiDogumYeri.Text,
-                    dt, ib, txtYoneticiSifre.Text, txtYoneticiGorev.Text,
-                    txtYoneticiEMail.Text, txtYoneticiTel.Text, txtYoneticiAdres.Text, id));
+                        MessageBox.Show(nesne.Guncelle("YoneticiGuncelleme", txtYoneticiAd.Text, txtYoneticiTC.Text, txtYoneticiDogumYeri.Text,
+                        dt, ib, txtYoneticiSifre.Text, txtYoneticiGorev.Text,
+                        txtYoneticiEMail.Text, txtYoneticiTel.Text, txtYoneticiAdres.Text, id));
 
-                    Listeleme();
-                }
+                        Listeleme();
+                    }
+                }              
             }
             catch (Exception exc)
             {
@@ -406,19 +428,22 @@ namespace OgrenciTakipSistemi
         {
             try
             {
-                OgretmenBilgiKontrol();
-                DateTime dt = Convert.ToDateTime(txtOgretmenDogumTarih.Text);
-                DateTime ib = Convert.ToDateTime(txtOgretmeniseBaslama.Text);
-                using (Ogretmen nesne = new Ogretmen())
+                if (EminMisiniz())
                 {
-                    string id = dgwOgretmen.Rows[dgwOgretmen.SelectedCells[0].RowIndex].Cells[0].Value.ToString();
+                    OgretmenBilgiKontrol();
+                    DateTime dt = Convert.ToDateTime(txtOgretmenDogumTarih.Text);
+                    DateTime ib = Convert.ToDateTime(txtOgretmeniseBaslama.Text);
+                    using (Ogretmen nesne = new Ogretmen())
+                    {
+                        string id = dgwOgretmen.Rows[dgwOgretmen.SelectedCells[0].RowIndex].Cells[0].Value.ToString();
 
-                    MessageBox.Show(nesne.Guncelle("OgretmenGuncelleme2", txtOgretmenAd.Text, txtOgretmenTC.Text, txtOgretmenDogumyeri.Text,
-                        dt, ib, txtOgretmenSifre.Text, cmbOgretmenSinif.Text, cmbOgretmenSube.Text,
-                        txtOgretmenEMail.Text, txtOgretmenTel.Text, txtOgretmenAdres.Text, id));
+                        MessageBox.Show(nesne.Guncelle("OgretmenGuncelleme2", txtOgretmenAd.Text, txtOgretmenTC.Text, txtOgretmenDogumyeri.Text,
+                            dt, ib, txtOgretmenSifre.Text, cmbOgretmenSinif.Text, cmbOgretmenSube.Text,
+                            txtOgretmenEMail.Text, txtOgretmenTel.Text, txtOgretmenAdres.Text, id));
 
-                    Listeleme();
-                }
+                        Listeleme();
+                    }
+                }               
             }
             catch (Exception exc)
             {
@@ -429,58 +454,53 @@ namespace OgrenciTakipSistemi
         {
             try
             {
-                OgrenciBilgiKontrol();
-                DateTime dt = Convert.ToDateTime(txtOgrenciDogumTarih.Text);
-                using (Ogrenci nesne = new Ogrenci())
+                if (EminMisiniz())
                 {
-                    string id = dgwOgrenci.Rows[dgwOgrenci.SelectedCells[0].RowIndex].Cells[0].Value.ToString();
+                    OgrenciBilgiKontrol();
+                    DateTime dt = Convert.ToDateTime(txtOgrenciDogumTarih.Text);
+                    using (Ogrenci nesne = new Ogrenci())
+                    {
+                        string id = dgwOgrenci.Rows[dgwOgrenci.SelectedCells[0].RowIndex].Cells[0].Value.ToString();
 
-                    MessageBox.Show(nesne.Guncelle2("OgrenciGuncelleme2", txtOgrenciNo.Text, txtOgrenciAd.Text, txtOgrenciTC.Text,
-                        txtOgrenciDogumYer.Text, dt, cmbOgrenciSinif.Text, cmbOgrenciSube.Text,
-                        txtAnneAdi.Text, txtBabaAdi.Text, txtVeliTel.Text, txtAdres.Text, id));
+                        MessageBox.Show(nesne.Guncelle2("OgrenciGuncelleme2", txtOgrenciNo.Text, txtOgrenciAd.Text, txtOgrenciTC.Text,
+                            txtOgrenciDogumYer.Text, dt, cmbOgrenciSinif.Text, cmbOgrenciSube.Text,
+                            txtAnneAdi.Text, txtBabaAdi.Text, txtVeliTel.Text, txtAdres.Text, id));
 
-                    Listeleme();
+                        Listeleme();
+                    }
                 }
             }
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message);
             }
+       
         }
         private void btnYoneticiSil_Click(object sender, EventArgs e)
         {
             try
             {
-                bool cevap = false;
-                if (MessageBox.Show("Kayıt silinecektir" + "\n" + "Devam etmek istiyor musunuz ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    cevap = true;
-                }
-                if (cevap)
+                if (EminMisiniz())
                 {
                     using (Yonetici nesne = new Yonetici())
                     {
                         MessageBox.Show(nesne.Sil(txtYoneticiTC.Text));
                     }
+
+                    Listeleme();
                 }
-                Listeleme();
+                    
             }
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message);
-            }
+            }       
         }
-
         private void btnOgretmenSil_Click(object sender, EventArgs e)
         {
             try
             {
-                bool cevap = false;
-                if (MessageBox.Show("Kayıt silinecektir" + "\n" + "Devam etmek istiyor musunuz ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    cevap = true;
-                }
-                if (cevap)
+                if (EminMisiniz())
                 {
                     using (Ogretmen nesne = new Ogretmen())
                     {
@@ -494,17 +514,11 @@ namespace OgrenciTakipSistemi
                 MessageBox.Show(exc.Message);
             }
         }
-
         private void btnOgrenciSil_Click(object sender, EventArgs e)
         {
             try
             {
-                bool cevap = false;
-                if (MessageBox.Show("Kayıt silinecektir" + "\n" + "Devam etmek istiyor musunuz ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {
-                    cevap = true;
-                }
-                if (cevap)
+                if (EminMisiniz())
                 {
                     using (Ogrenci nesne = new Ogrenci())
                     {

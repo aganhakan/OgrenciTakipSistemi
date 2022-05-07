@@ -36,6 +36,15 @@ namespace OgrenciTakipSistemi
                 //dgwOgrenciBilgiler.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
         }
+        public bool EminMisiniz()
+        {
+            bool cevap = false;
+            if (MessageBox.Show("Bu işlemi yapmak istediğinize emin misiniz ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                cevap = true;
+            }
+            return cevap;
+        }
 
         private void OgretmenPaneli_Load(object sender, EventArgs e)
         {
@@ -72,17 +81,20 @@ namespace OgrenciTakipSistemi
         {
             try
             {
-                if (picOgretmen.ImageLocation == null || picOgretmen.ImageLocation == "openFileDialog1" && picOgretmen.Image == null)
-                    throw new Exception("Lütfen resim ekleyiniz.");
-
-                FileStream fs = new FileStream(picOgretmen.ImageLocation, FileMode.Open, FileAccess.Read);
-                BinaryReader br = new BinaryReader(fs);
-                byte[] resim = br.ReadBytes((int)fs.Length);
-
-                using (Ogretmen nesne = new Ogretmen())
+                if (EminMisiniz())
                 {
-                    MessageBox.Show(nesne.FotoGuncelle(lblOgretmenTC.Text, resim));
-                }
+                    if (picOgretmen.ImageLocation == null || picOgretmen.ImageLocation == "openFileDialog1" && picOgretmen.Image == null)
+                        throw new Exception("Lütfen resim ekleyiniz.");
+
+                    FileStream fs = new FileStream(picOgretmen.ImageLocation, FileMode.Open, FileAccess.Read);
+                    BinaryReader br = new BinaryReader(fs);
+                    byte[] resim = br.ReadBytes((int)fs.Length);
+
+                    using (Ogretmen nesne = new Ogretmen())
+                    {
+                        MessageBox.Show(nesne.FotoGuncelle(lblOgretmenTC.Text, resim));
+                    }
+                }               
             }
             catch (Exception exc)
             {
@@ -101,11 +113,14 @@ namespace OgrenciTakipSistemi
         {
             try
             {
-                using (Ogretmen nesne = new Ogretmen())
+                if (EminMisiniz())
                 {
-                    MessageBox.Show(nesne.Guncelle(txtOgretmenDogumyeri.Text, txtOgretmenDogumTarih.Text, txtSifre.Text,
-                        txtOgretmenEMail.Text, txtOgretmenTel.Text, txtOgretmenAdres.Text, lblOgretmenTC.Text));
-                }
+                    using (Ogretmen nesne = new Ogretmen())
+                    {
+                        MessageBox.Show(nesne.Guncelle(txtOgretmenDogumyeri.Text, txtOgretmenDogumTarih.Text, txtSifre.Text,
+                            txtOgretmenEMail.Text, txtOgretmenTel.Text, txtOgretmenAdres.Text, lblOgretmenTC.Text));
+                    }
+                }    
             }
             catch (Exception exc)
             {

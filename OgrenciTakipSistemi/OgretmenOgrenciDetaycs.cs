@@ -29,6 +29,15 @@ namespace OgrenciTakipSistemi
                 //dgwOgrenciDetay.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
             }
         }
+        public bool EminMisiniz()
+        {
+            bool cevap = false;
+            if (MessageBox.Show("Bu işlemi yapmak istediğinize emin misiniz ?", "Confirm", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                cevap = true;
+            }
+            return cevap;
+        }
         public void NotKontrol()
         {
             using (Notlar nesne = new Notlar())
@@ -120,18 +129,21 @@ namespace OgrenciTakipSistemi
         {
             try
             {
-                if (string.IsNullOrEmpty(cmbDers.Text))
-                    throw new ArgumentException("Lütfen sınav girişi yapacağınız derse tıklayınız.");
-                if (string.IsNullOrEmpty(txtSinav1.Text))
-                    throw new ArgumentException("Lütfen ilk sınav notunu giriniz.");
-                else if (string.IsNullOrEmpty(txtSinav2.Text) && !string.IsNullOrEmpty(txtKanaatNot.Text))
-                    throw new ArgumentException("Lütfen kanaat notundan önce 2. sınav notunu giriniz.");
-                using (Notlar nesne = new Notlar())
+                if (EminMisiniz())
                 {
-                    MessageBox.Show(nesne.Ekle(txtSinav1.Text, txtSinav2.Text, txtKanaatNot.Text, lblOrtalama.Text, lblDurum.Text,
-                        bilgiler[0], cmbDers.Text));
-                }
-                listeleme();
+                    if (string.IsNullOrEmpty(cmbDers.Text))
+                        throw new ArgumentException("Lütfen sınav girişi yapacağınız derse tıklayınız.");
+                    if (string.IsNullOrEmpty(txtSinav1.Text))
+                        throw new ArgumentException("Lütfen ilk sınav notunu giriniz.");
+                    else if (string.IsNullOrEmpty(txtSinav2.Text) && !string.IsNullOrEmpty(txtKanaatNot.Text))
+                        throw new ArgumentException("Lütfen kanaat notundan önce 2. sınav notunu giriniz.");
+                    using (Notlar nesne = new Notlar())
+                    {
+                        MessageBox.Show(nesne.Ekle(txtSinav1.Text, txtSinav2.Text, txtKanaatNot.Text, lblOrtalama.Text, lblDurum.Text,
+                            bilgiler[0], cmbDers.Text));
+                    }
+                    listeleme();
+                }   
             }
             catch (ArgumentException exc)
             {
@@ -142,15 +154,18 @@ namespace OgrenciTakipSistemi
         {
             try
             {
-                using (Dersler nesne = new Dersler())
+                if (true)
                 {
-                    MessageBox.Show(nesne.Ekle(cmbDers.Text, bilgiler[0]));
-                }
-                listeleme();
+                    using (Dersler nesne = new Dersler())
+                    {
+                        MessageBox.Show(nesne.Ekle(cmbDers.Text, bilgiler[0]));
+                    }
+                    listeleme();
+                }           
             }
-            catch (ArgumentException exc)
+            catch (Exception)
             {
-                MessageBox.Show(exc.Message);
+                MessageBox.Show("Bu ders tabloya eklenmiştir. Tekrar aynı dersi ekleyemezsiniz!");
             }
         }
 

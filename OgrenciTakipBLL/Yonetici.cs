@@ -92,7 +92,6 @@ namespace OgrenciTakipBLL
             }
             catch (Exception)
             {
-
                 throw;
             }
         }
