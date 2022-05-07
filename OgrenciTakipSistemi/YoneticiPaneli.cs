@@ -21,58 +21,66 @@ namespace OgrenciTakipSistemi
         }
         public void Listeleme()
         {
-            #region Yönetici Tablosu
-            using (Yonetici nesne = new Yonetici())
-            {
-                dgwYonetici.DataSource = nesne.Listeleme();
-                dgwYonetici.Columns[0].Visible = false;
-                dgwYonetici.Columns[6].Visible = false;
-                dgwYonetici.Columns[10].Visible = false;
-                dgwYonetici.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                //dgwYonetici.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            }
-            #endregion
-
-            #region Öğretmen Tablosu
-            using (Ogretmen nesne = new Ogretmen())
-            {
-                dgwOgretmen.DataSource = nesne.ListelemeYon();
-                dgwOgretmen.Columns[0].Visible = false;
-                dgwOgretmen.Columns[6].Visible = false;
-                dgwOgretmen.Columns[7].Visible = false;
-                dgwOgretmen.Columns[10].Visible = false;
-                dgwOgretmen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                //dgwOgretmen.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            }
-            #endregion
-
-            #region Öğrenci Tablosu
-            using (Ogrenci nesne = new Ogrenci())
-            {
-                dgwOgrenci.DataSource = nesne.ListelemeYon();
-                dgwOgrenci.Columns[0].Visible = false;
-                dgwOgrenci.Columns[6].Visible = false;
-                dgwOgrenci.Columns[10].Visible = false;
-                dgwOgrenci.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                //dgwOgrenci.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
-            }
-            #endregion
-
-            #region Sınıflar
             try
             {
-                using (Siniflar nesne = new Siniflar())
+                #region Yönetici Tablosu
+                using (Yonetici nesne = new Yonetici())
                 {
-                    cmbOgretmenSinif.DataSource = cmbOgrenciSinif.DataSource = nesne.sinif;
+                    dgwYonetici.DataSource = nesne.Listeleme();
+                    dgwYonetici.Columns[0].Visible = false;
+                    dgwYonetici.Columns[6].Visible = false;
+                    dgwYonetici.Columns[10].Visible = false;
+                    dgwYonetici.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    //dgwYonetici.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                 }
-                cmbOgretmenSube.DataSource = cmbOgrenciSube.DataSource = Enum.GetValues(typeof(Siniflar.Subeler));
+                #endregion
+
+                #region Öğretmen Tablosu
+                using (Ogretmen nesne = new Ogretmen())
+                {
+                    dgwOgretmen.DataSource = nesne.ListelemeYon();
+                    dgwOgretmen.Columns[0].Visible = false;
+                    dgwOgretmen.Columns[6].Visible = false;
+                    dgwOgretmen.Columns[7].Visible = false;
+                    dgwOgretmen.Columns[10].Visible = false;
+                    dgwOgretmen.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    //dgwOgretmen.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                }
+                #endregion
+
+                #region Öğrenci Tablosu
+                using (Ogrenci nesne = new Ogrenci())
+                {
+                    dgwOgrenci.DataSource = nesne.ListelemeYon();
+                    dgwOgrenci.Columns[0].Visible = false;
+                    dgwOgrenci.Columns[6].Visible = false;
+                    dgwOgrenci.Columns[10].Visible = false;
+                    dgwOgrenci.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                    //dgwOgrenci.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
+                }
+                #endregion
+
+                #region Sınıflar
+                try
+                {
+                    using (Siniflar nesne = new Siniflar())
+                    {
+                        cmbOgretmenSinif.DataSource = cmbOgrenciSinif.DataSource = nesne.sinif;
+                    }
+                    cmbOgretmenSube.DataSource = cmbOgrenciSube.DataSource = Enum.GetValues(typeof(Siniflar.Subeler));
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show(exc.Message);
+                }
+
+                #endregion
             }
             catch (Exception exc)
             {
                 MessageBox.Show(exc.Message);
             }
-
-            #endregion
+            
         }
         public bool EminMisiniz()
         {
@@ -87,45 +95,25 @@ namespace OgrenciTakipSistemi
         {
             using (Yonetici nesne = new Yonetici())
             {
-                nesne.AdSoyad = txtYoneticiAd.Text;
-                nesne.TCNo = txtYoneticiTC.Text;
-                nesne.DogumYeri = txtYoneticiDogumYeri.Text;
-                nesne.DogumTarihi = txtYoneticiDogumTarih.Text;
-                nesne.isebaslama = txtYoneticiiseBaslama.Text;
-                nesne.Sifre = txtYoneticiSifre.Text;
-                nesne.gorev = txtYoneticiGorev.Text;
-                nesne.email = txtYoneticiEMail.Text;
-                nesne.tel = txtYoneticiTel.Text;
-                nesne.Adres = txtYoneticiAdres.Text;
+                nesne.YoneticiBilgiKontrol(txtYoneticiAd.Text, txtYoneticiTC.Text, txtYoneticiDogumYeri.Text, txtYoneticiDogumTarih.Text,
+                    txtYoneticiiseBaslama.Text, txtYoneticiSifre.Text, txtYoneticiGorev.Text, txtYoneticiEMail.Text, txtYoneticiTel.Text,
+                    txtYoneticiAdres.Text);
             }
         }
         public void OgretmenBilgiKontrol()
         {
             using (Ogretmen nesne = new Ogretmen())
             {
-                nesne.AdSoyad = txtOgretmenAd.Text;
-                nesne.TCNo = txtOgretmenTC.Text;
-                nesne.DogumYeri = txtOgretmenDogumyeri.Text;
-                nesne.DogumTarihi = txtOgretmenDogumTarih.Text;
-                nesne.isebaslama = txtOgretmeniseBaslama.Text;
-                nesne.Sifre = txtOgretmenSifre.Text;
-                nesne.email = txtOgretmenEMail.Text;
-                nesne.Adres = txtOgretmenAdres.Text;
+                nesne.OgretmenBilgiKontrol(txtOgretmenAd.Text, txtOgretmenTC.Text, txtOgretmenDogumyeri.Text, txtOgretmenDogumTarih.Text,
+                     txtOgretmeniseBaslama.Text, txtOgretmenSifre.Text, txtOgretmenEMail.Text, txtOgretmenAdres.Text);
             }
         }
         public void OgrenciBilgiKontrol()
         {
             using (Ogrenci nesne = new Ogrenci())
             {
-                nesne.ogrencino = txtOgrenciNo.Text;
-                nesne.AdSoyad = txtOgrenciAd.Text;
-                nesne.TCNo = txtOgrenciTC.Text;
-                nesne.DogumYeri = txtOgrenciDogumYer.Text;
-                nesne.DogumTarihi = txtOgrenciDogumTarih.Text;
-                nesne.annead = txtAnneAdi.Text;
-                nesne.babaad = txtBabaAdi.Text;
-                nesne.tel = txtVeliTel.Text;
-                nesne.Adres = txtAdres.Text;
+                nesne.OgrenciBilgiKontrol(txtOgrenciNo.Text, txtOgrenciAd.Text, txtOgrenciTC.Text, txtOgrenciDogumYer.Text,
+                    txtOgrenciDogumTarih.Text, txtAnneAdi.Text, txtBabaAdi.Text, txtVeliTel.Text, txtAdres.Text);
             }
         }
         private void YoneticiPaneli_Load(object sender, EventArgs e)

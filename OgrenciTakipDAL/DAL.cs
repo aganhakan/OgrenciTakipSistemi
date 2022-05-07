@@ -204,7 +204,6 @@ namespace OgrenciTakipDAL
             }
             return mesaj;
         }
-
         public List<string> GirisDB(string sorgu, string tc)
         {
             using (SqlConnection baglanti = new SqlConnection(baglanticumlesi))

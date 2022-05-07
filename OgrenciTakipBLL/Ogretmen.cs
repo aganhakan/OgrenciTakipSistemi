@@ -243,5 +243,17 @@ namespace OgrenciTakipBLL
                 throw;
             }
         }
+        public void OgretmenBilgiKontrol(string adsoyad, string tc, string dogumyeri, string dogumtarihi, string isebaslama, 
+            string sifre, string email, string adres)
+        {
+            this.AdSoyad = adsoyad;
+            this.TCNo = tc;
+            this.DogumYeri = dogumyeri;
+            this.DogumTarihi = dogumtarihi;
+            this.isebaslama = isebaslama;
+            this.Sifre = sifre;
+            this.email = email;
+            this.Adres = adres;
+        }
     }
 }

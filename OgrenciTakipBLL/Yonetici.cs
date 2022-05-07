@@ -190,5 +190,19 @@ namespace OgrenciTakipBLL
                 throw;
             }
         }
+        public void YoneticiBilgiKontrol(string adsoyad, string tc, string dogumyeri, string dogumtarihi, string isebaslama,
+            string sifre, string gorev, string email, string tel, string adres)
+        {
+            this.AdSoyad = adsoyad;
+            this.TCNo = tc;
+            this.DogumYeri = dogumyeri;
+            this.DogumTarihi = dogumtarihi;
+            this.isebaslama = isebaslama;
+            this.Sifre = sifre;
+            this.gorev = gorev;
+            this.email = email;
+            this.tel = tel;
+            this.Adres = adres;
+        }
     }
 }

@@ -159,7 +159,7 @@ namespace OgrenciTakipBLL
             try
             {
                 string sorgu = "Select o.*,Sinif + '/' + Sube as 'Sınıf' from Ogrenciler o " +
-                               "inner join Siniflar s on s.Id = o.SinifId";
+                               "inner join Siniflar s on s.Id = o.SinifId order by OgrenciNo";
                 using (DAL objDal = new DAL())
                 {
                     return objDal.ListelemeDB(sorgu);
@@ -178,7 +178,7 @@ namespace OgrenciTakipBLL
                 string sorgu = "Select o.OgrenciNo as 'Öğrenci No', o.AdSoyad as 'Ad Soyad',d.DersAdi as 'Ders Adı'," +
                                "n.Sinav1 as '1. Sınav',n.Sinav2 as '2. Sınav',n.KanaatNot as 'Kanaat Notu'," +
                                "n.Ortalama as 'Ortalama',n.Durum as 'Durumu'from Ogrenciler o inner join Notlar n" +
-                               " on n.OgrenciId = o.Id inner join Dersler d on d.Id = n.DersId Where o.Id = " + no;
+                               " on n.OgrenciId = o.Id inner join Dersler d on d.Id = n.DersId order by o.OgrenciNo Where o.Id = " + no;
                 using (DAL objDal = new DAL())
                 {
                     return objDal.ListelemeDB(sorgu);
@@ -262,6 +262,19 @@ namespace OgrenciTakipBLL
 
                 throw;
             }
+        }
+        public void OgrenciBilgiKontrol(string ogrencino, string adsoyad, string tc, string dogumyeri, string dogumtarihi,
+            string anneadi, string babaadi, string velitel, string adres)
+        {
+            this.ogrencino = ogrencino;
+            this.AdSoyad = adsoyad;
+            this.TCNo = tc;
+            this.DogumYeri = dogumyeri;
+            this.DogumTarihi = dogumtarihi;
+            this.annead = anneadi;
+            this.babaad = babaadi;
+            this.tel = velitel;
+            this.Adres = adres;
         }
     }
 }
