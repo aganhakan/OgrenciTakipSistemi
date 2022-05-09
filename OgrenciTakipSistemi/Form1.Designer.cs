@@ -28,13 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Anaform));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnYonetici = new System.Windows.Forms.Button();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.btnOgrenci = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnOgretmen = new System.Windows.Forms.Button();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -73,16 +72,6 @@
             this.btnYonetici.UseVisualStyleBackColor = true;
             this.btnYonetici.Click += new System.EventHandler(this.btnYonetici_Click);
             // 
-            // pictureBox3
-            // 
-            this.pictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox3.Image")));
-            this.pictureBox3.Location = new System.Drawing.Point(26, 221);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(178, 92);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox3.TabIndex = 4;
-            this.pictureBox3.TabStop = false;
-            // 
             // btnOgrenci
             // 
             this.btnOgrenci.FlatAppearance.BorderColor = System.Drawing.Color.Black;
@@ -98,16 +87,6 @@
             this.btnOgrenci.Text = "ÖĞRENCİ GİRİŞİ";
             this.btnOgrenci.UseVisualStyleBackColor = true;
             this.btnOgrenci.Click += new System.EventHandler(this.btnOgrenci_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(26, 123);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(178, 92);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 2;
-            this.pictureBox2.TabStop = false;
             // 
             // btnOgretmen
             // 
@@ -125,9 +104,29 @@
             this.btnOgretmen.UseVisualStyleBackColor = true;
             this.btnOgretmen.Click += new System.EventHandler(this.btnOgretmen_Click);
             // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Image = global::OgrenciTakipSistemi.Properties.Resources.manager1;
+            this.pictureBox3.Location = new System.Drawing.Point(26, 221);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(178, 92);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 4;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::OgrenciTakipSistemi.Properties.Resources.student1;
+            this.pictureBox2.Location = new System.Drawing.Point(26, 123);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(178, 92);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
+            // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::OgrenciTakipSistemi.Properties.Resources.teacher;
             this.pictureBox1.Location = new System.Drawing.Point(26, 25);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(178, 92);

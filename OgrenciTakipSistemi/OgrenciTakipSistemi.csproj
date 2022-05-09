@@ -143,6 +143,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="SinifEkleme.resx">
       <DependentUpon>SinifEkleme.cs</DependentUpon>
@@ -174,6 +175,15 @@
       <Project>{81cdc90a-2ffc-4f7f-b6a4-af15cd4e9d6d}</Project>
       <Name>OgrenciTakipBLL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Fotograflar\manager1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Fotograflar\teacher.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Fotograflar\student1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

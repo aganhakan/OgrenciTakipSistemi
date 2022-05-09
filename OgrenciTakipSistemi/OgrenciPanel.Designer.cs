@@ -53,7 +53,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtOgrenciDogumYer = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtTC = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -61,6 +60,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgwOgrenci = new System.Windows.Forms.DataGridView();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.txtTC = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -94,6 +94,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtTC);
             this.groupBox1.Controls.Add(this.btnFotografGuncelle);
             this.groupBox1.Controls.Add(this.lblOgrenciAd);
             this.groupBox1.Controls.Add(this.lblOgrenciSinif);
@@ -115,7 +116,6 @@
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtOgrenciDogumYer);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.txtTC);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -332,13 +332,6 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Doğum Yeri:";
             // 
-            // txtTC
-            // 
-            this.txtTC.Location = new System.Drawing.Point(171, 101);
-            this.txtTC.Name = "txtTC";
-            this.txtTC.Size = new System.Drawing.Size(236, 26);
-            this.txtTC.TabIndex = 5;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -404,6 +397,15 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // txtTC
+            // 
+            this.txtTC.AutoSize = true;
+            this.txtTC.Location = new System.Drawing.Point(171, 104);
+            this.txtTC.Name = "txtTC";
+            this.txtTC.Size = new System.Drawing.Size(177, 20);
+            this.txtTC.TabIndex = 40;
+            this.txtTC.Text = "------------------------";
+            // 
             // OgrenciPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
@@ -453,7 +455,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtOgrenciDogumYer;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtTC;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -465,5 +466,6 @@
         private System.Windows.Forms.Label lblOgrenciAd;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnFotografGuncelle;
+        private System.Windows.Forms.Label txtTC;
     }
 }

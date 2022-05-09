@@ -120,7 +120,8 @@ namespace OgrenciTakipSistemi
         {
             using (Yonetici nesne = new Yonetici())
             {
-                picYonetici.Image = picOgretmen.Image = picOgrenci.Image = Image.FromStream(nesne.Fotograf("1"));
+                //picYonetici.Image = picOgretmen.Image = picOgrenci.Image = Image.FromStream(nesne.Fotograf("1"));
+                picYonetici.Image = picOgretmen.Image = picOgrenci.Image = Properties.Resources.manager1;
             }
 
             Listeleme();
