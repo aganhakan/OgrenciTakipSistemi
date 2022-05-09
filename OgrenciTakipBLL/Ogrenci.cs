@@ -178,7 +178,7 @@ namespace OgrenciTakipBLL
                 string sorgu = "Select o.OgrenciNo as 'Öğrenci No', o.AdSoyad as 'Ad Soyad',d.DersAdi as 'Ders Adı'," +
                                "n.Sinav1 as '1. Sınav',n.Sinav2 as '2. Sınav',n.KanaatNot as 'Kanaat Notu'," +
                                "n.Ortalama as 'Ortalama',n.Durum as 'Durumu'from Ogrenciler o inner join Notlar n" +
-                               " on n.OgrenciId = o.Id inner join Dersler d on d.Id = n.DersId order by o.OgrenciNo Where o.Id = " + no;
+                               " on n.OgrenciId = o.Id inner join Dersler d on d.Id = n.DersId Where o.Id = " + no + "order by o.OgrenciNo ";
                 using (DAL objDal = new DAL())
                 {
                     return objDal.ListelemeDB(sorgu);

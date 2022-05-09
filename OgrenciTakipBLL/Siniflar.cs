@@ -34,7 +34,7 @@ namespace OgrenciTakipBLL
             }
             catch (Exception)
             {
-                throw;
+                return "Bu sınıfı silemezsiniz. Bu sınıfta öğretmen veya öğrenciler bulunmaktadır.";
             }
         }
         public string Delete(string sinif, string sube)
