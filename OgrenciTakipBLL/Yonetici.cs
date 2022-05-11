@@ -38,11 +38,11 @@ namespace OgrenciTakipBLL
                 }
                 else if (value == string.Empty)
                 {
-                    throw new ArgumentException("İşaretli alanlar Boş Olamaz!");
+                    throw new ArgumentException("Görev Alanı Boş Olamaz!");
                 }
                 else
                 {
-                    throw new ArgumentException(" Görev içerisinde yalnızca harf olmalıdır!");
+                    throw new ArgumentException("Görev içerisinde yalnızca harf olmalıdır!");
                 }
             }
         }

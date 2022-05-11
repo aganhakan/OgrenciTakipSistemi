@@ -38,7 +38,7 @@ namespace OgrenciTakipBLL
                 }
                 else if (value == string.Empty)
                 {
-                    throw new ArgumentException("İşaretli alanlar Boş Olamaz!");
+                    throw new ArgumentException("Ad-Soyad Boş Olamaz!");
                 }
                 else
                 {
@@ -74,7 +74,7 @@ namespace OgrenciTakipBLL
                 }
                 else if (value == string.Empty)
                 {
-                    throw new ArgumentException("İşaretli alanlar Boş Olamaz!");
+                    throw new ArgumentException("TC No Boş Olamaz!");
                 }
                 else if (!oldumu)
                 {
@@ -112,7 +112,7 @@ namespace OgrenciTakipBLL
                 }
                 else if (value == string.Empty)
                 {
-                    throw new ArgumentException("İşaretli alanlar Boş Olamaz!");
+                    throw new ArgumentException("Doğum Yeri Boş Olamaz!");
                 }
                 else
                 {
@@ -144,7 +144,7 @@ namespace OgrenciTakipBLL
                 }
                 else if (value == string.Empty)
                 {
-                    throw new ArgumentException("İşaretli alanlar Boş Olamaz!");
+                    throw new ArgumentException("Doğum Tarihi Boş Olamaz!");
                 }
                 else
                 {
@@ -182,7 +182,7 @@ namespace OgrenciTakipBLL
                 }
                 else if (value == string.Empty)
                 {
-                    throw new ArgumentException("İşaretli alanlar Boş Olamaz!");
+                    throw new ArgumentException("İşe Başlama Tarihi Boş Olamaz!");
                 }
                 else
                 {
@@ -199,7 +199,7 @@ namespace OgrenciTakipBLL
             {
                 if (value == string.Empty)
                 {
-                    throw new ArgumentException("İşaretli alanlar Boş Olamaz!");
+                    throw new ArgumentException("Şifre Alanı Boş Olamaz!");
                 }
                 else if (value.Length <= 20)
                 {
@@ -220,7 +220,7 @@ namespace OgrenciTakipBLL
             {
                 if (string.IsNullOrEmpty(value))
                 {
-                    throw new ArgumentException("İşaretli alanlar Boş Olamaz!");
+                    throw new ArgumentException("E-Mail Boş Olamaz!");
                 }
                 else if (value.Contains("@gmail.com") || value.Contains("@hotmail.com")
                     || value.Contains("@outlook.com") || value.Contains("@live.com"))
@@ -288,7 +288,7 @@ namespace OgrenciTakipBLL
                 }
                 else if (value == string.Empty)
                 {
-                    throw new ArgumentException("İşaretli alanlar Boş Olamaz!");
+                    throw new ArgumentException("Öğrenci No Boş Olamaz!");
                 }
                 else if (digit != 5)
                 {

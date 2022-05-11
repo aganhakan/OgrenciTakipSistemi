@@ -19,7 +19,10 @@ namespace OgrenciTakipSistemi
         {
             InitializeComponent();
         }
+        private void OgrenciGiris_Load(object sender, EventArgs e)
+        {
 
+        }
         private void btnGiris_Click(object sender, EventArgs e)
         {
             try
@@ -60,12 +63,6 @@ namespace OgrenciTakipSistemi
         {
             Environment.Exit(0);
         }
-
-        private void OgrenciGiris_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnGeri_Click(object sender, EventArgs e)
         {
             Anaform ana = new Anaform();

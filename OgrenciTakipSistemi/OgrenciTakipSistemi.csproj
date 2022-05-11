@@ -52,11 +52,11 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="OgrenciForm.cs">
+    <Compile Include="OgrenciGiris.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OgrenciForm.Designer.cs">
-      <DependentUpon>OgrenciForm.cs</DependentUpon>
+    <Compile Include="OgrenciGiris.Designer.cs">
+      <DependentUpon>OgrenciGiris.cs</DependentUpon>
     </Compile>
     <Compile Include="OgrenciPanel.cs">
       <SubType>Form</SubType>
@@ -117,8 +117,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OgrenciForm.resx">
-      <DependentUpon>OgrenciForm.cs</DependentUpon>
+    <EmbeddedResource Include="OgrenciGiris.resx">
+      <DependentUpon>OgrenciGiris.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OgrenciPanel.resx">
       <DependentUpon>OgrenciPanel.cs</DependentUpon>

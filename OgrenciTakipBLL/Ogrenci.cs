@@ -36,7 +36,7 @@ namespace OgrenciTakipBLL
                 }
                 else if (value == string.Empty)
                 {
-                    throw new ArgumentException("İşaretli alanlar Boş Olamaz!");
+                    throw new ArgumentException("Anne Adı Boş Olamaz!");
                 }
                 else
                 {
@@ -70,7 +70,7 @@ namespace OgrenciTakipBLL
                 }
                 else if (value == string.Empty)
                 {
-                    throw new ArgumentException("İşaretli alanlar Boş Olamaz!");
+                    throw new ArgumentException("Baba Adı Boş Olamaz!");
                 }
                 else
                 {

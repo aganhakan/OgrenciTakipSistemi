@@ -35,7 +35,7 @@ namespace OgrenciTakipBLL
                 }
                 else if (value == string.Empty)
                 {
-                    throw new ArgumentException("İşaretli alanlar Boş Olamaz!");
+                    throw new ArgumentException("1.Sınav Boş Olamaz!");
                 }
                 else if (oldumu == true && int.Parse(value) > 100)
                 {
@@ -74,7 +74,7 @@ namespace OgrenciTakipBLL
                 }
                 else if (value == string.Empty)
                 {
-                    throw new ArgumentException("İşaretli alanlar Boş Olamaz!");
+                    throw new ArgumentException("2. Sınav Boş Olamaz!");
                 }
                 else if (oldumu == true && int.Parse(value) > 100)
                 {
@@ -113,7 +113,7 @@ namespace OgrenciTakipBLL
                 }
                 else if (value == string.Empty)
                 {
-                    throw new ArgumentException("İşaretli alanlar Boş Olamaz!");
+                    throw new ArgumentException("Kanaat Notu Boş Olamaz!");
                 }
                 else if (oldumu == true && int.Parse(value) >100)
                 {
