@@ -46,11 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Anaform.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Anaform.Designer.cs">
+      <DependentUpon>Anaform.cs</DependentUpon>
     </Compile>
     <Compile Include="OgrenciGiris.cs">
       <SubType>Form</SubType>
@@ -114,8 +114,8 @@
     <Compile Include="YoneticiSifreUnuttum.Designer.cs">
       <DependentUpon>YoneticiSifreUnuttum.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Anaform.resx">
+      <DependentUpon>Anaform.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OgrenciGiris.resx">
       <DependentUpon>OgrenciGiris.cs</DependentUpon>
